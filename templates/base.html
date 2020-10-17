@@ -31,8 +31,30 @@
     {% endblock %}
 
     <title>Leo's Cycles {% block extra_title %}{% endblock %}</title>
+
   </head>
+
   <body>
+  
     <h1>Hello, world!</h1>
+
+    {% if messages %}
+        <div class="message-container"></div>
+    {% endif %}
+
+    {% block page_header %}
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
+
+    {% block postloadjs %}   
+    {% endblock %}
+
   </body>
+
+  <footer>
+    <div class="container">
+    </div>
+  </footer>
 </html>
