@@ -1,0 +1,18 @@
+html, body {
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Colors */
+.text-black {
+    color: #000 !important;
+}
+
+.bg-black {
+    background-color: #000 !important;
+}
+
+/* Forms */
+.emailfieldclass {
+    
+}

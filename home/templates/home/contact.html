@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block page_header %}
+{% endblock %}
+
+{% block extra_title %}  | Contact {% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="d-flex row justify-content-center p-2 text-center">
+        <h2>Contact us</h2>
+    </div>
+    <div class="d-flex row justify-content-center p-2 text-center">
+        <div class="form-group">
+            <form action="" method="POST">
+
+                {% csrf_token %}
+                {{ contact_us_form.as_p }}
+
+                <input type="submit" value="submit" class="btn rounded text-uppercase my-4 btn-black border-secondary shadow-sm">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
