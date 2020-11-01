@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block page_header %}
+{% endblock %}
+
+{% block extra_title %}  | Reviews {% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="d-flex row justify-content-center p-2 text-center">
+        <h2>Services</h2>
+    </div>
+    <div class="d-flex row justify-content-center p-2 text-center">
+        <div class="container service-cards">
+            {% for level in service_level %}
+                <div class="card">
+                    <h2>{{ level.level_type }}</h2>
+                    <p>{{ level.description }}</p>
+                    <p>{{ level.price }}</p>
+                    <p><a href="#" class="btn btn-secondary btn-black" role="button">View details »</a></p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

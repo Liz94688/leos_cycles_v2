@@ -13,8 +13,8 @@ from django.utils import timezone
 class Review(models.Model):
     SERVICE_TYPE = [
         ('Basic', 'Basic'),
-        ('A', 'Advanced'),
-        ('P', 'Premium'),
+        ('Advanced', 'Advanced'),
+        ('Premium', 'Premium'),
     ]
 
     CHOICES = [
