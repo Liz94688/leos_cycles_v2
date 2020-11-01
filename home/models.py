@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import datetime
+from django.utils import timezone
 
 # Create your models here.
 
@@ -7,7 +7,10 @@ from datetime import datetime
 class ContactUs(models.Model):
     email = models.EmailField(max_length=80)
     message = models.TextField()
-    date_of_contact = models.DateField(default=datetime.now)
+    date_of_contact = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return self.name
+        return self.email + ' | ' + self.message
+
+    class Meta:
+        verbose_name_plural = 'Contact Us'
