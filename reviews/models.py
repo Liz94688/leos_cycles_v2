@@ -3,20 +3,8 @@ from django.contrib.auth.models import User
 from services.models import Services
 from django.utils import timezone
 
-# Create your models here.
-# Need to import the Services, once they've been created
-# From services.models import Services
-# Use as a FK rather than the choices option
-# service_type = models.ForeignKey(Services,
-# default='', on_delete=models.CASCADE)
-
 
 class Review(models.Model):
-    # SERVICE_TYPE = [
-    #     ('Basic', 'Basic'),
-    #     ('Advanced', 'Advanced'),
-    #     ('Premium', 'Premium'),
-    # ]
 
     CHOICES = [
         (i, i) for i in range(0, 6)
