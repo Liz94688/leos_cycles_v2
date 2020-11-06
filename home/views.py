@@ -18,12 +18,6 @@ def about(request):
     return render(request, 'home/about.html')
 
 
-# def services(request):
-#     """ A view to return the services page"""
-
-#     return render(request, 'home/services.html')
-
-
 def contact(request):
     """ A view to return the contact page"""
 

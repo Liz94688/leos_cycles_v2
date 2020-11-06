@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from services.models import Services
 from django.utils import timezone
 
 # Create your models here.
@@ -11,18 +12,18 @@ from django.utils import timezone
 
 
 class Review(models.Model):
-    SERVICE_TYPE = [
-        ('Basic', 'Basic'),
-        ('Advanced', 'Advanced'),
-        ('Premium', 'Premium'),
-    ]
+    # SERVICE_TYPE = [
+    #     ('Basic', 'Basic'),
+    #     ('Advanced', 'Advanced'),
+    #     ('Premium', 'Premium'),
+    # ]
 
     CHOICES = [
         (i, i) for i in range(0, 6)
     ]
 
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    level_type = models.CharField(max_length=15, choices=SERVICE_TYPE)
+    level_type = models.ForeignKey(Services, on_delete=models.CASCADE)
     rating = models.IntegerField(blank=False, choices=CHOICES)
     message = models.TextField()
     date_of_contact = models.DateTimeField(default=timezone.now)

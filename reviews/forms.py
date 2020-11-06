@@ -1,8 +1,6 @@
 from django import forms
 from .models import Review
 
-# Does the User need to be imported here as well?
-
 
 class ReviewForm(forms.ModelForm):
     class Meta:
