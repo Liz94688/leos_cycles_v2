@@ -13,7 +13,14 @@ https://stackoverflow.com/questions/59855286/how-to-edit-or-add-data-on-an-exten
 class RegisterForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'email', 'username', 'password', 'password_confirmed']
+        fields = [
+            'first_name',
+            'last_name',
+            'email',
+            'username',
+            'password',
+            'password_confirmed'
+            ]
 
         widgets = {
             'first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First name'}),

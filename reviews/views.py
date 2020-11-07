@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from services.models import Services
 from .forms import ReviewForm
 from django.utils import timezone
 
@@ -10,14 +11,14 @@ from django.utils import timezone
 @login_required
 def add_review(request):
     """ A view to return the review page"""
-    # import Services, get the id and save here
-    # level_type = get_object_or_404(Services, id=id)
-    # import get_object_or_404 at the top
+    # level_type = get_object_or_404(Services, pk=pk)
     # level_type.save()
-    # can then be used below in review.level_type service
+    # remember to include pk as an argument above, after request
+    # need to find out how to get the pk into the url...
 
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
+
         # create a form instance and populate it with data from the request:
         user_review_form = ReviewForm(request.POST)
 
@@ -25,8 +26,8 @@ def add_review(request):
         if user_review_form.is_valid():
             review = user_review_form.save(commit=False)
             review.author = request.user
-            review.date_of_contact = timezone.now()
             # review.level_type = level_type
+            review.date_of_contact = timezone.now()
             review.save()
             return render(request, 'home/index.html')
 
