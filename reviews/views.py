@@ -11,8 +11,8 @@ from django.utils import timezone
 @login_required
 def add_review(request):
     """ A view to return the review page"""
-    # level_type = get_object_or_404(Services, pk=pk)
-    # level_type.save()
+    # services = get_object_or_404(Services)
+    # services.save()
     # remember to include pk as an argument above, after request
     # need to find out how to get the pk into the url...
 
@@ -35,4 +35,5 @@ def add_review(request):
     else:
         user_review_form = ReviewForm()
 
-    return render(request, 'reviews/reviews.html', {'user_review_form': user_review_form})
+    return render(request, 'reviews/reviews.html',
+        {'user_review_form': user_review_form,})

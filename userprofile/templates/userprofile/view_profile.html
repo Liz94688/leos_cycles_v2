@@ -16,7 +16,7 @@
             <form action="" method="POST">
 
                 {% csrf_token %}
-                {{ user_profile.as_p }}
+                {{ contact_form.as_p }}
 
                 <input type="submit" value="submit" class="btn rounded text-uppercase my-4 btn-black border-secondary shadow-sm">
             </form>

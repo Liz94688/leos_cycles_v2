@@ -2,7 +2,7 @@ from django import forms
 from .models import UserProfile
 
 
-class UserProfileForm(forms.ModelForm):
+class ContactDetailsForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = [

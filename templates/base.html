@@ -49,9 +49,14 @@
     <div class="d-flex flex-column align-items-center p-3 px-md-4 bg-white border-bottom shadow-sm">
         <div class="flex-md-row mb-2">
             <nav class="my-2 my-md-0 mr-md-3">
-                <a class="p-2 text-dark" href="{% url 'about' %}">About</a>
-                <a class="p-2 text-dark" href="{% url 'view_all_services' %}">Services</a>
-                <a class="p-2 text-dark" href="{% url 'contact' %}">Contact</a>
+            <a class="p-2 text-dark" href="{% url 'view_all_services' %}">Services</a>
+            <a class="p-2 text-dark" href="{% url 'contact' %}">Contact</a>
+            {% if request.user.is_authenticated %}
+                {% if request.user.is_superuser %}
+                    <a class="p-2 text-dark" href="">Administration</a>
+                {% endif %}
+                <a class="p-2 text-dark" href="{% url 'userprofile' %}"> User Profile</a>
+            {% endif %}
             </nav>
         </div>
         <div class="flex-md-row">
