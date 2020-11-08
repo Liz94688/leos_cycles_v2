@@ -14,7 +14,7 @@ class Level(models.Model):
     level_type = models.CharField(max_length=15, choices=LEVEL_TYPE)
 
     def __str__(self):
-        return self.level_type
+        return str(self.level_type)
 
 
 class Services(models.Model):
@@ -26,7 +26,7 @@ class Services(models.Model):
     total_ratings = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.level_type
+        return str(self.level_type)
 
     class Meta:
         verbose_name_plural = 'Services'
