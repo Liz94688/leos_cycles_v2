@@ -14,6 +14,7 @@ class UserProfile(models.Model):
     town_or_city = models.CharField(max_length=40, blank=True)
     postcode = models.CharField(max_length=20, blank=True)
     telephone = models.CharField(max_length=20, blank=True)
+    contact_by_email = models.BooleanField(blank=True, default=False)
     contact_by_phone = models.BooleanField(blank=True, default=False)
     bikes = models.ManyToManyField(Bike, blank=True)
 

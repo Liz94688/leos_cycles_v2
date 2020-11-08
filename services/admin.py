@@ -1,7 +1,13 @@
 from django.contrib import admin
-from .models import Services
+from .models import Level, Services
 
 # Register your models here.
+
+
+class LevelAdmin(admin.ModelAdmin):
+    list_display = (
+        'level_type',
+    )
 
 
 class ServicesAdmin(admin.ModelAdmin):
@@ -9,7 +15,10 @@ class ServicesAdmin(admin.ModelAdmin):
         'level_type',
         'description',
         'price',
+        'total_reviews',
+        'total_ratings',
     )
 
 
+admin.site.register(Level, LevelAdmin)
 admin.site.register(Services, ServicesAdmin)
