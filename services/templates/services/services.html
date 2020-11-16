@@ -3,7 +3,7 @@
 {% block page_header %}
 {% endblock %}
 
-{% block extra_title %}  | Reviews {% endblock %}
+{% block extra_title %}  | Services {% endblock %}
 
 {% block content %}
 
@@ -13,13 +13,17 @@
     </div>
     <div class="d-flex row justify-content-center p-2 text-center">
         <div class="container service-cards">
-            {% for level in service_level %}
+            {% for service in services %}
                 <div class="card">
-                    <h2>{{ level.level_type }}</h2>
-                    <p>{{ level.description }}</p>
-                    <p>{{ level.price }}</p>
-                    <p><a href="#" class="btn btn-secondary btn-black" role="button">View details »</a></p>
+                    <h2>{{ service.level_type }}</h2>
+                    <p>{{ service.price }}</p>
+                    {% if request.user.is_authenticated %}
+                        <p><a href="{% url 'service_detail' pk=service.pk %}" class="btn btn-secondary btn-black" role="button">View details »</a></p>
+                    {% else %}
+                        <p><a href="{% url 'account_signup' %}" class="btn btn-secondary btn-black" role="button">Register »</a></p>
+                    {% endif %}
                 </div>
+                <br>
             {% endfor %}
         </div>
     </div>

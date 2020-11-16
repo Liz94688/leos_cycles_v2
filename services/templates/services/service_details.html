@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block page_header %}
+{% endblock %}
+
+{% block extra_title %}  | {{ service_detail.level_type }} {% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="d-flex row justify-content-center p-2 text-center">
+        <div class="container service-cards">
+            <div class="card">
+                <h2>{{ service_detail.name }}</h2>
+                <p>{{ service_detail.description }}</p>
+                <p><a href="{% url 'service_list' %}" class="btn btn-secondary btn-black" role="button">Back</a></p>
+                <p><a href="" class="btn btn-secondary btn-black" role="button">Add to basket</a></p>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+    {% if user.is_authenticated %}
+        {% if reviews %}
+        <h3>Reviews</h3>
+            <div class="d-flex row justify-content-center p-2 text-center">
+                <div class="container service-cards">
+                    {% for review in reviews %}
+                    <div class="card">
+                        <h5> {{ review.level_type }}</h5>
+                        <blockquote>
+                            <i class="fa fa-quote-left" aria-hidden="true"></i>{{ review.message }}<i class="fa fa-quote-right" aria-hidden="true"></i>
+                        </blockquote>
+                        <p class="text-right"><small>{{ review.author }} - {{ review.date_of_contact|date:"d M, Y" }}</small></p>    
+                    </div>
+                    <br>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    {% endif %}
+</div>
+{% endblock %}

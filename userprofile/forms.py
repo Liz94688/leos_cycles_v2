@@ -12,6 +12,7 @@ class ContactDetailsForm(forms.ModelForm):
             'town_or_city',
             'postcode',
             'telephone',
+            'contact_by_email',
             'contact_by_phone',
             ]
 
@@ -22,5 +23,6 @@ class ContactDetailsForm(forms.ModelForm):
             'town_or_city': forms.TextInput(attrs={'class': 'form-control'}),
             'postcode': forms.TextInput(attrs={'class': 'form-control'}),
             'telephone': forms.NumberInput(attrs={'class': 'form-control'}),
+            'contact_by_email': forms.CheckboxInput(attrs={'class': 'form-control'}),
             'contact_by_phone': forms.CheckboxInput(attrs={'class': 'form-control'}),
             }
