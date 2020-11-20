@@ -13,6 +13,12 @@ html, body {
 }
 
 /* Forms */
-.emailfieldclass {
-    
+
+
+/* Buttons (need fixing for navbar) */
+
+.navbar-toggler,
+.navbar-toggler-icon {
+    border-color: white;
+    color: white;
 }

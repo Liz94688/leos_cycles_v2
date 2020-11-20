@@ -10,6 +10,19 @@ https://stackoverflow.com/questions/59855286/how-to-edit-or-add-data-on-an-exten
 """
 
 
+class LoginForm(forms.Form):
+    class Meta:
+        fields = [
+            'username',
+            'password',
+        ]
+
+        widgets = {
+            'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Username'}),
+            'password': forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Password'}),
+        }
+
+
 class RegisterForm(UserCreationForm):
     class Meta:
         model = User
@@ -19,7 +32,6 @@ class RegisterForm(UserCreationForm):
             'email',
             'username',
             'password',
-            'password_confirmed'
             ]
 
         widgets = {
@@ -28,5 +40,4 @@ class RegisterForm(UserCreationForm):
             'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Email'}),
             'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Username'}),
             'password': forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Password'}),
-            'password_confirmed': forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Confirm password'}),
         }
