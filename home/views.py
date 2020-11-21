@@ -38,4 +38,8 @@ def contact(request):
     else:
         contact_us_form = ContactUsForm()
 
-    return render(request, 'home/contact.html', {'contact_us_form': contact_us_form})
+    context = {
+        'contact_us_form': contact_us_form
+    }
+
+    return render(request, 'home/contact.html', context)

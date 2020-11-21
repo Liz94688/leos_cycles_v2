@@ -78,6 +78,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',  # Needed by allauth
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'basket.contexts.basket_contents',  # Needed for context processor
             ],
         },
     },
@@ -158,3 +159,6 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+FREE_SERVICE_CHARGE_THRESHOLD = 90
+STANDARD_SERVICE_CHARGE_PERCENTAGE = 10

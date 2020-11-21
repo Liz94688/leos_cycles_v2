@@ -1,37 +1,73 @@
 {% extends "base.html" %}
 
-{% block page_header %}
-{% endblock %}
-
 {% block extra_title %}  | {{ service_detail.level_type }} {% endblock %}
 
 {% block content %}
 
+<div class="row text-center">
+    <div class="col bg-black text-white">
+        <h4 class="my-1">Free delivery on orders over £{{ free_delivery_threshold }}!</h4>                
+    </div>            
+</div>
+
 <div class="container">
     <div class="d-flex row justify-content-center p-2 text-center">
         <div class="container service-cards">
-            <div class="card">
-                <h2>{{ service_detail.name }}</h2>
+            <div class="card mt-3 px-2">
+                <h2 class="mt-2 mb-3">{{ service_detail.level_type }}</h2>
                 <p>{{ service_detail.description }}</p>
-                <p><a href="{% url 'service_list' %}" class="btn btn-secondary btn-black" role="button">Back</a></p>
-                <p><a href="" class="btn btn-secondary btn-black" role="button">Add to basket</a></p>
-            </div>
+                <p>£{{ service_detail.price }}</p>
+                <div class="mt-5 mb-3">
+                    <!-- <a href="{% url 'service_list' %}" class="btn btn-secondary btn-black" role="button">Back</a>
+                    <a href="" class="btn btn-secondary btn-black" role="button">Add to basket</a> -->
+                </div>
+            
+                <form action="{% url 'add_to_basket' service_detail.pk %}" method="POST">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="col-12">
+                            <div><strong>Quantity:</strong></div>
+                            <div class="form-group w-50">
+                                <div class="input-group">
+                                    <input class="form-control qty_input" type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ service_detail.pk }}" id="id_qty_{{ service_detail.pk }}">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <a href="{% url 'service_list' %}" class="btn btn-outline-black rounded-0 mt-5">
+                                <span class="icon">
+                                    <i class="fas fa-chevron-left"></i>
+                                </span>
+                                <span class="text-uppercase">Keep Looking</span>
+                            </a>
+                            <input type="submit" class="btn btn-secondary btn-black mt-5" value="Add to Basket">
+                        </div>
+                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                    </div>
+                </form>  
+
+            </div>   
         </div>
     </div>
-    <hr>
+
+
+
+
+
 
     {% if user.is_authenticated %}
         {% if reviews %}
-        <h3>Reviews</h3>
+        <h3 class="mt-4 mb-4">Reviews</h3>
             <div class="d-flex row justify-content-center p-2 text-center">
                 <div class="container service-cards">
                     {% for review in reviews %}
-                    <div class="card">
-                        <h5> {{ review.level_type }}</h5>
-                        <blockquote>
+                    <div class="card mx-2 my-2">
+                        <h5 class="mt-2 mb-3"> {{ review.level_type }}</h5>
+                        <blockquote class="p-4">
                             <i class="fa fa-quote-left" aria-hidden="true"></i>{{ review.message }}<i class="fa fa-quote-right" aria-hidden="true"></i>
                         </blockquote>
-                        <p class="text-right"><small>{{ review.author }} - {{ review.date_of_contact|date:"d M, Y" }}</small></p>    
+                        <p class="text-right pr-3"><small>{{ review.author }} - {{ review.date_of_contact|date:"d M, Y" }}</small></p>    
                     </div>
                     <br>
                     {% endfor %}

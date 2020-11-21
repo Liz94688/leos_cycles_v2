@@ -11,6 +11,7 @@ from django.contrib import messages
 @login_required
 def view_profile(request):
     """ A view to return the user profile page """
+    """ including contact details, saved bikes and reviews """
 
     user_profile = User.objects.get(username=request.user.username)
     user_profile.save()
@@ -37,8 +38,11 @@ def view_profile(request):
     else:
         contact_details_form = ContactDetailsForm()
 
-    return render(request, 'userprofile/view_profile.html',
-        {'user_profile': user_profile,
+    context = {
+        'user_profile': user_profile,
         'bike': bike,
         'user_reviews': user_reviews,
-        'contact_details_form': contact_details_form})
+        'contact_details_form': contact_details_form,
+    }
+
+    return render(request, 'userprofile/view_profile.html', context)

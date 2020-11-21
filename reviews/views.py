@@ -35,5 +35,8 @@ def add_review(request):
     else:
         user_review_form = ReviewForm()
 
-    return render(request, 'reviews/reviews.html',
-        {'user_review_form': user_review_form,})
+    context = {
+        'user_review_form': user_review_form,
+    }
+
+    return render(request, 'reviews/reviews.html', context)

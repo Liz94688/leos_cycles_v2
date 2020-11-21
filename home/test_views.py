@@ -1,12 +1,12 @@
 from django.test import TestCase, Client
 
-# Create your tests here.
 """
 
 I found out about testing tools and the Test Client from Django documentation:
 https://docs.djangoproject.com/en/3.1/topics/testing/tools/
 
 """
+
 c = Client()
 
 

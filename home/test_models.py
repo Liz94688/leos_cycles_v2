@@ -1,8 +1,6 @@
 from django.test import TestCase
 from .models import ContactUs
 
-# Create your tests here.
-
 
 class TestHomeModels(TestCase):
 

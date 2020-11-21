@@ -1,8 +1,6 @@
 from django.test import TestCase
 from .forms import ContactUsForm
 
-# Create your tests here.
-
 
 class TestHomeForms(TestCase):
 

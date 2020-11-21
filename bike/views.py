@@ -1,9 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
 from .forms import CreateBikeForm
-
-# Create your views here.
 
 
 @login_required
@@ -27,3 +24,11 @@ def add_bike(request):
         add_bike = CreateBikeForm()
 
     return render(request, 'bike/add_bike.html', {'add_bike': add_bike})
+
+
+
+
+
+
+
+""" A view to return the edit bike page """

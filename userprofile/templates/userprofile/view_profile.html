@@ -1,8 +1,5 @@
 {% extends "base.html" %}
 
-{% block page_header %}
-{% endblock %}
-
 {% block extra_title %}  | User Profile {% endblock %}
 
 {% block content %}
@@ -22,6 +19,26 @@
             </form>
         </div>
     </div>
+    <br>
+
+    <div class="d-flex row justify-content-center p-2 text-center">
+        <div class="container service-cards">
+            {% for bike in bike %}
+                <div class="card">
+                    <h2>Owner: {{ bike.owner }}</h2>
+                    <h2>Type: {{ bike.bike_type }}</h2>
+                    <h2>Frame: {{ bike.frame_type }}</h2>
+                    <h2>Handlebars: {{ bike.handlebar_type }}</h2>
+                    <h2>Wheel size: {{ bike.wheel_size }}</h2>
+                    <h2>Description: {{ bike.owner_description }}</h2>
+                    <h2>Age: {{ bike.age }}</h2>
+                    <h2>Creation date: {{ bike.bike_creation_date }}</h2>
+                </div>
+                <br>
+            {% endfor %}
+        </div>    
+    </div>
+    <br>
 
     <div class="d-flex row justify-content-center p-2 text-center">
         <div class="container service-cards">
@@ -35,10 +52,6 @@
                 <br>
             {% endfor %}
         </div>
-    </div>
-
-    <div class="d-flex row justify-content-center p-2 text-center">
-    
     </div>
 </div>
 

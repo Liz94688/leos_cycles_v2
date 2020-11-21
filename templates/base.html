@@ -63,6 +63,7 @@
                                     <a href="" class="dropdown-item">Admin</a>
                                 {% endif %}
                                 <a href="{% url 'userprofile' %}" class="dropdown-item">My Profile</a>
+                                <a href="{% url 'view_basket' %}" class="dropdown-item">Basket</a>
                                 <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
                             {% else %}
                                 <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
@@ -73,23 +74,24 @@
                 </ul>
             </div>
         </nav>
-
-        {% if messages %}
-            <div class="message-container"></div>
-        {% endif %}
-
-        {% block page_header %}
-        {% endblock %}
-
-        {% block content %}
-        {% endblock %}
-
-        {% block postloadjs %}   
-        {% endblock %}
     </header>
+
+    {% if messages %}
+        <div class="message-container"></div>
+    {% endif %}
+
+    {% block page_header %}
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
+
+    {% block postloadjs %}   
+    {% endblock %}
+
   </body>
 
-  <footer class="pt-4 my-md-3 pt-md-3 border-top bg-white shadow-sm">
+  <footer class="pt-4 my-md-3 pt-md-3 shadow mb-5 bg-white rounded border-top-2">
     <div class="container">
         <div class="d-flex flex-column">
             <div class="d-flex justify-content-center">  
