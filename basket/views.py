@@ -1,12 +1,15 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 
 
+@login_required
 def view_basket(request):
     """ A view to return the basket """
 
     return render(request, 'basket/basket.html')
 
 
+@login_required
 def add_to_basket(request, pk):
     """ A view to add item to the basket """
 
