@@ -34,22 +34,22 @@ def basket_contents(request):
         })
 
     if total < settings.FREE_SERVICE_CHARGE_THRESHOLD:
-        delivery = total * Decimal(settings.STANDARD_SERVICE_CHARGE_PERCENTAGE / 100)
-        free_delivery_delta = settings.FREE_SERVICE_CHARGE_THRESHOLD - total
+        service_charge = total * Decimal(settings.STANDARD_SERVICE_CHARGE_PERCENTAGE / 100)
+        free_service_delta = settings.FREE_SERVICE_CHARGE_THRESHOLD - total
     else:
-        delivery = 0
-        free_delivery_delta = 0
+        service_charge = 0
+        free_service_delta = 0
 
-    grand_total = delivery + total
+    grand_total = service_charge + total
 
     context = {
         'basket_items': basket_items,
         'total': total,
         'product_count': product_count,
         'bike': bike,
-        'delivery': delivery,
-        'free_delivery_delta': free_delivery_delta,
-        'free_delivery_threshold': settings.FREE_SERVICE_CHARGE_THRESHOLD,
+        'service_charge': service_charge,
+        'free_service_delta': free_service_delta,
+        'free_service_threshold': settings.FREE_SERVICE_CHARGE_THRESHOLD,
         'grand_total': grand_total,
     }
 
