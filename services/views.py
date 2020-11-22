@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Services
+from bike.models import Bike
 from reviews.models import Review
 
 
@@ -19,10 +20,12 @@ def service_detail(request, pk):
     """ A view to return the details of each service """
 
     service_detail = get_object_or_404(Services, pk=pk)
+    bike = Bike.objects.all()
     reviews = Review.objects.filter(level_type=pk).order_by('-date_of_contact')
 
     context = {
         'service_detail': service_detail,
+        'bike': bike,
         'reviews': reviews,
     }
 

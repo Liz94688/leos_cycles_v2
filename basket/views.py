@@ -26,7 +26,6 @@ def add_to_basket(request, pk):
 
     """ Update variable in the session with uupdated version """
     request.session['basket'] = basket
-    print(request.session['basket'])
 
     """ Redirect user back to redirect url """
     return redirect(redirect_url)

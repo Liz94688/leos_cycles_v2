@@ -17,11 +17,7 @@
                 <h2 class="mt-2 mb-3">{{ service_detail.level_type }}</h2>
                 <p>{{ service_detail.description }}</p>
                 <p>£{{ service_detail.price }}</p>
-                <div class="mt-5 mb-3">
-                    <!-- <a href="{% url 'service_list' %}" class="btn btn-secondary btn-black" role="button">Back</a>
-                    <a href="" class="btn btn-secondary btn-black" role="button">Add to basket</a> -->
-                </div>
-            
+
                 <form action="{% url 'add_to_basket' service_detail.pk %}" method="POST">
                     {% csrf_token %}
                     <div class="form-row">
@@ -45,17 +41,40 @@
                         </div>
                         <input type="hidden" name="redirect_url" value="{{ request.path }}">
                     </div>
-                </form>  
+                </form> 
+            </div>
 
-            </div>   
-        </div>
+            {% if user.is_authenticated %}
+                {% if bike %}
+                <h3 class="mt-4 mb-4">Current bike: </h3>
+                    <div class="d-flex row justify-content-center p-2 text-center">
+                        <div class="container service-cards">
+                            {% for bike in bike %}
+                            <div class="card mx-2 my-2">
+                                <h5 class="mt-2 mb-3"> {{ bike.bike_creation_date }}</h5>  
+                                <h5 class="mt-2 mb-3"> {{ bike.bike_type }}</h5>
+                                <h5 class="mt-2 mb-3"> {{ bike.frame_type }}</h5>
+                                <h5 class="mt-2 mb-3"> {{ bike.handlebar_type }}</h5>
+                                <h5 class="mt-2 mb-3"> {{ bike.wheel_size }}</h5>
+                                <h5 class="mt-2 mb-3"> {{ bike.owner_description }}</h5>
+                                <h5 class="mt-2 mb-3"> {{ bike.age }}</h5>    
+                                <br>
+                                <div class="mt-5 mb-3">
+                                    <a href="#" class="btn btn-secondary btn-black" role="button">Edit bike</a>
+                                </div>            
+                            </div> 
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="mt-5 mb-3">
+                        <a href="{% url 'add_bike' %}" class="btn btn-secondary btn-black" role="button">Add bike</a>
+                    </div> 
+                {% endif %}
+            {% endif %}
+        </div>   
     </div>
-
-
-
-
-
-
+    <hr>
     {% if user.is_authenticated %}
         {% if reviews %}
         <h3 class="mt-4 mb-4">Reviews</h3>

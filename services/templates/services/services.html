@@ -23,7 +23,7 @@
                     {% if request.user.is_authenticated %}
                         <p><a href="{% url 'service_detail' pk=service.pk %}" class="btn btn-secondary btn-black" role="button">View details »</a></p>
                     {% else %}
-                        <p><a href="{% url 'account_signup' %}" class="btn btn-secondary btn-black" role="button">Register »</a></p>
+                        <p>Discover more by registering an account with us today. <a href="{% url 'account_signup' %}" class="btn btn-secondary btn-black" role="button">Register here »</a></p>
                     {% endif %}
                 </div>
                 <br>

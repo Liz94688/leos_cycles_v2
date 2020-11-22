@@ -13,15 +13,17 @@
     <div class="d-flex row justify-content-center p-2 text-center">
         <div class="col">
             {% if basket_items %}
-            <div class="table-responsive"></div>
+                <div class="table-responsive">
+                    {{ basket_items }}
+                </div>
             {% else %}
-            <p class="lead mb-5">Your basket is empty</p>
-            <a href="{% url 'service_list' %}" class="btn btn-outline-black rounded-0 btn-lg">
-                <span class="icon">
-                    <i class="fas fa-chevron-left"></i>
-                </span>
-                <span class="text-uppercase">Keep Looking</span>
-            </a>
+                <p class="lead mb-5">Your basket is empty</p>
+                <a href="{% url 'service_list' %}" class="btn btn-outline-black rounded-0 btn-lg">
+                    <span class="icon">
+                        <i class="fas fa-chevron-left"></i>
+                    </span>
+                    <span class="text-uppercase">Keep Looking</span>
+                </a>
             {% endif %}
         </div>
     </div>
