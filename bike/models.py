@@ -70,6 +70,7 @@ class Bike(models.Model):
     wheel_size = models.IntegerField(blank=False, choices=WHEEL_SIZE)
     owner_description = models.TextField()
     age = models.IntegerField(default=0)
+    current = models.BooleanField(default=True, null=False, blank=False)
     bike_creation_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):

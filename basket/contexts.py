@@ -5,7 +5,7 @@ from services.models import Services
 from bike.models import Bike
 
 """ I leart about how context processors work from the CI tutorials
-Taken from the tutorials source code
+Example from the tutorials source code was used and edited to suit.
 If ANY changes made to code/wording, needs to alson be changed
 in settings.py """
 
@@ -15,7 +15,13 @@ def basket_contents(request):
     basket_items = []
     total = 0
     product_count = 0
-    bike = Bike.objects.all()
+
+    """ add a boolean field to the bike - current"""
+    """ with the default set to True """
+    """ replace pk with filter(current=True) to always  """
+    """ include the users current bike option??  """
+    # bike = Bike.objects.filter(current=True)
+    bike = Bike.objects.get(pk=1)
 
     """ Access the basket in the current session
     Use to populate values of variables above  """
