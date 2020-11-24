@@ -22,3 +22,8 @@ html, body {
     border-color: white;
     color: white;
 }
+
+.update-quantity,
+.remove-item {
+    cursor: pointer;
+}

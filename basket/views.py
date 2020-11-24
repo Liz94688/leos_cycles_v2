@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.decorators import login_required
 
 
@@ -27,8 +27,25 @@ def add_to_basket(request, pk):
     else:
         basket[pk] = quantity
 
-    """ Update variable in the session with uupdated version """
+    """ Update variable in the session with updated version """
     request.session['basket'] = basket
 
     """ Redirect user back to redirect url """
     return redirect(redirect_url)
+
+
+@login_required
+def edit_basket(request, item_id):
+    """ A view to edit items in the basket """
+
+    quantity = int(request.POST.get('quantity'))
+    basket = request.session.get('basket', {})
+
+    if quantity > 0:
+        basket[item_id] = quantity
+    else:
+        basket.pop(item_id)
+
+    request.session['basket'] = basket
+
+    return redirect(reverse('view_basket'))
