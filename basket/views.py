@@ -1,5 +1,7 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from services.models import Services
 
 
 @login_required
@@ -12,6 +14,8 @@ def view_basket(request):
 @login_required
 def add_to_basket(request, pk):
     """ A view to add item to the basket """
+
+    service = get_object_or_404(Services, pk=pk)
 
     """ Get the data from the FORM """
     quantity = int(request.POST.get('quantity'))
@@ -26,6 +30,7 @@ def add_to_basket(request, pk):
         basket[pk] += quantity
     else:
         basket[pk] = quantity
+        messages.success(request, f'Added { service.level_type} to your basket.')
 
     """ Update variable in the session with updated version """
     request.session['basket'] = basket
@@ -45,6 +50,7 @@ def edit_basket(request, pk):
         basket[pk] = quantity
     else:
         basket.pop(pk)
+        messages.success(request, 'Basket updated!')
 
     request.session['basket'] = basket
     return redirect(reverse('view_basket'))
@@ -56,6 +62,7 @@ def remove_from_basket(request, pk):
 
     basket = request.session.get('basket', {})
     basket.pop(pk)
+    messages.success(request, 'Item removed from basket')
 
     request.session['basket'] = basket
     return redirect(reverse('view_basket'))

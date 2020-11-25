@@ -27,3 +27,21 @@ html, body {
 .remove-item {
     cursor: pointer;
 }
+
+
+/* Toasts */
+
+.message-container {
+    position: fixed;
+    top: 78px;
+    right: 5px;
+    z-index: 99999999999;
+}
+
+.custom-toast {
+    overflow: visible;
+}
+
+.toast-capper {
+    height: 3px;
+}

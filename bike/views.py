@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .forms import CreateBikeForm
+from django.contrib import messages
 
 
 @login_required
@@ -18,17 +19,10 @@ def add_bike(request):
             bike.owner = request.user
             bike.save()
             return render(request, 'home/index.html')
+            messages.success(request, 'Bike added!')
 
     # if a GET (or any other method) we'll create a blank form
     else:
         add_bike = CreateBikeForm()
 
     return render(request, 'bike/add_bike.html', {'add_bike': add_bike})
-
-
-
-
-
-
-
-""" A view to return the edit bike page """

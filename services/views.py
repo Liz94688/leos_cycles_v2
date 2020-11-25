@@ -7,7 +7,8 @@ from reviews.models import Review
 def service_list(request):
     """ A view to return the all services page """
 
-    service_list = Services.objects.all()
+    # service_list = Services.objects.all()
+    service_list = get_object_or_404(Services)
 
     context = {
         'service_list': service_list,

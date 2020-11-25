@@ -31,7 +31,7 @@ def contact(request):
             contact = contact_us_form.save(commit=False)
             contact.date_of_contact = timezone.now()
             contact.save()
-            messages.success(request, 'We have received your message')
+            messages.success(request, 'Email sent')
             return render(request, 'home/index.html')
 
     # if a GET (or any other method) we'll create a blank form

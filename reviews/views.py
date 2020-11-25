@@ -4,8 +4,7 @@ from django.contrib.auth.models import User
 from services.models import Services
 from .forms import ReviewForm
 from django.utils import timezone
-
-# Create your views here.
+from django.contrib import messages
 
 
 @login_required
@@ -29,6 +28,7 @@ def add_review(request):
             # review.level_type = level_type
             review.date_of_contact = timezone.now()
             review.save()
+            messages.success(request, 'Review added!')
             return render(request, 'home/index.html')
 
     # if a GET (or any other method) we'll create a blank form
