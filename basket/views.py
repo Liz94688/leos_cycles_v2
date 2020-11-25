@@ -35,17 +35,27 @@ def add_to_basket(request, pk):
 
 
 @login_required
-def edit_basket(request, item_id):
+def edit_basket(request, pk):
     """ A view to edit items in the basket """
 
     quantity = int(request.POST.get('quantity'))
     basket = request.session.get('basket', {})
 
     if quantity > 0:
-        basket[item_id] = quantity
+        basket[pk] = quantity
     else:
-        basket.pop(item_id)
+        basket.pop(pk)
 
     request.session['basket'] = basket
+    return redirect(reverse('view_basket'))
 
+
+@login_required
+def remove_from_basket(request, pk):
+    """ Remove an item from the basket """
+
+    basket = request.session.get('basket', {})
+    basket.pop(pk)
+
+    request.session['basket'] = basket
     return redirect(reverse('view_basket'))

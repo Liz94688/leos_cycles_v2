@@ -16,9 +16,9 @@
                 <div class="table-responsive">
                     {{ basket_items }}
                 </div>
-            {% endif %}
+            {% endif %} -->
 
-            {{ request.session.basket }} -->
+            {{ request.session.basket }}
 
         <div class="col">
             {% if basket_items %}
@@ -46,26 +46,25 @@
                                     <p class="my-0">£{{ item.product.price }}</p>
                                 </td>
                                 <td class="py-3 w-25">
-                                    <!-- <p class="my-0">{{ item.quantity }}</p> -->
-                                    <form class="form update-form" method="POST" action="{% url 'edit_basket' item.item_id %}">
+                                    <form class="form update-form" method="POST" action="{% url 'edit_basket' item.pk %}">
                                         {% csrf_token %}
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <button class="decrement-qty btn btn-black btn-sm rounded-0" 
-                                                        data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
+                                                        data-pk="{{ item.pk }}" id="decrement-qty_{{ item.pk }}">
                                                         <span>
                                                             <i class="fas fa-sm fa-minus"></i>
                                                         </span>
                                                     </button>
                                                 </div>
                                                 <input class="form-control form-control-sm qty_input" type="number" 
-                                                    name="quantity" value="{{ item.quantity  }}" min="1" max="99" 
-                                                    data-item_id="{{ item.item_id }}" 
-                                                    id="id_qty_{{ item.item_id }}">
+                                                    name="quantity" value="{{ item.quantity }}" min="1" max="99" 
+                                                    data-pk="{{ item.pk }}" 
+                                                    id="id_qty_{{ item.pk }}">
                                                 <div class="input-group-append">
                                                     <button class="increment-qty btn btn-black btn-sm rounded-0"
-                                                        data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
+                                                        data-pk="{{ item.pk }}" id="increment-qty_{{ item.pk }}">
                                                         <span>
                                                             <i class="fas fa-sm fa-plus"></i>
                                                         </span>
@@ -74,8 +73,8 @@
                                             </div>
                                         </div>
                                     </form>
-                                    <a class="update-quantity text-info"><small>Update</small></a>
-                                    <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}"><small>Remove</small></a>
+                                    <a class="update-quantity text-info float-left"><small>Update</small></a>
+                                    <a class="remove-item text-danger float-right" id="{{ item.pk }}"><small>Remove</small></a>
                                 </td>
                                 <td class="py-3">
                                     <p class="my-0">£{{ item.product.price }}</p>
@@ -147,8 +146,8 @@
     // Remove item and reload on click
     $('.remove-item').click(function(e) {
         var csrfToken = "{{ csrf_token }}";
-        var itemId = $(this).attr('id').split('remove_')[1];
-        var url = `/basket/remove/${itemId}`;
+        var itemPk = $(this).attr('id');
+        var url = `/basket/remove/${itemPk}/`;
         var data = {'csrfmiddlewaretoken': csrfToken};
 
         // jQuery, on Done, reload page
