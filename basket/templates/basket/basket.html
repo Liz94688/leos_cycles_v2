@@ -6,16 +6,12 @@
 
 <div class="container">
     <div class="d-flex row justify-content-center p-2 text-center">
-        <div class="col">
+        <div class="col-12">
             <h2>Basket</h2>
         </div>
     </div>
     <div class="d-flex row justify-content-center p-2 text-center">
-        <div class="col">
-
-            {{ request.session.basket }}
-
-        <div class="col">
+        <div class="col-12">
             {% if basket_items %}
                 <div class="table-responsive rounded">
                     <table class="table table-sm table-borderless">
@@ -40,13 +36,13 @@
                                     <p class="my-0">£{{ item.product.price }}</p>
                                 </td>
                                 <td class="py-3 w-25">
-                                    <form class="form update-form" method="POST" action="{% url 'edit_basket' item.pk %}">
+                                    <form class="form update-form" method="POST" action="{% url 'edit_basket' item.item_id %}">
                                         {% csrf_token %}
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <button class="decrement-qty btn btn-black btn-sm rounded-0" 
-                                                        data-pk="{{ item.pk }}" id="decrement-qty_{{ item.pk }}">
+                                                        data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
                                                         <span>
                                                             <i class="fas fa-sm fa-minus"></i>
                                                         </span>
@@ -54,11 +50,11 @@
                                                 </div>
                                                 <input class="form-control form-control-sm qty_input" type="number" 
                                                     name="quantity" value="{{ item.quantity }}" min="1" max="99" 
-                                                    data-pk="{{ item.pk }}" 
-                                                    id="id_qty_{{ item.pk }}">
+                                                    data-item_id="{{ item.item_id }}" 
+                                                    id="id_qty_{{ item.item_id }}">
                                                 <div class="input-group-append">
                                                     <button class="increment-qty btn btn-black btn-sm rounded-0"
-                                                        data-pk="{{ item.pk }}" id="increment-qty_{{ item.pk }}">
+                                                        data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
                                                         <span>
                                                             <i class="fas fa-sm fa-plus"></i>
                                                         </span>
@@ -68,7 +64,7 @@
                                         </div>
                                     </form>
                                     <a class="update-quantity text-info float-left"><small>Update</small></a>
-                                    <a class="remove-item text-danger float-right" id="{{ item.pk }}"><small>Remove</small></a>
+                                    <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}"><small>Remove</small></a>
                                 </td>
                             </tr>
                         {% endfor %}
@@ -85,11 +81,6 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
-                                <!-- <h2>Choose a date and time for one of our bike engineers to come and complete the service you have chosen:</h2> -->
-                            </td>
-                        </tr>
-                        <tr>
                             <td colspan="5" class="text-right">
                                 <a href="{% url 'service_list' %}" class="btn btn-outline-black rounded-0 btn-lg">
                                     <span class="icon">
@@ -97,7 +88,7 @@
                                     </span>
                                     <span>Keep Shopping</span>
                                 </a>
-                                <a href="" class="btn btn-black rounded-0 btn-lg">
+                                <a href="{% url 'checkout' %}" class="btn btn-black rounded-0 btn-lg">
                                     <span>Secure Checkout</span>
                                     <span class="icon">
                                         <i class="fas fa-lock"></i>
@@ -137,8 +128,8 @@
     // Remove item and reload on click
     $('.remove-item').click(function(e) {
         var csrfToken = "{{ csrf_token }}";
-        var itemPk = $(this).attr('id');
-        var url = `/basket/remove/${itemPk}/`;
+        var itemId = $(this).attr('id').split('remove_')[1];
+        var url = `/basket/remove/${itemId}/`;
         var data = {'csrfmiddlewaretoken': csrfToken};
 
         // jQuery, on Done, reload page

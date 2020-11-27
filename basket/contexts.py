@@ -1,8 +1,8 @@
 from decimal import Decimal
 from django.conf import settings
 from django.shortcuts import get_object_or_404
+
 from services.models import Services
-from bike.models import Bike
 
 """ I leart about how context processors work from the CI tutorials
 Example from the tutorials source code was used and edited to suit.
@@ -16,27 +16,19 @@ def basket_contents(request):
     total = 0
     product_count = 0
 
-    """ add a boolean field to the bike - current"""
-    """ with the default set to True """
-    """ replace pk with filter(current=True) to always  """
-    """ include the users current bike option??  """
-    # bike = Bike.objects.filter(current=True)
-    bike = Bike.objects.get(pk=1)
-
     """ Access the basket in the current session
     Use to populate values of variables above  """
 
     basket = request.session.get('basket', {})
 
-    for pk, quantity in basket.items():
-        product = get_object_or_404(Services, pk=pk)
+    for item_id, quantity in basket.items():
+        product = get_object_or_404(Services, pk=item_id)
         total += quantity * product.price
         product_count += quantity
         basket_items.append({
-            'pk': pk,
+            'item_id': item_id,
             'quantity': quantity,
             'product': product,
-            'bike': bike,
         })
 
     if total < settings.FREE_SERVICE_CHARGE_THRESHOLD:
@@ -52,7 +44,6 @@ def basket_contents(request):
         'basket_items': basket_items,
         'total': total,
         'product_count': product_count,
-        'bike': bike,
         'service_charge': service_charge,
         'free_service_delta': free_service_delta,
         'free_service_threshold': settings.FREE_SERVICE_CHARGE_THRESHOLD,

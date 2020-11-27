@@ -1,21 +1,19 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
-from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+
 from services.models import Services
 
 
-@login_required
 def view_basket(request):
     """ A view to return the basket """
 
     return render(request, 'basket/basket.html')
 
 
-@login_required
-def add_to_basket(request, pk):
+def add_to_basket(request, item_id):
     """ A view to add item to the basket """
 
-    service = get_object_or_404(Services, pk=pk)
+    service = get_object_or_404(Services, pk=item_id)
 
     """ Get the data from the FORM """
     quantity = int(request.POST.get('quantity'))
@@ -26,10 +24,10 @@ def add_to_basket(request, pk):
     basket = request.session.get('basket', {})
 
     """ Add item to basket or update quantity """
-    if pk in list(basket.keys()):
-        basket[pk] += quantity
+    if item_id in list(basket.keys()):
+        basket[item_id] += quantity
     else:
-        basket[pk] = quantity
+        basket[item_id] = quantity
         messages.success(request, f'Added { service.level_type} to your basket.')
 
     """ Update variable in the session with updated version """
@@ -39,29 +37,27 @@ def add_to_basket(request, pk):
     return redirect(redirect_url)
 
 
-@login_required
-def edit_basket(request, pk):
+def edit_basket(request, item_id):
     """ A view to edit items in the basket """
 
     quantity = int(request.POST.get('quantity'))
     basket = request.session.get('basket', {})
 
     if quantity > 0:
-        basket[pk] = quantity
+        basket[item_id] = quantity
     else:
-        basket.pop(pk)
+        basket.pop(item_id)
         messages.success(request, 'Basket updated!')
 
     request.session['basket'] = basket
     return redirect(reverse('view_basket'))
 
 
-@login_required
-def remove_from_basket(request, pk):
+def remove_from_basket(request, item_id):
     """ Remove an item from the basket """
 
     basket = request.session.get('basket', {})
-    basket.pop(pk)
+    basket.pop(item_id)
     messages.success(request, 'Item removed from basket')
 
     request.session['basket'] = basket
