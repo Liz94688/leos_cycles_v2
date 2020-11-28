@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block extra_title %}  | Checkout {% endblock %}
 
@@ -123,4 +124,12 @@
     </div>
 </div>
 
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <!-- Built-in template filter to render django template variables in JS files -->
+    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
+    {{ client_secret|json_script:"id_client_secret" }}
+    <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock %}
