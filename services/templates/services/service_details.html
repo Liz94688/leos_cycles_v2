@@ -5,66 +5,70 @@
 {% block content %}
 
 <div class="row text-center">
-    <div class="col bg-black text-white">
+    <div class="col-12  pt-2 bg-black text-white">
         <h4 class="my-1">Free delivery on orders over £{{ free_service_threshold }}!</h4>                
     </div>            
 </div>
 
-<div class="container">
-    <div class="d-flex row justify-content-center p-2 text-center">
-        <div class="container service-cards">
-            <div class="card mt-3 px-2">
-                <h2 class="mt-2 mb-3">{{ service.level_type }}</h2>
-                <p>{{ service.description }}</p>
-                <p>£{{ service.price }}</p>
+<div class="row">
+    <div class="col-12">
+        <div class="container image-container">
+            <img src="/media/services_image1.jpg" class="img-fluid" alt="responsive image">
+        </div>
+    </div>
+</div>
 
-                <form action="{% url 'add_to_basket' service.id %}" method="POST">
-                    {% csrf_token %}
-                    <div class="form-row">
-                        <div class="col-12">
-                            <p><strong>Quantity:</strong></p>
-                            <div class="form-group w-50">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <button class="decrement-qty btn btn-black rounded-0" 
-                                            data-item_id="{{ service.id }}" id="decrement-qty_{{ service.id }}">
-                                            <span class="icon">
-                                                <i class="fas fa-minus"></i>
-                                            </span>
-                                        </button>
-                                    </div>
-                                    <input class="form-control qty_input" type="number" 
-                                        name="quantity" value="1" min="1" max="99" 
-                                        data-item_id="{{ service.id }}" 
-                                        id="id_qty_{{ service.id }}">
-                                    <div class="input-group-append">
-                                        <button class="increment-qty btn btn-black rounded-0"
-                                            data-item_id="{{ service.id }}" id="increment-qty_{{ service.id }}">
-                                            <span class="icon">
-                                                <i class="fas fa-plus"></i>
-                                            </span>
-                                        </button>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10 text-center">
+            <div class="container service-cards">
+                <div class="card mt-3 px-2">
+                    <h2 class="header-styling">{{ service.level_type }}</h2>
+                    <p>{{ service.description }}</p>
+                    <p>£{{ service.price }}</p>
+
+                    <form action="{% url 'add_to_basket' service.id %}" method="POST">
+                        {% csrf_token %}
+                        <div class="form-row">
+                            <div class="col-12">
+                                <p><strong>Quantity:</strong></p>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <button class="decrement-qty btn btn-black rounded-0" 
+                                                data-item_id="{{ service.id }}" id="decrement-qty_{{ service.id }}">
+                                                <span class="icon">
+                                                    <i class="fas fa-minus"></i>
+                                                </span>
+                                            </button>
+                                        </div>
+                                        <input class="form-control qty_input" type="number" 
+                                            name="quantity" value="1" min="1" max="99" 
+                                            data-item_id="{{ service.id }}" 
+                                            id="id_qty_{{ service.id }}">
+                                        <div class="input-group-append">
+                                            <button class="increment-qty btn btn-black rounded-0"
+                                                data-item_id="{{ service.id }}" id="increment-qty_{{ service.id }}">
+                                                <span class="icon">
+                                                    <i class="fas fa-plus"></i>
+                                                </span>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="col-12">
-                                <a href="{% url 'service_list' %}" class="btn btn-outline-black rounded-0 mt-5">
-                                    <span class="icon">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="text-uppercase">Keep Looking</span>
-                                </a>
-                                <input type="submit" 
-                                    class="btn btn-secondary btn-black mt-5" 
-                                    value="Add to Basket">
+                                <div class="col-12">
+                                    <a href="{% url 'service_list' %}" class="btn btn-all">
+                                        <span>Keep Looking</span>
+                                    </a>
+                                    <input type="submit" class="btn btn-all" value="Add to Basket">
+                                </div>
+                                <input type="hidden" name="redirect_url" value="{{ request.path }}">
                             </div>
-                            <input type="hidden" name="redirect_url" value="{{ request.path }}">
                         </div>
-                    </div>
-                </form> 
+                    </form> 
+                </div>
             </div>
-
             <!-- {% if user.is_authenticated %}
                 {% for bike in bike %}
                     {% if bike.current %}
@@ -110,17 +114,20 @@
             {% endif %} -->
         </div>   
     </div>
+    <br>
     <hr>
+    <br>
     {% if user.is_authenticated %}
         {% if reviews %}
-        <h3 class="mt-4 mb-4">Reviews</h3>
-            <div class="d-flex row justify-content-center p-2 text-center">
-                <div class="container service-cards">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-12 text-center">
+                <h3 class="header-styling">Reviews</h3>
+                <div class="container service-cards mt-3">
                     {% for review in reviews %}
                     <div class="card mx-2 my-2">
-                        <h5 class="mt-2 mb-3"> {{ review.level_type }}</h5>
+                        <h5 class="sub-heading-styling"> {{ review.level_type }}</h5>
                         <blockquote class="p-4">
-                            <i class="fa fa-quote-left" aria-hidden="true"></i>{{ review.message }}<i class="fa fa-quote-right" aria-hidden="true"></i>
+                            <i class="fa fa-quote-left fa-xs" aria-hidden="true"></i> {{ review.message }} <i class="fa fa-quote-right fa-xs" aria-hidden="true"></i>
                         </blockquote>
                         <p class="text-right pr-3"><small>{{ review.author }} - {{ review.date_of_contact|date:"d M, Y" }}</small></p>    
                     </div>
@@ -128,6 +135,7 @@
                     {% endfor %}
                 </div>
             </div>
+        </div>
         {% endif %}
     {% endif %}
 </div>

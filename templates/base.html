@@ -42,13 +42,18 @@
 
   <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-            <a class="navbar-brand font-weight-light" href="{% url 'home' %}"><h1>Leo's Cycles</h1></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+        <nav class="navbar navbar-expand-md shadow rounded">
+            <span class="navbar-brand font-weight-light w-100">
+                <a href="{% url 'home' %}">LEO'S CYCLES</a>
+            </span>
+
+            <button class="navbar-toggler w-100" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon float-right">
+                        <i class="fa fa-navicon" style="color:#000; font-size:28px;"></i>
+                </span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav mx-auto text-center">
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'service_list' %}">Services</a>
                     </li>
@@ -76,9 +81,10 @@
                 </ul>
             </div>
             <div>
+                {% if request.user.is_authenticated %}
                 <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="{% url 'view_basket' %}">
-                    <div class="text-center">
-                        <div><i class="fas fa-shopping-bag fa-lg"></i></div>
+                    <div class="shopping-bag-icon text-center">
+                        <div><i class="fas fa-shopping-bag fa-md"></i></div>
                         <p class="my-0">
                             {% if grand_total %}
                                 ${{ grand_total|floatformat:2 }}
@@ -88,6 +94,7 @@
                         </p>
                     </div>
                 </a>
+                {% endif %}
             </div>
         </nav>
     </header>
@@ -124,8 +131,8 @@
 
   </body>
 
-  <footer class="pt-4 my-md-3 pt-md-3 shadow mb-5 bg-white rounded border-top-2">
-    <div class="container">
+  <footer class="pt-4 pt-md-3 border-top-2">
+    <div class="container footer-container">
         <div class="d-flex flex-column">
             <div class="d-flex justify-content-center">  
                 <a href="{% url 'home' %}">

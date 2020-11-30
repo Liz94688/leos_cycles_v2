@@ -17,9 +17,30 @@ https://www.youtube.com/watch?v=6-XXvUENY_8&feature=emb_logo
 class ContactUsForm(forms.ModelForm):
     class Meta:
         model = ContactUs
-        fields = ['email', 'message']
+        fields = (
+            'email',
+            'message'
+        )
 
-        widgets = {
-            'email': forms.EmailInput(attrs={'class': 'form-control'}),
-            'message': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Please type your message in here:'}),
+    def __init__(self, *args, **kwargs):
+
+        """
+        Add placeholders and classes, remove auto-generated
+        labels and set autofocus on first field
+        """
+
+        super().__init__(*args, **kwargs)
+        placeholders = {
+            'email': 'Email Address',
+            'message': 'Message',
         }
+
+        self.fields['email'].widget.attrs['autofocus'] = False
+        for field in self.fields:
+            if self.fields[field].required:
+                placeholder = f'{placeholders[field]} *'
+            else:
+                placeholder = placeholders[field]
+            self.fields[field].widget.attrs['placeholder'] = placeholder
+            self.fields[field].widget.attrs['class'] = 'form-control'
+            self.fields[field].label = False

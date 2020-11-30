@@ -1,6 +1,18 @@
 html, body {
+    margin: 0px;
+    padding: 0px;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
     font-family: 'Poppins', sans-serif;
+}
+
+/* All links */
+a {
+  color: #000000;
 }
 
 /* Colors */
@@ -12,15 +24,91 @@ html, body {
     background-color: #000 !important;
 }
 
-/* Forms */
+/* Images - all */
+.image-container {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    max-width: 600px;
+    height: auto;
+}
 
+/* Navbar */
+.navbar-nav .nav-link {
+  text-transform: uppercase;
+  white-space: nowrap;
+}
 
-/* Buttons (need fixing for navbar) */
+.dropdown .dropdown-item {
+    text-transform: uppercase;
+}
 
-.navbar-toggler,
-.navbar-toggler-icon {
-    border-color: white;
-    color: white;
+.navbar-brand {
+  position: relative;
+  min-height: 50px;
+  overflow: visible;
+  z-index: 2;
+}
+
+.navbar-toggler:not(:disabled):not(.disabled) {
+  cursor: pointer;
+  outline: none;
+}
+
+/* Navbar Media Queries - if the screen size is 600px or more */
+@media only screen and (min-width: 600px) {
+  .navbar-brand {
+    font-size: 40px;
+  }
+}
+
+/* Navbar Media Queries - if the screen size is 600px or more */
+@media only screen and (max-width: 600px) {
+  .navbar-brand {
+    font-size: 30px;
+  }
+  .shopping-bag-icon {
+    font-size: 15px;
+  }
+}
+
+/* Navbar Media Queries - if the screen size is 320px or less */
+@media only screen and (max-width: 320px) {
+  .navbar-brand {
+    font-size: 20px;
+  }
+}
+
+/* Header - all */
+.header-styling {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.sub-heading-styling {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Forms/Cards */
+.content-surround {
+  padding: 25px;
+  padding-top: 50px;
+  border-radius: 5px;
+  border: 1px solid rgba(0,0,0,.500);
+}
+
+/* Footer */
+.footer-container {
+  text-transform: uppercase;
+}
+
+/* Buttons */
+.btn-all {
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+    border-radius: .25rem;
+    text-transform: uppercase;
+    border-color: #6c757d;
 }
 
 .update-quantity,
@@ -28,9 +116,11 @@ html, body {
     cursor: pointer;
 }
 
+#id_qty_1 {
+    text-align: center;
+}
 
 /* Toasts */
-
 .message-container {
     position: fixed;
     top: 78px;

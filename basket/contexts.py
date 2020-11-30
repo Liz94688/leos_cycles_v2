@@ -22,13 +22,13 @@ def basket_contents(request):
     basket = request.session.get('basket', {})
 
     for item_id, quantity in basket.items():
-        product = get_object_or_404(Services, pk=item_id)
-        total += quantity * product.price
+        service = get_object_or_404(Services, pk=item_id)
+        total += quantity * service.price
         product_count += quantity
         basket_items.append({
             'item_id': item_id,
             'quantity': quantity,
-            'product': product,
+            'service': service,
         })
 
     if total < settings.FREE_SERVICE_CHARGE_THRESHOLD:

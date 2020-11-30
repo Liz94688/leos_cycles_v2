@@ -4,31 +4,34 @@
 
 {% block content %}
 
-<div class="container">
-    <div class="d-flex row justify-content-center">
-        <div class="col-8 text-center">
-            <h2 class="p-2">About</h2>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-10 text-center">
+            <h2 class="header-styling">About</h2>
             <div>
-                <h4>Where it all began</h4>
+                <h4 class="sub-heading-styling">Where it all began</h4>
                 <p>
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur labore soluta corporis dignissimos eaque inventore exercitationem voluptatibus illum, impedit deleniti quod alias? Molestiae velit deleniti porro quo doloribus, iure sequi.
                 </p>
-                <h4>Our aim to every customer</h4>
+                <h4 class="sub-heading-styling">Our aim to every customer</h4>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure debitis minus nisi. Adipisci voluptatibus repudiandae libero aliquid voluptatum sunt tempora, eaque consequatur! Delectus ipsam ad animi perspiciatis aspernatur. Impedit, beatae!
                 </p>
+                <br>
                 <hr>
-                <h4>Where do I start?</h4>
+                <br>
+                <h4 class="sub-heading-styling">Where do I start?</h4>
                 <ul>
                     <li>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto ratione odit ullam aliquam sequi quo nisi, nulla suscipit, magni accusamus commodi odio maxime quibusdam neque? Quae dolorum sunt rem architecto!
                     </li>
                 </ul>
-                <a href="#" class="btn rounded text-uppercase my-4 btn-black border-secondary shadow-sm">Register »</a>
-                <a href="#" class="btn rounded text-uppercase my-4 btn-black border-secondary shadow-sm">Login »</a>
+                <a href="{% url 'account_signup' %}" class="btn btn-all">Register</a>
+                <a href="{% url 'account_login' %}" class="btn btn-all">Login</a>
             </div>
         </div>
     </div>
 </div>
+<hr>
 
 {% endblock %}

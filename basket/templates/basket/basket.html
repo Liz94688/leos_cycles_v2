@@ -27,13 +27,13 @@
                         {% for item in basket_items %}
                             <tr>
                                 <td class="py-3">
-                                    <p class="my-0"><strong>{{ item.product.level_type }}</strong></p>
+                                    <p class="my-0"><strong>{{ item.service.level_type }}</strong></p>
                                 </td>
                                 <td class="py-3">
                                     <p class="my-0"><strong>{{ item.bike.bike_type }}</strong></p>
                                 </td>
                                 <td class="py-3">
-                                    <p class="my-0">£{{ item.product.price }}</p>
+                                    <p class="my-0">£{{ item.service.price }}</p>
                                 </td>
                                 <td class="py-3 w-25">
                                     <form class="form update-form" method="POST" action="{% url 'edit_basket' item.item_id %}">
