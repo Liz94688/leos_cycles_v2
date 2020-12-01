@@ -49,7 +49,7 @@ def checkout(request):
     else:
         basket = request.session.get('basket', {})
         if not basket:
-            messages.error(request, "There's nothing in your basket at the moment")
+            messages.error(request, "There's nothing in your basket")
             return redirect(reverse('service_list'))
 
         current_basket = basket_contents(request)
@@ -70,7 +70,7 @@ def checkout(request):
     template = 'checkout/checkout.html'
     context = {
         'order_form': order_form,
-        'stripe_public_key': 'stripe_public_key',
+        'stripe_public_key': stripe_public_key,
         'client_secret': intent.client_secret,
     }
 

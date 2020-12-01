@@ -1,17 +1,34 @@
 {% extends "base.html" %}
+{% load static %}
+{% load basket_tools %}
 
 {% block extra_title %}  | Basket {% endblock %}
 
 {% block content %}
 
-<div class="container">
-    <div class="d-flex row justify-content-center p-2 text-center">
-        <div class="col-12">
-            <h2>Basket</h2>
+<div class="row text-center">
+    <div class="col-12 pt-2 bg-black text-white">
+        <h5>Free delivery on orders over £{{ free_service_charge_threshold }}!</h5>                
+    </div>            
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="container image-container">
+            <img src="/media/services_image1.jpg" class="img-fluid" alt="responsive image">
         </div>
     </div>
-    <div class="d-flex row justify-content-center p-2 text-center">
-        <div class="col-12">
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-10 col-md-8 col-lg-4 text-center">
+            <h2 class="header-styling">Basket</h2>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-10 text-center">
             {% if basket_items %}
                 <div class="table-responsive rounded">
                     <table class="table table-sm table-borderless">
@@ -21,17 +38,24 @@
                                 <th scope="col">Bike Type</th>
                                 <th scope="col">Price</th>
                                 <th scope="col">Qty</th>
+                                <th scope="col">Sub Total</th>
                             </tr>
                         </thead>
 
                         {% for item in basket_items %}
                             <tr>
                                 <td class="py-3">
-                                    <p class="my-0"><strong>{{ item.service.level_type }}</strong></p>
+                                    <p class="my-0">{{ item.service.level_type }}</p>
                                 </td>
-                                <td class="py-3">
-                                    <p class="my-0"><strong>{{ item.bike.bike_type }}</strong></p>
-                                </td>
+                                {% if bike.current %}
+                                    <td class="py-3">
+                                        <p class="my-0">{{ item.bike.bike_type }}</p>
+                                    </td>
+                                {% else %}
+                                    <td class="py-3">
+                                        <p class="my-0">No current bike recorded</p>
+                                    </td>
+                                {% endif %}
                                 <td class="py-3">
                                     <p class="my-0">£{{ item.service.price }}</p>
                                 </td>
@@ -66,6 +90,9 @@
                                     <a class="update-quantity text-info float-left"><small>Update</small></a>
                                     <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}"><small>Remove</small></a>
                                 </td>
+                                <td class="py-3">
+                                    <p class="my-0">£{{ item.service.price | calc_subtotal:item.quantity }}</p>
+                                </td>
                             </tr>
                         {% endfor %}
                         <tr>
@@ -82,13 +109,10 @@
                         </tr>
                         <tr>
                             <td colspan="5" class="text-right">
-                                <a href="{% url 'service_list' %}" class="btn btn-outline-black rounded-0 btn-lg">
-                                    <span class="icon">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span>Keep Shopping</span>
+                                <a href="{% url 'service_list' %}" class="btn btn-all">
+                                    <span>Return to Services</span>
                                 </a>
-                                <a href="{% url 'checkout' %}" class="btn btn-black rounded-0 btn-lg">
+                                <a href="{% url 'checkout' %}" class="btn btn-all">
                                     <span>Secure Checkout</span>
                                     <span class="icon">
                                         <i class="fas fa-lock"></i>
@@ -99,12 +123,9 @@
                     </table>
                 </div>
             {% else %}
-                <p class="lead mb-5">Your basket is empty</p>
-                <a href="{% url 'service_list' %}" class="btn btn-outline-black rounded-0 btn-lg">
-                    <span class="icon">
-                        <i class="fas fa-chevron-left"></i>
-                    </span>
-                    <span class="text-uppercase">Keep Looking</span>
+                <p class="lead mb-3">Your basket is empty</p>
+                <a href="{% url 'service_list' %}" class="btn btn-all">
+                    <span>Return to Services</span>
                 </a>
             {% endif %}
         </div>

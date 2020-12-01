@@ -4,10 +4,12 @@ from django.shortcuts import get_object_or_404
 
 from services.models import Services
 
-""" I leart about how context processors work from the CI tutorials
+"""
+
+I leart about how context processors work from the CI tutorials
 Example from the tutorials source code was used and edited to suit.
-If ANY changes made to code/wording, needs to alson be changed
-in settings.py """
+
+"""
 
 
 def basket_contents(request):
@@ -46,7 +48,7 @@ def basket_contents(request):
         'product_count': product_count,
         'service_charge': service_charge,
         'free_service_delta': free_service_delta,
-        'free_service_threshold': settings.FREE_SERVICE_CHARGE_THRESHOLD,
+        'free_service_charge_threshold': settings.FREE_SERVICE_CHARGE_THRESHOLD,
         'grand_total': grand_total,
     }
 

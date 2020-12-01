@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
-{% block extra_title %}  | {{ service_detail.level_type }} {% endblock %}
+{% block extra_title %}  | {{ service.level_type }} {% endblock %}
 
 {% block content %}
 
 <div class="row text-center">
-    <div class="col-12  pt-2 bg-black text-white">
-        <h4 class="my-1">Free delivery on orders over £{{ free_service_threshold }}!</h4>                
+    <div class="col-12 pt-2 pb-2 bg-black text-white">
+        <h4 class="my-1">Free service on orders over £{{ free_service_charge_threshold }}!</h4>                
     </div>            
 </div>
 
@@ -31,6 +31,7 @@
                         {% csrf_token %}
                         <div class="form-row">
                             <div class="col-12">
+                                <br>
                                 <p><strong>Quantity:</strong></p>
                                 <div class="form-group">
                                     <div class="input-group">
@@ -56,15 +57,14 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="col-12">
-                                    <a href="{% url 'service_list' %}" class="btn btn-all">
-                                        <span>Keep Looking</span>
-                                    </a>
-                                    <input type="submit" class="btn btn-all" value="Add to Basket">
-                                </div>
-                                <input type="hidden" name="redirect_url" value="{{ request.path }}">
                             </div>
+                            <div class="col-12 justify-content-center">
+                                <a href="{% url 'service_list' %}" class="btn btn-all">
+                                    <span>Keep Looking</span>
+                                </a>
+                                <input type="submit" class="btn btn-all" value="Add to Basket">
+                            </div>
+                            <input type="hidden" name="redirect_url" value="{{ request.path }}">
                         </div>
                     </form> 
                 </div>

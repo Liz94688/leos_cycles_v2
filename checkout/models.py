@@ -39,8 +39,8 @@ class Order(models.Model):
         """
 
         self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum'] or 0
-        if self.order_total < settings.FREE_DELIVERY_THRESHOLD:
-            self.delivery_cost = self.order_total * settings.STANDARD_DELIVERY_PERCENTAGE / 100
+        if self.order_total < settings.FREE_SERVICE_THRESHOLD:
+            self.delivery_cost = self.order_total * settings.STANDARD_SERVICE_CHARGE_PERCENTAGE / 100
         else:
             self.delivery_cost = 0
         self.grand_total = self.order_total + self.delivery_cost
@@ -68,7 +68,6 @@ class OrderLineItem(models.Model):
     service = models.ForeignKey(Services, null=False, blank=False, on_delete=models.CASCADE)
     quantity = models.IntegerField(null=False, blank=False, default=0)
     bike = models.ForeignKey(Bike, null=True, blank=True, on_delete=models.CASCADE)
-    calendar_event = models.ForeignKey(CalendarEvent, on_delete=models.CASCADE)
     lineitem_total = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, editable=False)
 
     def save(self, *args, **kwargs):

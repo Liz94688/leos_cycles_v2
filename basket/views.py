@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
 from django.contrib import messages
 
 from services.models import Services
@@ -12,10 +12,9 @@ def view_basket(request):
 
 def add_to_basket(request, item_id):
     """ A view to add item to the basket """
-
     service = get_object_or_404(Services, pk=item_id)
 
-    """ Get the data from the FORM """
+    """ Get the quantity and url data from the FORM """
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
 
@@ -23,14 +22,17 @@ def add_to_basket(request, item_id):
     """ or return empty dictionary to create one """
     basket = request.session.get('basket', {})
 
-    """ Add item to basket or update quantity """
+    """ Add item to basket or update quantity if already exists """
     if item_id in list(basket.keys()):
         basket[item_id] += quantity
     else:
         basket[item_id] = quantity
-        messages.success(request, f'Added { service.level_type} to your basket.')
+        messages.success(request, f'You have just added the { service.level_type} service to your basket.')
 
-    """ Update variable in the session with updated version """
+    """
+    Place the basket variable into the session/override
+    variable with updated version
+    """
     request.session['basket'] = basket
 
     """ Redirect user back to redirect url """
@@ -55,10 +57,14 @@ def edit_basket(request, item_id):
 
 def remove_from_basket(request, item_id):
     """ Remove an item from the basket """
+    try:
+        basket = request.session.get('basket', {})
+        basket.pop(item_id)
+        messages.success(request, 'Item removed from basket')
 
-    basket = request.session.get('basket', {})
-    basket.pop(item_id)
-    messages.success(request, 'Item removed from basket')
+        request.session['basket'] = basket
+        return HttpResponse(status=200)
 
-    request.session['basket'] = basket
-    return redirect(reverse('view_basket'))
+    except Exception as e:
+        messages.error(request, f'Error removing item: {e}')
+        return HttpResponse(status=500)
