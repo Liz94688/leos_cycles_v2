@@ -5,7 +5,6 @@ from django.conf import settings
 
 from bike.models import Bike
 from services.models import Services
-from basket.models import CalendarEvent
 
 
 class Order(models.Model):

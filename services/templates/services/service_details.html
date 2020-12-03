@@ -4,21 +4,8 @@
 
 {% block content %}
 
-<div class="row text-center">
-    <div class="col-12 pt-2 pb-2 bg-black text-white">
-        <h4 class="my-1">Free service on orders over £{{ free_service_charge_threshold }}!</h4>                
-    </div>            
-</div>
-
-<div class="row">
-    <div class="col-12">
-        <div class="container image-container">
-            <img src="/media/services_image1.jpg" class="img-fluid" alt="responsive image">
-        </div>
-    </div>
-</div>
-
-<div class="container-fluid">
+<div class="container content-position">
+    {% include 'services/includes/delivery_banner.html' %}
     <div class="row justify-content-center">
         <div class="col-12 col-md-10 text-center">
             <div class="container service-cards">

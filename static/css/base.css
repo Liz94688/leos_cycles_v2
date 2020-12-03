@@ -2,123 +2,35 @@ html, body {
     margin: 0px;
     padding: 0px;
     height: 100%;
-    display: flex;
-    flex-direction: column;
 }
 
 body {
+    display: flex;
+    flex-direction: column;
     font-family: 'Poppins', sans-serif;
 }
 
 /* All links */
 a {
-  color: #000000;
+  color: #787467;
 }
 
-/* Colors */
+/* Colors - text */
 .text-black {
     color: #000 !important;
 }
 
-.bg-black {
-    background-color: #000 !important;
+.text-grey {
+    color: #787467;
 }
 
 /* Images - all */
-.image-container {
+/* .image-container {
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
-    max-width: 600px;
+    max-width: 1000px;
     height: auto;
-}
-
-/* Navbar */
-.navbar-nav .nav-link {
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-.dropdown .dropdown-item {
-    text-transform: uppercase;
-}
-
-.navbar-brand {
-  position: relative;
-  min-height: 50px;
-  overflow: visible;
-  z-index: 2;
-}
-
-.navbar-toggler:not(:disabled):not(.disabled) {
-  cursor: pointer;
-  outline: none;
-}
-
-/* Navbar Media Queries - if the screen size is 600px or more */
-@media only screen and (min-width: 600px) {
-  .navbar-brand {
-    font-size: 40px;
-  }
-}
-
-/* Navbar Media Queries - if the screen size is 600px or more */
-@media only screen and (max-width: 600px) {
-  .navbar-brand {
-    font-size: 30px;
-  }
-  .shopping-bag-icon {
-    font-size: 15px;
-  }
-}
-
-/* Navbar Media Queries - if the screen size is 320px or less */
-@media only screen and (max-width: 320px) {
-  .navbar-brand {
-    font-size: 20px;
-  }
-}
-
-/* Header - all */
-.header-styling {
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.sub-heading-styling {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-}
-
-/* Forms/Cards */
-.content-surround {
-  padding: 25px;
-  padding-top: 50px;
-  border-radius: 5px;
-  border: 1px solid rgba(0,0,0,.500);
-}
-
-/* Footer */
-.footer-container {
-  text-transform: uppercase;
-}
-
-/* Buttons */
-.btn-all {
-    margin-bottom: 1.5rem;
-    margin-top: 1.5rem;
-    border-radius: .25rem;
-    text-transform: uppercase;
-    border-color: #6c757d;
-}
-
-.update-quantity,
-.remove-item {
-    cursor: pointer;
-}
-
-#id_qty_1 {
-    text-align: center;
-}
+} */
 
 /* Toasts */
 .message-container {
@@ -135,3 +47,163 @@ a {
 .toast-capper {
     height: 3px;
 }
+
+/* Navbar */
+.navbar-brand{
+    margin-right: 0;
+}
+
+.main-nav-sticky {
+    position: absolute;
+    background: #000;
+    letter-spacing: 0.1rem;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    z-index: 1;
+}
+
+.navbar-toggler {
+    font-size: 1rem;
+}
+
+.nav-top{
+    padding-top: 3px;
+    padding-bottom: 3px;
+    position: absolute;
+    z-index: 2;
+}
+
+.navbar-toggler:not(:disabled):not(.disabled) {
+  cursor: pointer;
+  outline: none;
+}
+
+/* Footer */
+.footer-top,
+.main-footer {
+    background: #000;
+}
+
+.footer-link{
+    transition: all .15s ease-in-out;
+    color: #787467;
+}
+
+.footer-link:hover{
+    transform: scale(1.1);
+    color: #66645A;
+}
+
+.footer-icons {
+    font-size: 1.5rem;
+    color: #787467;
+    margin-bottom: 5px;
+    padding: 3px;
+    transition-duration: 0.3s;
+    -webkit-transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+    -o-transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+}
+
+.footer-icons:hover {
+    color: #66645A;
+    transform: scale(1.5);
+    -webkit-transform: scale(1.5);
+    -moz-transform: scale(1.5);
+    -o-transform: scale(1.5);
+}
+
+/* Page Headers - all */
+.content-position {
+    margin-top: 90px;
+}
+
+.sub-heading-styling {
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Buttons */
+.btn {
+    transition: all .15s ease-in-out;
+    color: #787467;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    color: #66645A;
+}
+
+.btn-all {
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+    padding: 10px;
+    border: 1px solid #787467;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+/* Quantity Select Buttons */
+.update-quantity,
+.remove-item {
+    cursor: pointer;
+}
+
+#id_qty_1 {
+    text-align: center;
+}
+
+/* Form Styling - forms and cards */
+.content-surround {
+  padding: 25px;
+  padding-top: 50px;
+  border-radius: 5px;
+  border: 1px solid #66645A;
+}
+
+.form-background {
+    background: #787467;
+}
+
+.form-btn {
+    transition: all .15s ease-in-out;
+    border: 1px solid #000;
+    color: #000;
+}
+
+.form-btn:hover{
+    transform: scale(1.1);
+    color: #000;
+}
+
+/* Services App */
+.delivery-banner {
+    background: #787467;
+    padding: 5px;
+}
+
+
+
+
+
+
+/* Checkout Success */
+.checkout-surround {
+    padding: 15px;
+    border-radius: 0px;
+    border: 1px solid rgba(0,0,0,.500)
+}
+
+
+/* Media Queries - if the screen size is 600px or more */
+/* @media only screen and (max-width: 600px) {
+
+} */
+
+/* Media Queries - if the screen size is 320px or less */
+/* @media only screen and (max-width: 320px) {
+
+} */

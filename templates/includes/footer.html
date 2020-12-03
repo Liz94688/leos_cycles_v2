@@ -1,0 +1,37 @@
+<!--Footer-->    
+<div class="pt-0 pt-lg-3 container-fluid">
+    <!--Desktop Only-->
+    <div class="row text-center footer-top d-none d-lg-flex pt-2">
+        <div class="col-4">
+            <a class="navbar-brand" href="{% url 'home' %}"><h3>Leo's Cycles</h3></a>
+        </div>
+        <div class="col-4">
+            <h4 class="uppercase text-grey">Quick links</h4>
+            <nav class="nav flex-column">
+                <a class="nav-link footer-link py-1" href="{% url 'about' %}">About</a>
+                <a class="nav-link footer-link py-1" href="{% url 'service_list' %}">Services</a>
+                <a class="nav-link footer-link py-1" href="{% url 'contact' %}">Contact</a>
+            </nav>
+        </div>
+        <div class="col-4 text-left text-grey">
+            <h4 class="uppercase mb-3">Contact info</h4>
+            <p><i class="fas fa-map-marker-alt mr-3 icon-green"></i>
+            111 Manchester Road,<br/>Manchester, United Kingdon </p>
+            <p><i class="fas fa-phone-alt mr-3 icon-green"></i> 0161 123 4567</p>
+        </div>
+    </div>
+    <!--Main Footer-->
+    <div class="row main-footer py-3 py-lg-2">
+        <div class="col-12 container text-center">
+            <a class="footer-container" href="https://www.facebook.com/" target="_blank"> 
+                <i class="fab fa-facebook footer-icons"></i> 
+            </a>
+            <a class="footer-container" href="https://twitter.com/" target="_blank"> 
+                <i class="fab fa-twitter footer-icons"></i>
+            </a>
+            <a class="footer-container" href="https://www.instagram.com/?hl=en" target="_blank">
+                <i class="fab fa-instagram footer-icons"></i>
+            </a>
+        </div>
+    </div>
+</div>

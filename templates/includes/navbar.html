@@ -1,0 +1,133 @@
+<!--Top Navbar-->
+<div class="d-none d-md-block">
+    <nav class="navbar nav-top fixed-top d-flex justify-content-end w-100">
+        <ul class="nav">
+            {% if request.user.is_authenticated %}
+            <li class="nav-item mr-4 dropdown d-none d-md-block text-grey">
+                <a class="nav-link py-2" href="#" id="accountDropdown" 
+                    role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                    <div class="text-center">
+                            <div><i class="fas fa-user fa-lg"></i></div>
+                            <small class="my-0">Account</small>
+                    </div>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="accountDropdown">
+                    {% if request.user.is_superuser %}
+                    <a href="#" class="dropdown-item">
+                        <i class="fas fa-edit"></i>Admin Management
+                    </a>
+                    {% endif %}
+                    <a class="dropdown-item" href="#"> 
+                        <i class="fas fa-user"></i>Profile
+                    </a>
+                    <a class="dropdown-item" href="">
+                        <i class="fas fa-history"></i>Order History
+                    </a>
+                    <a class="dropdown-item border-top" href="{% url 'account_logout' %}">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </div>
+           </li>
+            {% else %}
+            <li class="nav-item my-auto d-none d-md-block">
+                <a class="nav-link py-0" href="{% url 'account_login' %}">Login</a>
+            </li>
+            <li class="nav-item my-auto d-none d-md-block">
+                <a class="nav-link border-left py-0" 
+                    href="{% url 'account_signup' %}">Register
+                </a>
+            </li>
+            {% endif %}
+    
+            <li class="nav-item">
+               <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-grey{% endif %} nav-link py-2" href="{% url 'view_basket' %}">
+                    <div class="shopping-bag-icon text-center">
+                        <div><i class="fas fa-shopping-bag fa-md"></i></div>
+                        <p class="my-0">
+                            {% if grand_total %}
+                                £{{ grand_total|floatformat:2 }}
+                            {% else %}
+                                £0.00
+                            {% endif %}
+                        </p>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<!--Main Navbar-->
+<div class="main-nav-sticky fixed-top">
+    <nav class="navbar p-1 navbar-expand-lg navbar-dark d-block d-lg-flex">
+        <div class="d-flex justify-content-between">
+            <button class="navbar-toggler px-2" type="button" data-toggle="collapse" data-target="#navbarContent" 
+                    aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!--Title-->
+            <a class="navbar-brand ml-3" href="{% url 'home' %}"><h3 class="text-grey">Leo's Cycles</h3></a>
+            <!--Basket-->
+            <div class="d-flex">
+                <a href="{% url 'view_basket' %}" 
+                class="btn btn-large px-1 py-2 d-block d-md-none {% if grand_total %}text-info {% else %}text-grey{% endif %}">
+                    <div class="text-center {% if grand_total %}text-info {% else %}text-grey{% endif %}">
+                        <i class="fas fa-shopping-bag"></i>
+                        <small>
+                        {% if grand_total %}
+                            <span class="font-weight-bold"> £{{ grand_total|floatformat:2 }} </span>
+                        {% else %}
+                            £0.00
+                        {% endif %}
+                        </small>
+                    </div>
+                </a> 
+            </div>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item nav-item-header ml-lg-5 mr-5">
+                    <a class="nav-link nav-link-header uppercase" 
+                        href="{% url 'about' %}">About
+                    </a>
+                </li>
+                <li class="nav-item nav-item-header mr-5">
+                    <a class="nav-link nav-link-header uppercase" 
+                        href="{% url 'service_list' %}">Services
+                    </a>
+                </li>
+                <li class="nav-item nav-item-header mr-5">
+                    <a class="nav-link nav-link-header uppercase" 
+                        	href="{% url 'contact' %}"> Contact
+                    </a>
+                </li>
+
+                <div class="dropdown-divider d-block d-md-none"></div>
+                {% if request.user.is_authenticated %}
+                    {% if request.user.is_superuser %}
+                    <li class="nav-item d-block d-md-none">
+                        <a class="nav-link uppercase text-grey" href="#">Admin Management</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item d-block d-md-none">
+                        <a class="nav-link uppercase text-grey" href="#">Profile</a>
+                    </li>
+                    <li class="nav-item d-block d-md-none">
+                        <a class="nav-link uppercase text-grey" href="#">Order History</a>
+                    </li>
+                    <li class="nav-item d-block d-md-none">
+                        <a class="nav-link uppercase text-grey" href="{% url 'account_logout' %}">Logout</a>
+                    </li>
+                {% else %}
+                <li class="nav-item d-block d-md-none">
+                    <a class="nav-link uppercase text-grey" href="{% url 'account_login' %}">Login</a>
+                </li>
+                <li class="nav-item d-block d-md-none">
+                    <a class="nav-link uppercase text-grey" href="{% url 'account_signup' %}">Register</a>
+                </li>
+                 {% endif %}
+            </ul>
+        </div>
+    </nav>
+</div>
