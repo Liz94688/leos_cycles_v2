@@ -5,7 +5,7 @@ from .models import Bike
 class CreateBikeForm(forms.ModelForm):
     class Meta:
         model = Bike
-        fields = [
+        fields = (
             'bike_type',
             'frame_type',
             'handlebar_type',
@@ -13,15 +13,31 @@ class CreateBikeForm(forms.ModelForm):
             'owner_description',
             'age',
             'current',
-            'bike_creation_date'
-            ]
+            )
 
-        widgets = {
-            'bike_type': forms.Select(attrs={'class': 'form-control'}),
-            'frame_type': forms.Select(attrs={'class': 'form-control'}),
-            'handlebar_type': forms.Select(attrs={'class': 'form-control'}),
-            'wheel_size': forms.Select(attrs={'class': 'form-control'}),
-            'owner_description': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Specific details:'}),
-            'age': forms.NumberInput(attrs={'class': 'form-control'}),
-            'current': forms.CheckboxInput(attrs={'class': 'form-control'}),
+    def __init__(self, *args, **kwargs):
+
+        """
+        Add placeholders and classes, remove auto-generated
+        labels and set autofocus on first field
+        """
+
+        super().__init__(*args, **kwargs)
+        placeholders = {
+            'bike_type': 'Bike Type',
+            'frame_type': 'Frame Type',
+            'handlebar_type': 'Handlebar Type',
+            'wheel_size': 'Wheel Size',
+            'owner_description': 'Owner Description',
+            'age': 'Age',
+            'current': 'Current',
         }
+
+        self.fields['bike_type'].widget.attrs['autofocus'] = True
+        for field in self.fields:
+            if self.fields[field].required:
+                placeholder = f'{placeholders[field]} *'
+            else:
+                placeholder = placeholders[field]
+            self.fields[field].widget.attrs['placeholder'] = placeholder
+            self.fields[field].widget.attrs['class'] = 'form-control'

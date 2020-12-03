@@ -6,29 +6,11 @@
 
 {% block content %}
 
-<div class="row text-center">
-    <div class="col-12 pt-2 bg-black text-white">
-        <h5>Free delivery on orders over £{{ free_service_charge_threshold }}!</h5>                
-    </div>            
-</div>
-
-<div class="row">
-    <div class="col-12">
-        <div class="container image-container">
-            <img src="/media/services_image1.jpg" class="img-fluid" alt="responsive image">
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-10 col-md-8 col-lg-4 text-center">
+<div class="container content-position">
+    {% include 'services/includes/delivery_banner.html' %}
+    <div class="row d-flex justify-content-center">
+        <div class="col-12 text-center">
             <h2 class="header-styling">Basket</h2>
-        </div>
-    </div>
-
-    <div class="row justify-content-center">
-        <div class="col-10 text-center">
             {% if basket_items %}
                 <div class="table-responsive rounded">
                     <table class="table table-sm table-borderless">
@@ -38,6 +20,7 @@
                                 <th scope="col">Bike Type</th>
                                 <th scope="col">Price</th>
                                 <th scope="col">Qty</th>
+                                <th scope="col"></th>
                                 <th scope="col">Sub Total</th>
                             </tr>
                         </thead>
@@ -53,13 +36,15 @@
                                     </td>
                                 {% else %}
                                     <td class="py-3">
-                                        <p class="my-0">No current bike recorded</p>
+                                        <a href="{% url 'add_bike' %}" class="btn add_bike_btn">
+                                            <span>Add Bike</span>
+                                        </a>
                                     </td>
                                 {% endif %}
                                 <td class="py-3">
                                     <p class="my-0">£{{ item.service.price }}</p>
                                 </td>
-                                <td class="py-3 w-25">
+                                <td class="py-3">
                                     <form class="form update-form" method="POST" action="{% url 'edit_basket' item.item_id %}">
                                         {% csrf_token %}
                                         <div class="form-group">
@@ -88,6 +73,8 @@
                                         </div>
                                     </form>
                                     <a class="update-quantity text-info float-left"><small>Update</small></a>
+                                </td>
+                                <td class="py-3">
                                     <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}"><small>Remove</small></a>
                                 </td>
                                 <td class="py-3">

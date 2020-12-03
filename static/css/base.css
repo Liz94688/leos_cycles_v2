@@ -146,6 +146,14 @@ a {
     text-transform: uppercase;
 }
 
+.add_bike_btn {
+    margin-bottom: 0.25rem;
+    padding: 5px;
+    border: 1px solid #787467;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+}
+
 /* Quantity Select Buttons */
 .update-quantity,
 .remove-item {
