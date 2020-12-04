@@ -34,6 +34,7 @@ class CreateBikeForm(forms.ModelForm):
         }
 
         self.fields['bike_type'].widget.attrs['autofocus'] = True
+        self.fields['current'].label = ''
         for field in self.fields:
             if self.fields[field].required:
                 placeholder = f'{placeholders[field]} *'

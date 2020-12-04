@@ -56,49 +56,6 @@
                     </form> 
                 </div>
             </div>
-            <!-- {% if user.is_authenticated %}
-                {% for bike in bike %}
-                    {% if bike.current %}
-                        <h3 class="mt-4 mb-4">Current bike: </h3>
-                            <div class="d-flex row justify-content-center p-2 text-center">
-                                <div class="container service-cards">
-                                    <div class="card mx-2 my-2">  
-                                        <h5 class="mt-2 mb-3"> Bike type: {{ bike.bike_type }}</h5>
-                                        <h5 class="mt-2 mb-3"> Frame type: {{ bike.frame_type }}</h5>
-                                        <h5 class="mt-2 mb-3"> Handlebar type: {{ bike.handlebar_type }}</h5>
-                                        <h5 class="mt-2 mb-3"> Size: {{ bike.wheel_size }}</h5>
-                                        <h5 class="mt-2 mb-3"> Description: {{ bike.owner_description }}</h5>
-                                        <h5 class="mt-2 mb-3"> Age: {{ bike.age }}</h5>    
-                                        <br>
-                                        <div class="mt-5 mb-3">
-                                            <a href="#" class="btn btn-secondary btn-black" role="button">Edit bike</a>
-                                        </div>            
-                                    </div> 
-                                </div>
-                            </div>
-                    {% else %}
-                        <h3 class="mt-4 mb-4">Previously saved bikes: </h3>
-                            <div class="d-flex row justify-content-center p-2 text-center">
-                                <div class="container service-cards">
-                                    <div class="card mx-2 my-2">  
-                                        <h5 class="mt-2 mb-3"> Bike type: {{ bike.bike_type }}</h5>
-                                        <h5 class="mt-2 mb-3"> Frame type: {{ bike.frame_type }}</h5>
-                                        <h5 class="mt-2 mb-3"> Handlebar type: {{ bike.handlebar_type }}</h5>
-                                        <h5 class="mt-2 mb-3"> Size: {{ bike.wheel_size }}</h5>
-                                        <h5 class="mt-2 mb-3"> Description: {{ bike.owner_description }}</h5>
-                                        <h5 class="mt-2 mb-3"> Age: {{ bike.age }}</h5>    
-                                        <div class="mt-5 mb-3">
-                                            <a href="#" class="btn btn-secondary btn-black" role="button">Please choose which of these bikes is your current bike</a>
-                                        </div>            
-                                    </div> 
-                                </div>
-                            </div>
-                    {% endif %}
-                    <div class="mt-5 mb-3">
-                        <a href="{% url 'add_bike' %}" class="btn btn-secondary btn-black" role="button">Add bike</a>
-                    </div> 
-                {% endfor %}
-            {% endif %} -->
         </div>   
     </div>
     <br>

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block extra_title %}  | Edit Bike {% endblock %}
+
+{% block content %}
+
+<div class="container content-position">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h2 class="text-grey">Edit Bike</h2>
+            <hr>
+        </div>
+    </div>
+
+    <div class="row mb-5 mt-5">
+        <!--Edit bike form-->
+        <div class="col-sm-12 col-md-10 col-lg-8 mb-3 px-2">
+            <form action="{% url 'edit_bike' bike_id %}" method="POST" class="form p-2 p-md-4 shadow">
+                {% csrf_token %}
+
+                {{ form.bike_type | as_crispy_field }}
+                {{ form.frame_type | as_crispy_field }}
+                {{ form.handlebar_type | as_crispy_field }}
+                {{ form.wheel_size | as_crispy_field }}
+                {{ form.owner_description | as_crispy_field }}
+                {{ form.age | as_crispy_field }}
+                <p class="text-center">
+                    Please tick if this is your current bike
+                    {{ form.current | as_crispy_field }}
+                </p>
+                <div class="text-right mt-5 mb-2">
+                    <input type="submit" value="edit bike" class="btn btn-all">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

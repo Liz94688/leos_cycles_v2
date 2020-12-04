@@ -5,18 +5,52 @@
 {% block content %}
 
 <div class="container content-position">
-    <div class="d-flex row justify-content-center">
-        <div class="col-sm-10 col-md-8 col-lg-6 text-center">
+    <div class="row">
+        <div class="col-12 text-center">
             <h2 class="text-grey">Add Bike</h2>
-            <div class="form-group">
-                <form class="content-surround form-background" method="POST">
+            <hr>
+        </div>
+    </div>
 
-                    {% csrf_token %}
-                    {{ add_bike.as_p }}
+    <div class="row mb-5 mt-5">
+        <!--Add bike form-->
+        <div class="col-sm-12 col-md-10 col-lg-8 mb-3 px-2">
+           <div class="accordion" id="accordionAddBikeForm">
+                <div class="card">
+                    <div class="card-header" id="headingAddBike">
+                    <h2 class="mb-0 text-center text-grey">
+                        <a class="btn text-center btn-all btn-lg collapsed"
+                         data-toggle="collapse" data-target="#collapseAddBike"
+                         aria-expanded="false" aria-controls="collapseAddBike">
+                            <h3>Add a New Bike</h3>
+                        </a>
+                    </h2>
+                    </div>
+                    <div id="collapseAddBike" class="collapse" aria-labelledby="headingAddBike"
+                         data-parent="#accordionAddBikeForm">
+                        <div class="card-body">
+                            <form action="{% url 'add_bike' %}" method="POST" id="add_bike">
+                                {% csrf_token %}
 
-                    <input type="submit" value="submit" class="btn btn-all form-btn">
-                </form>
+                                {{ add_bike.bike_type | as_crispy_field }}
+                                {{ add_bike.frame_type | as_crispy_field }}
+                                {{ add_bike.handlebar_type | as_crispy_field }}
+                                {{ add_bike.wheel_size | as_crispy_field }}
+                                {{ add_bike.owner_description | as_crispy_field }}
+                                {{ add_bike.age | as_crispy_field }}
+                                <p class="text-center">
+                                    Please tick if this is your current bike
+                                    {{ add_bike.current | as_crispy_field }}
+                                </p>
+                                <div class="text-right mt-5 mb-2">
+                                    <input type="submit" value="add bike" class="btn btn-all">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
     </div>
 </div>
 

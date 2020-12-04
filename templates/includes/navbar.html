@@ -40,7 +40,7 @@
             {% endif %}
     
             <li class="nav-item">
-               <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-grey{% endif %} nav-link py-2" href="{% url 'view_basket' %}">
+               <a class="{% if grand_total %}text-white font-weight-bold{% else %}text-grey{% endif %} nav-link py-2" href="{% url 'view_basket' %}">
                     <div class="shopping-bag-icon text-center">
                         <div><i class="fas fa-shopping-bag fa-md"></i></div>
                         <p class="my-0">
@@ -70,8 +70,8 @@
             <!--Basket-->
             <div class="d-flex">
                 <a href="{% url 'view_basket' %}" 
-                class="btn btn-large px-1 py-2 d-block d-md-none {% if grand_total %}text-info {% else %}text-grey{% endif %}">
-                    <div class="text-center {% if grand_total %}text-info {% else %}text-grey{% endif %}">
+                class="btn btn-large px-1 py-2 d-block d-md-none {% if grand_total %}text-white {% else %}text-grey{% endif %}">
+                    <div class="text-center {% if grand_total %}text-white {% else %}text-grey{% endif %}">
                         <i class="fas fa-shopping-bag"></i>
                         <small>
                         {% if grand_total %}
