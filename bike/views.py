@@ -7,7 +7,7 @@ from .forms import CreateBikeForm
 
 
 @login_required
-def view_all_bikes(request):
+def all_bikes(request):
 
     all_bikes = Bike.objects.filter(owner=request.user)
 
@@ -15,7 +15,7 @@ def view_all_bikes(request):
         'all_bikes': all_bikes,
     }
 
-    return render(request, 'bike/view_all_bikes.html', context)
+    return render(request, 'bike/all_bikes.html', context)
 
 
 @login_required
@@ -36,8 +36,7 @@ def add_bike(request):
             bike.owner = request.user
             bike.save()
             messages.success(request, 'Bike has been successfully added!')
-            redirect(reverse('view_all_bikes'))
-            return render(request, 'home/index.html')
+            return redirect(reverse('all_bikes'))
         else:
             messages.error(request, 'Failed to add bike. \
                 Please ensure the form is valid.')
@@ -69,13 +68,13 @@ def edit_bike(request, bike_id):
         if form.is_valid():
             form.save()
             messages.success(request, 'Bike has been successfully edited!')
-            return redirect(reverse('view_all_bikes'))
+            return redirect(reverse('all_bikes'))
         else:
             messages.error(request, 'Failed to edit bike. \
                 Please ensure the form is valid.')
     else:
         form = CreateBikeForm(instance=bike)
-        messages.info(request, f'You are editing {bike.type}')
+        messages.info(request, f'You are editing {bike.bike_type}')
 
     context = {
         'bike': bike,
@@ -97,4 +96,4 @@ def delete_bike(request, bike_id):
     bike.pop(bike_id)
 
     messages.info(request, f'{bike.bike_type} was successfully deleted.')
-    return redirect(reverse('view_all_bikes'))
+    return redirect(reverse('all_bikes'))

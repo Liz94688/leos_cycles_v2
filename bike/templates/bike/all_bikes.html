@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block extra_title %}  | Services {% endblock %}
+
+{% block content %}
+
+<div class="container content-position">
+    {% include 'services/includes/delivery_banner.html' %}
+    <div class="row">
+        <div class="col-12 text-center text-grey">
+            <h2 class="header-styling">Recorded Bikes</h2>
+            <hr>
+        </div>
+    </div>    
+    <div class="row">
+        {% if user.is_authenticated %}
+            {% if not all_bikes %}
+            <div class="col-12 text-center text-grey mt-2 mb-4">
+                <h5 class="sub-heading-styling">There are currently no bikes recorded on your profile.</h5>
+                <div class="text-center mt-5 mb-5">
+                    <p>Have a new bike you want to include?</p>
+                    <a href="{% url 'add_bike' %}" class="btn btn-all btn-sm text-grey" role="button">Add bike</a>
+                </div> 
+            </div>
+            {% else %}
+                {% for bike in all_bikes %}
+                    {% if bike.current %}
+                    <h3 class="mt-4 mb-4 text-grey">Current bike:</h3>
+                        <div class="col-sm-12 col-md-10 text-center mt-3">
+                            <div class="text-block text-grey">
+                                <p class="font-weight-bold">{{ bike.bike_type }} Bike - Aged {{ bike.age }} years old</p>   
+                                <p class="font-weight-bold">{{ bike.frame_type }} Frame - with {{ bike.handlebar_type }} handlebars</p>
+                                <p class="font-weight-bold">{{ bike.bike_type }} Bike - Aged {{ bike.age }} years old</p>
+                                <small>
+                                    <a href="{% url 'edit_bike' bike.id %}" 
+                                        class="btn btn-all btn-sm">Edit
+                                    </a> | 
+                                    <a href="{% url 'delete_bike' bike.id %}" 
+                                        class="btn btn-all btn-sm">Delete
+                                    </a>
+                                </small>   
+                            </div>
+                        </div>
+                    {% else %}
+                        <h3 class="mt-4 mb-4 text-grey">Additional bikes:</h3>
+                        <div class="col-sm-12 col-md-10 text-center mt-3">
+                            <div class="text-block text-grey">
+                                <p class="font-weight-bold">{{ bike.bike_type }} Bike - Aged {{ bike.age }} years old</p>   
+                                <p class="font-weight-bold">{{ bike.frame_type }} Frame - with {{ bike.handlebar_type }} handlebars</p>
+                                <p class="font-weight-bold">{{ bike.bike_type }} Bike - Aged {{ bike.age }} years old</p>
+                                <small>
+                                    <a href="{% url 'edit_bike' bike.id %}" 
+                                        class="btn btn-all btn-sm">Edit
+                                    </a> | 
+                                    <a href="{% url 'delete_bike' bike.id %}" 
+                                        class="btn btn-all btn-sm">Delete
+                                    </a>
+                                </small>   
+                            </div>
+                        </div>
+                        <hr>
+                    {% endif %} 
+                {% endfor %}
+            {% endif %}
+            <div class="col-sm-12 col-md-10 text-center mt-3">
+                <div class="text-center text-grey mt-5 mb-5">
+                    <p class="mb-0">Want to include another bike?</p>
+                    <a href="{% url 'add_bike' %}" class="btn btn-all btn-sm text-grey mt-2" role="button">Add bike</a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}         

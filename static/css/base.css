@@ -187,6 +187,19 @@ a {
     color: #000;
 }
 
+label.requiredField {
+    color: #787467;
+}
+
+#id_owner_description,
+#id_age,
+#id_wheel_size,
+#id_handlebar_type,
+#id_frame_type,
+#id_bike_type {
+    color: #787467;
+}
+
 /* Services App */
 .delivery-banner {
     background: #787467;
