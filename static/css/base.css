@@ -24,6 +24,11 @@ a {
     color: #787467;
 }
 
+.text-dark-grey {
+    color: #66645A;
+
+}
+
 /* Images - all */
 /* .image-container {
     margin-top: 1.5rem;
@@ -197,6 +202,10 @@ label.requiredField {
 #id_handlebar_type,
 #id_frame_type,
 #id_bike_type {
+    color: #787467;
+}
+
+#id_qty_1 {
     color: #787467;
 }
 

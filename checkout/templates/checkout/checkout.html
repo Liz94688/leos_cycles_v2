@@ -10,40 +10,27 @@
 
 {% block content %}
 
-<div class="row text-center">
-    <div class="col-12 pt-2 bg-black text-white">
-        <h5>Free delivery on orders over £{{ free_service_charge_threshold }}!</h5>                
-    </div>            
-</div>
-
-<div class="row">
-    <div class="col-12">
-        <div class="container image-container">
-            <img src="/media/services_image1.jpg" class="img-fluid" alt="responsive image">
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-10 col-md-8 col-lg-4 text-center">
+<div class="container content-position">
+    {% include 'services/includes/delivery_banner.html' %}
+    <div class="row d-flex justify-content-center">
+        <div class="col-10 col-md-8 col-lg-4 text-center text-grey">
             <h2 class="header-styling">Checkout</h2>
         </div>
     </div>
 
     <div class="row justify-content-center">
-        <div class="col-10 text-center">
-            <h2 class="sub-heading-styling">Order Summary</h2>
+        <div class="col-10 text-center text-grey">
+            <h3 class="sub-heading-styling">Order Summary</h3>
         </div>
 
         <div class="col-10 col-lg-6 order-lg-last">
-            <p class="text-muted">Order Summary ({{ product_count }})</p>
+            <p class="text-grey">Order Summary ({{ product_count }} items in basket)</p>
             <div class="row">
                 <div class="col-7 offset-2">
-                    <p class="mb-1 mt-0 small text-muted">Item</p>
+                    <p class="mb-1 mt-0 small text-grey">Item</p>
                 </div>
                 <div class="col-3 text-right">
-                    <p class="mb-1 mt-0 small text-muted">Subtotal</p>
+                    <p class="mb-1 mt-0 small text-grey">Subtotal</p>
                 </div>
             </div>
             {% for item in basket_items %}
@@ -52,16 +39,16 @@
                         <a href="{% url 'service_detail' item.service.id %}">
                             <p class="my-0"><strong>{{ item.service.level_type }}</strong></p>
                         </a>
-                        <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
+                        <p class="my-3 small text-grey">Qty: {{ item.quantity }}</p>
                     </div>
                     <div class="col-4 text-right">
-                        <p class="my-0 small text-muted">£{{ item.service.price }}</p>
+                        <p class="my-0 small text-grey">£{{ item.service.price }}</p>
                     </div>
                 </div>
             {% endfor %}
             <hr class="my-0">
             
-            <div class="row text-black text-right">
+            <div class="row mt-3 text-grey text-right">
                 <div class="col-7 offset-2">
                     <p class="my-0">Order Total:</p>
                     <p class="my-0">Delivery:</p>
@@ -79,7 +66,7 @@
             </div>
         </div>
 
-        <div class="col-10 col-lg-6">
+        <div class="col-10 col-lg-6 mt-3 text-grey">
             <p>Please fill out the form below:</p>
             <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                 {% csrf_token %}
@@ -144,6 +131,13 @@
         </div>
         
     </div>
+</div>
+<div id="loading-overlay">
+    <h1 class="text-light logo-font loading-spinner">
+        <span class="icon">
+            <i class="fas fa-3x fa-sync-alt fa-spin"></i>
+        </span>
+    </h1>
 </div>
 
 {% endblock %}

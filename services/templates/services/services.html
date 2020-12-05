@@ -5,29 +5,44 @@
 {% block content %}
  
 <div class="container content-position">
-    {% include 'services/includes/delivery_banner.html' %}
+    {% if not user.is_authenticated %}
     <div class="row d-flex justify-content-center">
         <div class="col-12 col-md-10 col-lg-4 text-center text-grey">
-            <h2 class="header-styling">Services</h2>
-            {% for service in service_list %}
-                <div class="card content-surround">
-                    <div class="card-body">
-                        <h3>{{ service.level_type }}</h3>
-                        <p class="card-text mb-1">£{{ service.price }}</p>
-                        <p><a href="{% url 'service_detail' service.id %}" class="btn btn-all my-2" role="button">View details</a></p>
-                    </div>
-                </div>
-                <br>
-            {% endfor %}
             <div class="text-center mt-5 mb-5" >
-                <hr class="my-4">
-                <p>We also offer a bespoke service to customers, based on your particular preferences.</p>        
-                <p><a href="{% url 'contact' %}" class="btn btn-all btn-sm text-grey">
-                    Please contact us</a> to discuss this service further.
-                </p>
+                <p class="mt-5">Become a member today to start using our services.
+                    Already a member? You just need to login.</p>
+                <a href="{% url 'account_signup' %}" class="btn btn-all">Register</a>
+                <a href="{% url 'account_login' %}" class="btn btn-all">Login</a>
             </div>
         </div>
     </div>
+    {% else %}
+        {% include 'services/includes/delivery_banner.html' %}
+        <div class="row d-flex justify-content-center">
+            <div class="col-12 col-md-10 col-lg-4 text-center text-grey">
+                <h2 class="header-styling">Services</h2>
+                {% for service in service_list %}
+                    <div class="card content-surround">
+                        <div class="card-body">
+                            <h3>{{ service.level_type }}</h3>
+                            <p class="card-text mb-1">£{{ service.price }}</p>
+                            {% if user.is_authenticated %}
+                                <p><a href="{% url 'service_detail' service.id %}" class="btn btn-all my-2" role="button">View details</a></p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <br>
+                {% endfor %}
+                <div class="text-center mt-5 mb-5" >
+                    <hr class="my-4">
+                    <p>We also offer a bespoke service to customers, based on your particular preferences.</p>        
+                    <p>To discuss this further, please <a href="{% url 'contact' %}" class="btn btn-all btn-sm text-grey">
+                        contact us</a>
+                    </p>
+                </div>    
+            </div>
+        </div>
+    {% endif %}
 </div>
 
 {% endblock %}

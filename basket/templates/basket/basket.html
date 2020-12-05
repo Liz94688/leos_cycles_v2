@@ -10,14 +10,13 @@
     {% include 'services/includes/delivery_banner.html' %}
     <div class="row d-flex justify-content-center">
         <div class="col-12 text-center">
-            <h2 class="header-styling">Basket</h2>
+            <h2 class="header-styling text-grey">Basket</h2>
             {% if basket_items %}
                 <div class="table-responsive rounded">
                     <table class="table table-sm table-borderless">
-                        <thead class="text-black">
+                        <thead class="text-grey">
                             <tr>
                                 <th scope="col">Service details</th>
-                                <th scope="col">Bike Type</th>
                                 <th scope="col">Price</th>
                                 <th scope="col">Qty</th>
                                 <th scope="col"></th>
@@ -26,21 +25,17 @@
                         </thead>
 
                         {% for item in basket_items %}
-                            <tr>
+                            <tr class="text-grey">
                                 <td class="py-3">
                                     <p class="my-0">{{ item.service.level_type }}</p>
-                                </td>
-                                {% if bike.current %}
-                                    <td class="py-3">
+                                    {% if bike.current %}
                                         <p class="my-0">{{ item.bike.bike_type }}</p>
-                                    </td>
-                                {% else %}
-                                    <td class="py-3">
-                                        <a href="{% url 'all_bikes' %}" class="btn add_bike_btn">
+                                    {% else %}
+                                        <a href="{% url 'all_bikes' %}" class="btn add_bike_btn mt-3">
                                             <span>Add Bike</span>
                                         </a>
-                                    </td>
-                                {% endif %}
+                                    {% endif %}
+                                </td>
                                 <td class="py-3">
                                     <p class="my-0">£{{ item.service.price }}</p>
                                 </td>
@@ -72,10 +67,10 @@
                                             </div>
                                         </div>
                                     </form>
-                                    <a class="update-quantity text-info float-left"><small>Update</small></a>
+                                    <a class="update-quantity text-info"><small>Update</small></a>
                                 </td>
                                 <td class="py-3">
-                                    <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}"><small>Remove</small></a>
+                                    <a class="remove-item text-danger" id="remove_{{ item.item_id }}"><small>Remove</small></a>
                                 </td>
                                 <td class="py-3">
                                     <p class="my-0">£{{ item.service.price | calc_subtotal:item.quantity }}</p>
@@ -83,7 +78,7 @@
                             </tr>
                         {% endfor %}
                         <tr>
-                            <td colspan="5" class="pt-5 text-right">
+                            <td colspan="5" class="pt-5 text-right text-grey">
                                 <h6><strong>Bag Total: £{{ total|floatformat:2 }}</strong></h6>
                                 <h6>Delivery: £{{ service_charge|floatformat:2 }}</h6>
                                 <h4 class="mt-4"><strong>Grand Total: £{{ grand_total|floatformat:2 }}</strong></h4>
