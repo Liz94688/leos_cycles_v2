@@ -8,6 +8,7 @@ from .forms import CreateBikeForm
 
 @login_required
 def all_bikes(request):
+    """ A view for the user to view all bikes recorded """
 
     all_bikes = Bike.objects.filter(owner=request.user)
 
@@ -19,8 +20,22 @@ def all_bikes(request):
 
 
 @login_required
+def bike_details(request, bike_id):
+    """ A view for the user to view details of each bike recorded """
+
+    all_bikes = Bike.objects.filter(owner=request.user)
+    each_bike = get_object_or_404(all_bikes, pk=bike_id)
+
+    context = {
+        'each_bike': each_bike,
+    }
+
+    return render(request, 'bike/bike_details.html', context)
+
+
+@login_required
 def add_bike(request):
-    """ A view for the user to add a bike to their profile """
+    """ A view for the user to add a bike """
 
     if not request.user.is_authenticated:
         messages.error(request, 'Access denied.\
@@ -35,8 +50,8 @@ def add_bike(request):
             bike = add_bike.save(commit=False)
             bike.owner = request.user
             bike.save()
-            messages.success(request, 'Bike has been successfully added!')
-            return redirect(reverse('all_bikes'))
+            messages.success(request, 'Bike successfully added!')
+            return redirect(reverse('bike_details', args=[bike.id]))
         else:
             messages.error(request, 'Failed to add bike. \
                 Please ensure the form is valid.')
@@ -67,8 +82,8 @@ def edit_bike(request, bike_id):
         # check whether it's valid:
         if form.is_valid():
             form.save()
-            messages.success(request, 'Bike has been successfully edited!')
-            return redirect(reverse('all_bikes'))
+            messages.success(request, 'Bike successfully edited!')
+            return redirect(reverse('bike_details', args=[bike.id]))
         else:
             messages.error(request, 'Failed to edit bike. \
                 Please ensure the form is valid.')
@@ -93,7 +108,7 @@ def delete_bike(request, bike_id):
         return redirect(reverse('home'))
 
     bike = get_object_or_404(Bike, pk=bike_id)
-    bike.pop(bike_id)
+    bike.remove(bike)
 
     messages.info(request, f'{bike.bike_type} was successfully deleted.')
     return redirect(reverse('all_bikes'))

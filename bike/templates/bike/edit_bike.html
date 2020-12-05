@@ -6,16 +6,16 @@
 
 <div class="container content-position">
     <div class="row">
-        <div class="col-12 text-center">
-            <h2 class="text-grey">Edit Bike</h2>
-            <hr>
+        <div class="col-12 text-center mt-5 text-grey">
+            <h2>Edit Bike</h2>
+            <hr class="w-25 mt-3">
         </div>
     </div>
 
     <div class="row mb-5 mt-5">
         <!--Edit bike form-->
         <div class="col-sm-12 col-md-10 col-lg-8 mb-3 px-2">
-            <form action="{% url 'edit_bike' bike_id %}" method="POST" class="form p-2 p-md-4 shadow">
+            <form action="{% url 'edit_bike' bike.id %}" method="POST" class="form p-2 p-md-4 shadow">
                 {% csrf_token %}
 
                 {{ form.bike_type | as_crispy_field }}
@@ -32,6 +32,13 @@
                     <input type="submit" value="edit bike" class="btn btn-all">
                 </div>
             </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 mt-3">
+            <a href="{% url 'all_bikes' %}" class="btn btn-all">
+                <i class="fas fa-angle-left"></i> Back
+            </a>
         </div>
     </div>
 </div>

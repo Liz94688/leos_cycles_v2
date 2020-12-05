@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block extra_title %}  | Bike Details {% endblock %}
+
+{% block content %}
+
+<div class="container content-position">
+    {% include 'services/includes/delivery_banner.html' %}
+    <div class="row">
+        <div class="col-12 text-center text-grey">
+            <h2 class="header-styling">Bike Details</h2>
+            <hr class="w-25 mt-3">
+        </div>
+    </div>    
+    <div class="row">
+        <div class="col-sm-12 col-md-10 text-center text-grey mt-3">
+            <h1>{{ each_bike.bike_type }} Bike</h1>
+            {% if user.is_authenticated %}
+                <p>
+                    <a href="{% url 'edit_bike' each_bike.id %}" 
+                        class="btn btn-all btn-sm">Edit
+                    </a> | 
+                    <a href="{% url 'delete_bike' each_bike.id %}" 
+                        class="btn btn-all btn-sm">Delete
+                    </a>
+                </p>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row my-3 my-md-5">
+        <div class="col-sm-12 col-md-6 col-lg-7 d-flex justify-content-between flex-column text-grey mb-2 mb-lg-5">
+            <p><strong>Created on:</strong> {{ each_bike.bike_creation_date }}</p>
+            <p><strong>Current Bike:</strong> {{ each_bike.current }}</p>
+            <p><strong>Bike Frame:</strong> {{ each_bike.frame_type }}</p>
+            <p><strong>Handlebar Type:</strong> {{ each_bike.handlebar_type }}</p>
+            <p><strong>Wheel Size:</strong> {{ each_bike.wheel_size }}</p>
+            <p><strong>Owner Description:</strong> {{ each_bike.owner_description }}</p>
+            <p><strong>Age:</strong> {{ each_bike.age }} year old</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 mt-3">
+            <a href="{% url 'all_bikes' %}" class="btn btn-all">
+                <i class="fas fa-angle-left"></i> Back
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

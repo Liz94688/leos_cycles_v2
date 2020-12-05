@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block extra_title %}  | Services {% endblock %}
+{% block extra_title %}  | Bikes {% endblock %}
 
 {% block content %}
 
@@ -8,8 +8,8 @@
     {% include 'services/includes/delivery_banner.html' %}
     <div class="row">
         <div class="col-12 text-center text-grey">
-            <h2 class="header-styling">Recorded Bikes</h2>
-            <hr>
+            <h2 class="header-styling">Stored Bikes</h2>
+            <hr class="w-25 mt-3">
         </div>
     </div>    
     <div class="row">
@@ -30,16 +30,21 @@
                             <div class="text-block text-grey">
                                 <p class="font-weight-bold">{{ bike.bike_type }} Bike - Aged {{ bike.age }} years old</p>   
                                 <p class="font-weight-bold">{{ bike.frame_type }} Frame - with {{ bike.handlebar_type }} handlebars</p>
-                                <p class="font-weight-bold">{{ bike.bike_type }} Bike - Aged {{ bike.age }} years old</p>
                                 <small>
-                                    <a href="{% url 'edit_bike' bike.id %}" 
-                                        class="btn btn-all btn-sm">Edit
-                                    </a> | 
-                                    <a href="{% url 'delete_bike' bike.id %}" 
-                                        class="btn btn-all btn-sm">Delete
+                                    <a href="{% url 'bike_details' bike.id %}" 
+                                        class="btn btn-all btn-sm">
+                                        View Details
                                     </a>
-                                </small>   
+                                </small>
                             </div>
+                            <!-- <div class="mb-3 d-flex justify-content-around align-items-baseline">
+                                <form class="form" action="{% url 'add_to_basket' bike.id %}" method="POST">
+                                    {% csrf_token %}
+                                    <input name="quantity" type="hidden" value="1">
+                                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                                    <input type="submit" class="btn btn-all px-3" value="Add to Order">
+                                </form>
+                            </div> -->
                         </div>
                     {% else %}
                         <h3 class="mt-4 mb-4 text-grey">Additional bikes:</h3>
@@ -47,13 +52,10 @@
                             <div class="text-block text-grey">
                                 <p class="font-weight-bold">{{ bike.bike_type }} Bike - Aged {{ bike.age }} years old</p>   
                                 <p class="font-weight-bold">{{ bike.frame_type }} Frame - with {{ bike.handlebar_type }} handlebars</p>
-                                <p class="font-weight-bold">{{ bike.bike_type }} Bike - Aged {{ bike.age }} years old</p>
                                 <small>
-                                    <a href="{% url 'edit_bike' bike.id %}" 
-                                        class="btn btn-all btn-sm">Edit
-                                    </a> | 
-                                    <a href="{% url 'delete_bike' bike.id %}" 
-                                        class="btn btn-all btn-sm">Delete
+                                    <a href="{% url 'bike_details' bike.id %}" 
+                                        class="btn btn-all btn-sm">
+                                        View Details
                                     </a>
                                 </small>   
                             </div>
