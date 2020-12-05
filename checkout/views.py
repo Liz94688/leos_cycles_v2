@@ -52,7 +52,7 @@ def checkout(request):
             order = order_form.save()
 
             for item_id, quantity in basket.items():
-                service = get_object_or_404(Services, id=item_id)
+                service = Services.objects.get(id=item_id)
                 order_line_item = OrderLineItem(
                     order=order,
                     service=service,
