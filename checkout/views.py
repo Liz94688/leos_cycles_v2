@@ -40,16 +40,20 @@ def checkout(request):
             'full_name': request.POST['full_name'],
             'email': request.POST['email'],
             'phone_number': request.POST['phone_number'],
+            'country': request.POST['country'],
+            'postcode': request.POST['postcode'],
+            'town_or_city': request.POST['town_or_city'],
             'street_address1': request.POST['street_address1'],
             'street_address2': request.POST['street_address2'],
-            'town_or_city': request.POST['town_or_city'],
             'county': request.POST['county'],
-            'postcode': request.POST['postcode'],
-            'country': request.POST['country'],
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
-            order = order_form.save()
+            order = order_form.save(commit=False)
+            pid = request.POST.get('client_secret').split('_secret')[0]
+            order.stripe_pid = pid
+            order.original_basket = json.dumps(basket)
+            order.save()
 
             for item_id, quantity in basket.items():
                 service = Services.objects.get(id=item_id)
@@ -97,6 +101,9 @@ def checkout(request):
 
 
 def checkout_success(request, order_number):
+    """
+    Handle successful checkouts
+    """
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
     messages.success(request, f'Order successfully processed! \
