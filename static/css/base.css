@@ -29,14 +29,6 @@ a {
 
 }
 
-/* Images - all */
-/* .image-container {
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
-    max-width: 1000px;
-    height: auto;
-} */
-
 /* Toasts */
 .message-container {
     position: fixed;
@@ -120,10 +112,6 @@ a {
 }
 
 /* Page Headers - all */
-.content-position {
-    margin-top: 90px;
-}
-
 .sub-heading-styling {
     margin-top: 2rem;
     margin-bottom: 1.5rem;
@@ -133,6 +121,7 @@ a {
 .btn {
     transition: all .15s ease-in-out;
     color: #787467;
+    border-radius: 0;
 }
 
 .btn:hover {
@@ -167,6 +156,54 @@ a {
 
 #id_qty_1 {
     text-align: center;
+}
+
+/* Allauth form formatting */
+.allauth-form-inner-content p {
+    margin-top: 1.5rem; /* mt-4 */
+    color: #787467;
+}
+
+.allauth-form-inner-content input {
+    border-color: #787467;
+    border-radius: 0;
+}
+
+.allauth-form-inner-content label:not([for='id_remember']) {
+    display: none;
+}
+
+.allauth-form-inner-content input::placeholder {
+    color: #787467;
+}
+
+.allauth-form-inner-content button,
+.allauth-form-inner-content input[type='submit'] {
+	/* btn */
+	display: inline-block;
+    color: #787467;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: #fff;
+    border: 1px solid #787467;
+    padding: 10px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    transition: all .15s ease-in-out;
+}
+
+.allauth-form-inner-content button:hover,
+.allauth-form-inner-content input[type='submit']:hover {	
+	color: #66645A;
+    transform: scale(1.1);
+}
+
+.allauth-form-inner-content a {
+	color: #66645A; /* text-info */
 }
 
 /* Form Styling - forms and cards */
@@ -215,11 +252,6 @@ label.requiredField {
     padding: 5px;
 }
 
-
-
-
-
-
 /* Checkout Success */
 .checkout-surround {
     padding: 15px;
@@ -227,13 +259,15 @@ label.requiredField {
     border: 1px solid rgba(0,0,0,.500)
 }
 
+/* Media Queries */
+@media(min-width:992px) {
+    .header-container {
+        padding-top: 100px;
+    }
+}
 
-/* Media Queries - if the screen size is 600px or more */
-/* @media only screen and (max-width: 600px) {
-
-} */
-
-/* Media Queries - if the screen size is 320px or less */
-/* @media only screen and (max-width: 320px) {
-
-} */
+@media(max-width:991px) {
+    .header-container {
+        padding-top: 85px;
+    }
+}

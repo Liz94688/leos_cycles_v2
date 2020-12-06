@@ -14,17 +14,17 @@
                 <div class="dropdown-menu" aria-labelledby="accountDropdown">
                     {% if request.user.is_superuser %}
                     <a href="#" class="dropdown-item">
-                        <i class="fas fa-edit"></i>Admin Management
+                        <i class="fas fa-edit"></i> Admin Management
                     </a>
                     {% endif %}
-                    <a class="dropdown-item" href="#"> 
-                        <i class="fas fa-user"></i>Profile
+                    <a class="dropdown-item" href="{% url 'userprofile' %}"> 
+                        <i class="fas fa-user"></i> Profile
                     </a>
                     <a class="dropdown-item" href="{% url 'all_bikes' %}">
-                        <i class="fas fa-history"></i>Bikes
+                        <i class="fas fa-bicycle"></i> Bikes
                     </a>
                     <a class="dropdown-item" href="">
-                        <i class="fas fa-history"></i>Order History
+                        <i class="fas fa-history"></i> Order History
                     </a>
                     <a class="dropdown-item border-top" href="{% url 'account_logout' %}">
                         <i class="fas fa-sign-out-alt"></i> Logout
@@ -92,17 +92,17 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item nav-item-header ml-lg-5 mr-5">
                     <a class="nav-link nav-link-header uppercase" 
-                        href="{% url 'about' %}">About
+                        href="{% url 'about' %}"> About
                     </a>
                 </li>
                 <li class="nav-item nav-item-header mr-5">
                     <a class="nav-link nav-link-header uppercase" 
-                        href="{% url 'service_list' %}">Services
+                        href="{% url 'service_list' %}"> Services
                     </a>
                 </li>
                 <li class="nav-item nav-item-header mr-5">
                     <a class="nav-link nav-link-header uppercase" 
-                        	href="{% url 'contact' %}"> Contact
+                        href="{% url 'contact' %}"> Contact
                     </a>
                 </li>
 
@@ -110,27 +110,27 @@
                 {% if request.user.is_authenticated %}
                     {% if request.user.is_superuser %}
                     <li class="nav-item d-block d-md-none">
-                        <a class="nav-link uppercase text-grey" href="#">Admin Management</a>
+                        <a class="nav-link uppercase text-grey" href="#"> Admin Management</a>
                     </li>
                     {% endif %}
                     <li class="nav-item d-block d-md-none">
-                        <a class="nav-link uppercase text-grey" href="#">Profile</a>
+                        <a class="nav-link uppercase text-grey" href="{% url 'userprofile' %}"> Profile</a>
                     </li>
                     <li class="nav-item d-block d-md-none">
-                        <a class="nav-link uppercase text-grey" href="{% url 'all_bikes' %}">Bikes</a>
+                        <a class="nav-link uppercase text-grey" href="{% url 'all_bikes' %}"> Bikes</a>
                     </li>
                     <li class="nav-item d-block d-md-none">
-                        <a class="nav-link uppercase text-grey" href="#">Order History</a>
+                        <a class="nav-link uppercase text-grey" href="#"> Order History</a>
                     </li>
                     <li class="nav-item d-block d-md-none">
-                        <a class="nav-link uppercase text-grey" href="{% url 'account_logout' %}">Logout</a>
+                        <a class="nav-link uppercase text-grey" href="{% url 'account_logout' %}"> Logout</a>
                     </li>
                 {% else %}
                 <li class="nav-item d-block d-md-none">
-                    <a class="nav-link uppercase text-grey" href="{% url 'account_login' %}">Login</a>
+                    <a class="nav-link uppercase text-grey" href="{% url 'account_login' %}"> Login</a>
                 </li>
                 <li class="nav-item d-block d-md-none">
-                    <a class="nav-link uppercase text-grey" href="{% url 'account_signup' %}">Register</a>
+                    <a class="nav-link uppercase text-grey" href="{% url 'account_signup' %}"> Register</a>
                 </li>
                  {% endif %}
             </ul>
