@@ -9,4 +9,6 @@ urlpatterns = [
     path('add_service/', views.add_service, name='add_service'),
     path('edit_level/<int:level_id>/', views.edit_level, name='edit_level'),
     path('edit_service/<int:service_id>/', views.edit_service, name='edit_service'),
+    path('delete_level/<int:level_id>/', views.delete_level, name='delete_level'),
+    path('delete_service/<int:service_id>/', views.delete_service, name='delete_service'),
 ]

@@ -132,3 +132,21 @@ def edit_service(request, service_id):
     }
 
     return render(request, 'services/edit_service.html', context)
+
+
+def delete_level(request, level_id):
+    """ A view for admin to delete a level on the site """
+
+    level = get_object_or_404(Level, pk=level_id)
+    level.delete()
+    messages.success(request, 'Level deleted!')
+    return redirect(reverse('service_list'))
+
+
+def delete_service(request, service_id):
+    """ A view for admin to delete a service on the site """
+
+    service = get_object_or_404(Services, pk=service_id)
+    service.delete()
+    messages.success(request, 'Service deleted!')
+    return redirect(reverse('service_list'))
