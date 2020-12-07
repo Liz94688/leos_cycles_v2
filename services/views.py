@@ -3,7 +3,7 @@ from django.shortcuts import render,  redirect, reverse, \
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
-from .models import Services
+from .models import Services, Level
 from reviews.models import Review
 from .forms import LevelsForm, ServicesForm
 
@@ -83,3 +83,52 @@ def add_service(request):
     }
 
     return render(request, 'services/add_service.html', context)
+
+
+def edit_level(request, level_id):
+    """ A view for admin to edit a level on the site """
+    level = get_object_or_404(Level, pk=level_id)
+
+    if request.method == 'POST':
+        form = LevelsForm(request.POST, instance=level)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully updated level!')
+            return redirect(reverse('service_detail', args=[level.id]))
+        else:
+            messages.error(request, 'Failed to update level. Please ensure the form is valid.')
+    else:
+        form = LevelsForm(instance=level)
+        messages.info(request, f'You are editing the {level.level_type} level')
+
+    context = {
+        'form': form,
+        'level': level,
+    }
+
+    return render(request, 'services/edit_level.html', context)
+
+
+def edit_service(request, service_id):
+    """ A view for admin to edit a service on the site """
+
+    service = get_object_or_404(Services, pk=service_id)
+
+    if request.method == 'POST':
+        form = ServicesForm(request.POST, instance=service)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully updated service!')
+            return redirect(reverse('service_detail', args=[service.id]))
+        else:
+            messages.error(request, 'Failed to update service. Please ensure the form is valid.')
+    else:
+        form = ServicesForm(instance=service)
+        messages.info(request, f'You are editing the {service.level_type} service')
+
+    context = {
+        'form': form,
+        'service': service,
+    }
+
+    return render(request, 'services/edit_service.html', context)
