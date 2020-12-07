@@ -24,6 +24,7 @@ def userprofile(request):
                             'the form is valid.'))
     else:
         form = UserProfileForm(instance=userprofile)
+
     orders = userprofile.orders.all()
 
     template = 'userprofile/userprofile.html'

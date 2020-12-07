@@ -2,8 +2,14 @@ from django import forms
 from .models import Services, Level
 
 
-class LevelsForm(forms.Form):
-    level_type = forms.CharField(max_length=15)
+class LevelsForm(forms.ModelForm):
+    class Meta:
+        model = Level
+        fields = '__all__'
+        # fields = ['level_type']
+        # widgets = {
+        #     'level_type': forms.TextInput(),
+        # }
 
 
 class ServicesForm(forms.ModelForm):

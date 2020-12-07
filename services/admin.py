@@ -15,8 +15,6 @@ class ServicesAdmin(admin.ModelAdmin):
         'level_type',
         'description',
         'price',
-        'total_reviews',
-        'total_ratings',
     )
 
 

@@ -39,32 +39,44 @@ def add_level(request):
     """ A view for admin to add a level to the site """
 
     if request.method == 'POST':
-        add_level = LevelsForm(request.POST)
-
+        form = LevelsForm(request.POST)
         # check whether it's valid:
-        if add_level.is_valid():
-            level = add_level.save(commit=False)
-            level.save()
+        if form.is_valid():
+            form.save()
             messages.success(request, 'Level successfully added!')
-            return redirect(reverse('add_service', args=[level.id]))
+            return redirect(reverse('add_level'))
         else:
             messages.error(request, 'Failed to add Level. \
                 Please ensure the form is valid.')
-            add_level = LevelsForm()
+            form = LevelsForm()
     # if a GET (or any other method) we'll create a blank form
     else:
-        add_level = LevelsForm()
+        form = LevelsForm()
 
     context = {
-        'add_level': add_level,
+        'form': form,
     }
 
     return render(request, 'services/add_level.html', context)
 
 
 def add_service(request):
-    """ Add a service to the site """
-    form = ServicesForm()
+    """ A view for admin to add a service to the site """
+
+    if request.method == 'POST':
+        form = ServicesForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Service successfully added!')
+            return redirect(reverse('add_service'))
+        else:
+            messages.error(request, 'Failed to add Service. \
+                Please ensure the form is valid.')
+            form = ServicesForm()
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = ServicesForm()
 
     context = {
         'form': form,
