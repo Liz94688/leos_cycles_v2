@@ -35,8 +35,12 @@ def service_detail(request, service_id):
     return render(request, 'services/service_details.html', context)
 
 
+@login_required
 def add_level(request):
     """ A view for admin to add a level to the site """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
 
     if request.method == 'POST':
         form = LevelsForm(request.POST)
@@ -60,8 +64,12 @@ def add_level(request):
     return render(request, 'services/add_level.html', context)
 
 
+@login_required
 def add_service(request):
     """ A view for admin to add a service to the site """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
 
     if request.method == 'POST':
         form = ServicesForm(request.POST)
@@ -85,8 +93,13 @@ def add_service(request):
     return render(request, 'services/add_service.html', context)
 
 
+@login_required
 def edit_level(request, level_id):
     """ A view for admin to edit a level on the site """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
+
     level = get_object_or_404(Level, pk=level_id)
 
     if request.method == 'POST':
@@ -109,8 +122,12 @@ def edit_level(request, level_id):
     return render(request, 'services/edit_level.html', context)
 
 
+@login_required
 def edit_service(request, service_id):
     """ A view for admin to edit a service on the site """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
 
     service = get_object_or_404(Services, pk=service_id)
 
@@ -134,8 +151,12 @@ def edit_service(request, service_id):
     return render(request, 'services/edit_service.html', context)
 
 
+@login_required
 def delete_level(request, level_id):
     """ A view for admin to delete a level on the site """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
 
     level = get_object_or_404(Level, pk=level_id)
     level.delete()
@@ -143,8 +164,12 @@ def delete_level(request, level_id):
     return redirect(reverse('service_list'))
 
 
+@login_required
 def delete_service(request, service_id):
     """ A view for admin to delete a service on the site """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
 
     service = get_object_or_404(Services, pk=service_id)
     service.delete()
