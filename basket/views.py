@@ -1,11 +1,30 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
 from django.contrib import messages
+from datetime import datetime, date, time
+from django.utils import timezone
 
+from .models import Event
+from .forms import ScheduleEventForm
 from services.models import Services
 
 
 def view_basket(request):
     """ A view to return the basket """
+
+    # if request.method == 'POST':
+    #     scheduled_event = ScheduleEventForm(request.POST)
+    #     if scheduled_event.is_valid():
+    #         event = scheduled_event.save(commit=False)
+    #         event.date_of_contact = timezone.now()
+    #         event.save()
+    #         messages.success(request, 'Event scheduled')
+    #         return render(request, 'basket/basket.html')
+    # else:
+    #     scheduled_event = ScheduleEventForm()
+
+    # context = {
+    #     'scheduled_event': scheduled_event
+    # }
 
     return render(request, 'basket/basket.html')
 

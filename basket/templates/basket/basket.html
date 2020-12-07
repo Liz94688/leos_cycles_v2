@@ -85,10 +85,25 @@
                                 </td>
                             </tr>
                         {% endfor %}
-                        <tr>
+                        <!-- <tr>
+                            <td colspan="5" class="pt-5 text-left text-grey">
+                                <h2><strong>Calendar</strong></h2>
+                                <p>Choose a date and time for our engineer to visit:</p>
+                                <div class="form-group">
+                                    <form class="content-surround" method="POST">
+
+                                        {% csrf_token %}
+                                        {{ scheduled_event.as_p }}
+
+                                        <input type="submit" value="submit" class="btn btn-all form-btn">
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr> -->
                             <td colspan="5" class="pt-5 text-right text-grey">
                                 <h6><strong>Bag Total: £{{ total|floatformat:2 }}</strong></h6>
-                                <h6>Delivery: £{{ service_charge|floatformat:2 }}</h6>
+                                <h6>Service Charge: £{{ service_charge|floatformat:2 }}</h6>
                                 <h4 class="mt-4"><strong>Grand Total: £{{ grand_total|floatformat:2 }}</strong></h4>
                                 {% if free_service_delta > 0 %}
                                     <p class="mb-1 text-danger">

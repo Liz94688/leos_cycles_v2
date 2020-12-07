@@ -14,10 +14,17 @@ https://alexpnt.github.io/2017/07/15/django-calendar/
 
 class Event(models.Model):
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
-    day = models.DateField(u'Day of the planned service', help_text=u'Day of the planned service')
-    start_time = models.TimeField(u'Starting time', help_text=u'Starting time')
-    end_time = models.TimeField(u'End time', help_text=u'End time')
-    notes = models.TextField(u'Additional notes for the engineer', help_text=u'Additional notes for the engineer', blank=True, null=True)
+    day = models.DateField()
+    start_time = models.TimeField()
+    end_time = models.TimeField()
+    notes = models.TextField(blank=True, null=True)
+
+    class Meta:
+        verbose_name = u'Scheduled Events'
+        verbose_name_plural = u'Scheduled Events'
+
+    def __str__(self):
+        return str(self.day)
 
     def check_overlap(self, fixed_start, fixed_end, new_start, new_end):
         overlap = False
@@ -41,9 +48,3 @@ class Event(models.Model):
                     raise ValidationError(
                         'There is an overlap with another scheduled service: ' + str(event.day) + ', ' + str(
                             event.start_time) + '-' + str(event.end_time))
-
-    def __str__(self):
-        return self.day
-
-    class Meta:
-        verbose_name_plural = 'Event'
