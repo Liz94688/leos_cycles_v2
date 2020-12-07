@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import CalendarEvent
+from .models import Event
 
 
-class CalendarEventAdmin(admin.ModelAdmin):
+class EventAdmin(admin.ModelAdmin):
     list_display = (
         'created_by',
         'day',
@@ -12,4 +12,4 @@ class CalendarEventAdmin(admin.ModelAdmin):
     )
 
 
-admin.site.register(CalendarEvent, CalendarEventAdmin)
+admin.site.register(Event, EventAdmin)
