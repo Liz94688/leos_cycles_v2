@@ -23,6 +23,7 @@
     <div class="row d-flex justify-content-center">
         <div class="col-10 col-md-8 col-lg-4 text-center text-grey">
             <h2 class="header-styling">Checkout</h2>
+            <hr class="w-25 mt-3">
         </div>
     </div>
 
@@ -45,7 +46,7 @@
                 <div class="row">                    
                     <div class="col-8">
                         <a href="{% url 'service_detail' item.service.id %}">
-                            <p class="my-0"><strong>{{ item.service.level_type }}</strong></p>
+                            <p class="my-0"><strong>{{ item.service.level_type }} Service</strong></p>
                         </a>
                         <p class="my-3 small text-grey">Qty: {{ item.quantity }}</p>
                     </div>
@@ -105,6 +106,17 @@
                         {% endif %}
                     </div>
                 </fieldset>
+                <!-- <fieldset class="rounded px-3 mb-5">
+                    <legend class="fieldset-label small text-grey px-2 w-auto">Date of scheduled service:</legend>
+                    {{ order_form.date | as_crispy_field }}
+                </fieldset> -->
+
+                    <!-- <p>Choose a date and time for our engineer to visit:</p>
+                    <form>
+                        <label for="date">Please type a date:</label><br>
+                        <input type="text" id="date" name="date"><br>
+                    </form> -->
+                
                 <fieldset class="px-3">
                     <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
                     <!-- A Stripe card element will go here -->

@@ -14,15 +14,15 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-12 col-md-6 text-center text-grey">
+            <div class="col-12 text-center text-grey">
                 <h2>Product Management</h2>
-                <h5 class="text-muted">Edit a Service</h5>
+                <h5 class="text-grey">Edit a Service</h5>
                 <hr class="w-25 mt-3">
             </div>
         </div>
 
         <div class="row mt-3 mb-3">
-            <div class="col-12 col-md-6">
+            <div class="col-12">
                 <form method="POST" action="{% url 'edit_service' service.id %}" class="form mb-2">
                     {% csrf_token %}
                     {{ form | crispy }}

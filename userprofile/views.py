@@ -37,7 +37,6 @@ def userprofile(request):
         'form': form,
         'orders': orders,
         'reviewed_services': reviewed_services,
-        # 'on_profile_page': True,
     }
 
     return render(request, template, context)
