@@ -10,7 +10,7 @@ from .forms import ReviewForm
 
 @login_required
 def add_review(request):
-    """ A view to return the review page"""
+    """ A view allowing the user to add a review """
 
     if request.method == 'POST':
         review_form = ReviewForm(request.POST)

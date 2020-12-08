@@ -85,22 +85,19 @@
                                 </td>
                             </tr>
                         {% endfor %}
-                        <!-- <tr>
-                            <td colspan="5" class="pt-5 text-left text-grey">
+                        <tr>
+                            <td colspan="5" class="pt-5 text-grey">
                                 <h2><strong>Calendar</strong></h2>
                                 <p>Choose a date and time for our engineer to visit:</p>
-                                <div class="form-group">
-                                    <form class="content-surround" method="POST">
-
-                                        {% csrf_token %}
-                                        {{ scheduled_event.as_p }}
-
-                                        <input type="submit" value="submit" class="btn btn-all form-btn">
-                                    </form>
-                                </div>
+                                <a href="{% url 'add_event' %}" class="btn btn-all">
+                                    <span>Schedule your service</span>
+                                </a>
+                                {% if scheduled_event %}
+                                    {{ scheduled_event.day }}
+                                {% endif %}
                             </td>
                         </tr>
-                        <tr> -->
+                        <tr>
                             <td colspan="5" class="pt-5 text-right text-grey">
                                 <h6><strong>Bag Total: £{{ total|floatformat:2 }}</strong></h6>
                                 <h6>Service Charge: £{{ service_charge|floatformat:2 }}</h6>

@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.shortcuts import render, redirect, reverse, \
+    get_object_or_404, HttpResponse
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from datetime import datetime, date, time
 from django.utils import timezone
 
 from .models import Event
@@ -8,29 +9,43 @@ from .forms import ScheduleEventForm
 from services.models import Services
 
 
+@login_required
+def add_event(request):
+    """ A view allowing the user to schedule an event """
+
+    if request.method == 'POST':
+        add_event = ScheduleEventForm(request.POST)
+
+        if add_event.is_valid():
+            event = add_event.save(commit=False)
+            event.created_by = request.user
+            event.date_of_contact = timezone.now()
+            event.save()
+            messages.success(request, 'Service scheduled successfully!')
+            return redirect(reverse('view_basket'))
+        else:
+            form = ScheduleEventForm()
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = ScheduleEventForm()
+
+    context = {
+        'form': form
+    }
+
+    return render(request, 'basket/add_event.html', context)
+
+
+@login_required
 def view_basket(request):
     """ A view to return the basket """
-
-    # if request.method == 'POST':
-    #     scheduled_event = ScheduleEventForm(request.POST)
-    #     if scheduled_event.is_valid():
-    #         event = scheduled_event.save(commit=False)
-    #         event.date_of_contact = timezone.now()
-    #         event.save()
-    #         messages.success(request, 'Event scheduled')
-    #         return render(request, 'basket/basket.html')
-    # else:
-    #     scheduled_event = ScheduleEventForm()
-
-    # context = {
-    #     'scheduled_event': scheduled_event
-    # }
 
     return render(request, 'basket/basket.html')
 
 
+@login_required
 def add_to_basket(request, item_id):
-    """ A view to add item to the basket """
+    """ A view to add an item to the basket """
     service = get_object_or_404(Services, pk=item_id)
 
     """ Get the quantity and url data from the FORM """
@@ -46,7 +61,8 @@ def add_to_basket(request, item_id):
         basket[item_id] += quantity
     else:
         basket[item_id] = quantity
-        messages.success(request, f'You have just added the { service.level_type} service to your basket.')
+        messages.success(request, f'You have just added the \
+            { service.level_type} service to your basket.')
 
     """
     Place the basket variable into the session/override
@@ -58,6 +74,7 @@ def add_to_basket(request, item_id):
     return redirect(redirect_url)
 
 
+@login_required
 def edit_basket(request, item_id):
     """ A view to edit items in the basket """
 
@@ -74,8 +91,9 @@ def edit_basket(request, item_id):
     return redirect(reverse('view_basket'))
 
 
+@login_required
 def remove_from_basket(request, item_id):
-    """ Remove an item from the basket """
+    """ A view to remove an item from the basket """
     try:
         basket = request.session.get('basket', {})
         basket.pop(item_id)

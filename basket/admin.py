@@ -6,8 +6,9 @@ class EventAdmin(admin.ModelAdmin):
     list_display = (
         'created_by',
         'day',
-        'start_time',
-        'end_time',
+        'month',
+        'year',
+        'time_period',
         'notes',
     )
 
