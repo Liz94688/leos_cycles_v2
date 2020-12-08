@@ -6,14 +6,9 @@ from django.utils import timezone
 
 class Review(models.Model):
 
-    CHOICES = [
-        (i, i) for i in range(0, 6)
-    ]
-
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
-    level_type = models.ForeignKey(Services, on_delete=models.CASCADE)
-    rating = models.IntegerField(blank=False, choices=CHOICES)
+    reviewed_level_type = models.ForeignKey(Services, on_delete=models.CASCADE)
     message = models.TextField()
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="review_author")
     date_of_contact = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
@@ -21,4 +16,4 @@ class Review(models.Model):
 
     class Meta:
         verbose_name_plural = 'Reviews'
-        ordering = ('level_type', '-rating',)
+        ordering = ('reviewed_level_type',)

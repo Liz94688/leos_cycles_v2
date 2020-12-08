@@ -1,4 +1,4 @@
-from django.shortcuts import render,  redirect, reverse, \
+from django.shortcuts import render, redirect, reverse, \
     get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -25,7 +25,7 @@ def service_detail(request, service_id):
     """ A view to return the details of each service """
 
     service = get_object_or_404(Services, pk=service_id)
-    reviews = Review.objects.filter(level_type=service_id).order_by('-date_of_contact')
+    reviews = Review.objects.filter(reviewed_level_type=service_id).order_by('-date_of_contact')
 
     context = {
         'service': service,

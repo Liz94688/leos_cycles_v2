@@ -1,14 +1,12 @@
 from django.contrib import admin
 from .models import Review
 
-# Register your models here.
-
 
 class ReviewAdmin(admin.ModelAdmin):
     list_display = (
+        'reviewed_level_type',
+        'message',
         'author',
-        'level_type',
-        'rating',
         'date_of_contact',
     )
 

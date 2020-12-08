@@ -6,10 +6,6 @@ class LevelsForm(forms.ModelForm):
     class Meta:
         model = Level
         fields = '__all__'
-        # fields = ['level_type']
-        # widgets = {
-        #     'level_type': forms.TextInput(),
-        # }
 
 
 class ServicesForm(forms.ModelForm):
