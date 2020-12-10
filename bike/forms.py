@@ -28,7 +28,7 @@ class CreateBikeForm(forms.ModelForm):
             'frame_type': 'Frame Type',
             'handlebar_type': 'Handlebar Type',
             'wheel_size': 'Wheel Size',
-            'owner_description': 'Note down any specific details about the bike',
+            'owner_description': 'Any specific details about the bike',
             'age': 'Age',
             'current': 'Current',
         }

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block extra_title %}  | Reviews {% endblock %}
+{% block extra_title %}  | Add a Review {% endblock %}
 
 {% block page_header %}
     <div class="container header-container">
@@ -12,22 +12,28 @@
 
 {% block content %}
 
-<div class="container">
-    <div class="d-flex row justify-content-center p-2 text-center">
-        <h2>Review</h2>
-    </div>
-
-    <div class="row mt-3 mb-3">
-        <div class="col-12 col-md-6">
-            <form method="POST" class="form mb-2">
-                {% csrf_token %}
-                {{ review_form | crispy }}
-                <div class="text-right">
-                    <button class="btn btn-all" type="submit">Add Review</button>
-                </div>
-            </form>
+<div class="container mb-4">
+    <div class="row">
+        <div class="col">
+            <h2 class="text-center text-grey">Add a Review</h2>
+            <hr class="w-25 mt-3">
         </div>
     </div>
-</div>
 
+    <div class="d-flex row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8 text-center">
+            <div class="form-group">
+                <form class="content-surround form-background" method="POST">
+                    {% csrf_token %}
+                    {{ review_form | crispy }}
+                    <div>
+                        <a href="{% url 'userprofile' %}" class="btn btn-all form-btn">
+                            <span>Return to User Profile</span>
+                        </a>
+                        <button class="btn btn-all form-btn" type="submit">Add Review</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 {% endblock %}

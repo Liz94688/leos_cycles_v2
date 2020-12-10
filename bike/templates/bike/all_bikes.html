@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block extra_title %}  | Bikes {% endblock %}
+{% block extra_title %}  | Bike {% endblock %}
 
 {% block page_header %}
     <div class="container header-container">
@@ -15,69 +15,44 @@
 <div class="container">
     <div class="row">
         <div class="col-12 text-center text-grey">
-            <h2 class="header-styling">Stored Bikes</h2>
+            <h2>Bike</h2>
             <hr class="w-25 mt-3">
         </div>
-    </div>    
-    <div class="row">
+    </div>   
+    <div class="d-flex row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8 text-center">
         {% if user.is_authenticated %}
-            {% if not all_bikes %}
-            <div class="col-12 text-center text-grey mt-2 mb-4">
-                <h5 class="sub-heading-styling">There are currently no bikes recorded on your profile.</h5>
-                <div class="text-center mt-5 mb-5">
-                    <p>Have a new bike you want to include?</p>
-                    <a href="{% url 'add_bike' %}" class="btn btn-all btn-sm text-grey" role="button">Add bike</a>
-                </div> 
-            </div>
-            {% else %}
-                {% for bike in all_bikes %}
-                    {% if bike.current %}
-                    <h3 class="mt-4 mb-4 text-grey">Current bike:</h3>
-                        <div class="col-sm-12 col-md-10 text-center mt-3">
-                            <div class="text-block text-grey">
-                                <p class="font-weight-bold">{{ bike.bike_type }} Bike - Aged {{ bike.age }} years old</p>   
-                                <p class="font-weight-bold">{{ bike.frame_type }} Frame - with {{ bike.handlebar_type }} handlebars</p>
-                                <small>
-                                    <a href="{% url 'bike_details' bike.id %}" 
-                                        class="btn btn-all btn-sm">
-                                        View Details
-                                    </a>
-                                </small>
-                            </div>
-                            <!-- <div class="mb-3 d-flex justify-content-around align-items-baseline">
-                                <form class="form" action="{% url 'add_to_basket' bike.id %}" method="POST">
-                                    {% csrf_token %}
-                                    <input name="quantity" type="hidden" value="1">
-                                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
-                                    <input type="submit" class="btn btn-all px-3" value="Add to Order">
-                                </form>
-                            </div> -->
-                        </div>
-                    {% else %}
-                        <h3 class="mt-4 mb-4 text-grey">Additional bikes:</h3>
-                        <div class="col-sm-12 col-md-10 text-center mt-3">
-                            <div class="text-block text-grey">
-                                <p class="font-weight-bold">{{ bike.bike_type }} Bike - Aged {{ bike.age }} years old</p>   
-                                <p class="font-weight-bold">{{ bike.frame_type }} Frame - with {{ bike.handlebar_type }} handlebars</p>
-                                <small>
-                                    <a href="{% url 'bike_details' bike.id %}" 
-                                        class="btn btn-all btn-sm">
-                                        View Details
-                                    </a>
-                                </small>   
-                            </div>
-                        </div>
-                        <hr>
-                    {% endif %} 
-                {% endfor %}
-            {% endif %}
-            <div class="col-sm-12 col-md-10 text-center mt-3">
-                <div class="text-center text-grey mt-5 mb-5">
-                    <p class="mb-0">Want to include another bike?</p>
-                    <a href="{% url 'add_bike' %}" class="btn btn-all btn-sm text-grey mt-2" role="button">Add bike</a>
-                </div>
-            </div>
+            {% for bike in all_bikes %}
+                {% if bike.current %}
+                    <h4 class="mt-4 mb-4 text-grey">Current bike:</h4>
+                    <i class="fas fa-bicycle fa-lg my-3"></i>
+                    <div class="text-block text-grey">
+                        <p class="font-weight-bold">{{ bike.bike_type }} Bike - Aged {{ bike.age }} years old</p>   
+                        <p class="font-weight-bold">{{ bike.frame_type }} Frame - with {{ bike.handlebar_type }} handlebars</p>
+                        <small>
+                            <a href="{% url 'bike_details' bike.id %}" 
+                                class="btn btn-all btn-sm">
+                                View Details
+                            </a>
+                        </small>
+                    </div>
+                {% else %}
+                    <h4 class="mt-4 mb-4 text-grey">Previously Recorded Bike:</h4>
+                    <i class="fas fa-bicycle fa-lg my-3"></i>
+                    <div class="text-block text-grey">
+                        <p class="font-weight-bold">{{ bike.bike_type }} Bike - Aged {{ bike.age }} years old</p>   
+                        <p class="font-weight-bold">{{ bike.frame_type }} Frame - with {{ bike.handlebar_type }} handlebars</p>
+                        <small>
+                            <a href="{% url 'bike_details' bike.id %}" 
+                                class="btn btn-all btn-sm">
+                                View Details
+                            </a>
+                        </small>   
+                    </div>
+                {% endif %} 
+            {% endfor %}
         {% endif %}
+        </div>
     </div>
 </div>
 

@@ -45,7 +45,6 @@ def add_bike(request):
     if request.method == 'POST':
         add_bike = CreateBikeForm(request.POST)
 
-        # check whether it's valid:
         if add_bike.is_valid():
             bike = add_bike.save(commit=False)
             bike.owner = request.user
@@ -79,7 +78,6 @@ def edit_bike(request, bike_id):
     if request.method == 'POST':
         form = CreateBikeForm(request.POST, instance=bike)
 
-        # check whether it's valid:
         if form.is_valid():
             form.save()
             messages.success(request, 'Bike successfully edited!')
@@ -108,7 +106,7 @@ def delete_bike(request, bike_id):
         return redirect(reverse('home'))
 
     bike = get_object_or_404(Bike, pk=bike_id)
-    bike.remove(bike)
+    bike.delete()
 
     messages.info(request, f'{bike.bike_type} was successfully deleted.')
-    return redirect(reverse('all_bikes'))
+    return redirect(reverse('userprofile'))

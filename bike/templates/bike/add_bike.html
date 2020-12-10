@@ -16,51 +16,36 @@
     <div class="row">
         <div class="col-12 text-center text-grey">
             <h2>Add Bike</h2>
-            <p class="sub-heading-styling">First bike? No problem, just click on the button below to add your bike to your profile </p>
+            <p class="sub-heading-styling">First bike? No problem, just complete the form below and 'Add Bike' to your profile.  </p>
             <hr class="w-25 mt-3">
         </div>
     </div>
 
-    <div class="row mt-3 mb-3">
-        <!--Add bike form-->
-        <div class="col-12 align-items-center mb-3 px-2">
-           <div class="accordion" id="accordionAddBikeForm">
-                <div class="card">
-                    <div class="card-header" id="headingAddBike">
-                    <h2 class="mb-0 text-center text-grey">
-                        <a class="btn text-center btn-all btn-lg collapsed"
-                         data-toggle="collapse" data-target="#collapseAddBike"
-                         aria-expanded="false" aria-controls="collapseAddBike">
-                            <h3>Add a New Bike</h3>
-                        </a>
-                    </h2>
-                    </div>
-                    <div id="collapseAddBike" class="collapse" aria-labelledby="headingAddBike"
-                         data-parent="#accordionAddBikeForm">
-                        <div class="card-body">
-                            <form action="{% url 'add_bike' %}" method="POST" id="add_bike">
-                                {% csrf_token %}
+    <div class="d-flex row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8 text-center">
+            <div class="form-group">
+                <form class="content-surround form-background" method="POST">
+                    {% csrf_token %}
 
-                                {{ add_bike.bike_type | as_crispy_field }}
-                                {{ add_bike.frame_type | as_crispy_field }}
-                                {{ add_bike.handlebar_type | as_crispy_field }}
-                                {{ add_bike.wheel_size | as_crispy_field }}
-                                {{ add_bike.owner_description | as_crispy_field }}
-                                {{ add_bike.age | as_crispy_field }}
-                                <p class="text-center text-grey">
-                                    Please tick if this is your current bike
-                                    {{ add_bike.current | as_crispy_field }}
-                                </p>
-                                <div class="text-right mt-5 mb-2">
-                                    <input type="submit" value="add bike" class="btn btn-all">
-                                </div>
-                            </form>
-                        </div>
+                    {{ add_bike.bike_type | as_crispy_field }}
+                    {{ add_bike.frame_type | as_crispy_field }}
+                    {{ add_bike.handlebar_type | as_crispy_field }}
+                    {{ add_bike.wheel_size | as_crispy_field }}
+                    {{ add_bike.owner_description | as_crispy_field }}
+                    {{ add_bike.age | as_crispy_field }}
+                    <p class="text-center text-black">
+                        Please tick if this is your current bike
+                        {{ add_bike.current | as_crispy_field }}
+                    </p>
+                    <div>
+                        <a href="{% url 'userprofile' %}" class="btn btn-all form-btn">
+                            <span>Return to User Profile</span>
+                        </a>
+                        <button class="btn btn-all form-btn" type="submit">Add Bike</button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
-</div>
 
 {% endblock %}

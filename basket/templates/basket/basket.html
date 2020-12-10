@@ -14,11 +14,11 @@
 
 {% block content %}
 
+{% include 'services/includes/delivery_banner.html' %}
 <div class="container">
-    {% include 'services/includes/delivery_banner.html' %}
     <div class="row d-flex justify-content-center">
         <div class="col-12 text-center">
-            <h2 class="header-styling text-grey">Basket</h2>
+            <h2 class="text-grey">Basket</h2>
             <hr class="w-25 mt-3">
             {% if basket_items %}
                 <div class="table-responsive rounded">
@@ -26,7 +26,6 @@
                         <thead class="text-grey">
                             <tr>
                                 <th scope="col">Service details</th>
-                                <th scope="col">Recorded Bike</th>
                                 <th scope="col">Price</th>
                                 <th scope="col">Qty</th>
                                 <th scope="col">Sub Total</th>
@@ -38,16 +37,6 @@
                             <tr class="text-grey">
                                 <td class="py-3">
                                     <p class="my-0">{{ item.service.level_type }}</p>
-                                </td>
-                                <td class="py-3">
-                                <!-- {% if item.bike.current %}
-                                    <p class="my-0">Type: {{ item.bike.bike_type }}</p>
-                                    <p class="my-0">Aged: {{ item.bike.age }}</p>
-                                {% else %}
-                                    <a href="{% url 'all_bikes' %}" class="btn add_bike_btn mt-3">
-                                        <span>Add Bike</span>
-                                    </a>
-                                {% endif %} -->
                                 </td>
                                 <td class="py-3">
                                     <p class="my-0">£{{ item.service.price }}</p>
@@ -91,19 +80,6 @@
                             </tr>
                         {% endfor %}
                         <tr>
-                            <td colspan="5" class="pt-5 text-grey">
-                                <!-- <h2><strong>Calendar</strong></h2>
-                                <p>Choose a date and time for our engineer to visit:</p>
-                                <form>
-                                    <label for="date">Please type a date:</label><br>
-                                    <input type="text" id="date" name="date"><br>
-                                </form> -->
-                                <!-- {% if scheduled_event %}
-                                    {{ scheduled_event.day }}
-                                {% endif %} -->
-                            </td>
-                        </tr>
-                        <tr>
                             <td colspan="5" class="pt-5 text-right text-grey">
                                 <h6><strong>Bag Total: £{{ total|floatformat:2 }}</strong></h6>
                                 <h6>Service Charge: £{{ service_charge|floatformat:2 }}</h6>
@@ -131,7 +107,7 @@
                     </table>
                 </div>
             {% else %}
-                <p class="lead mb-3">Your basket is empty</p>
+                <p class="lead text-grey mb-3">Your basket is empty.</p>
                 <a href="{% url 'service_list' %}" class="btn btn-all">
                     <span>Return to Services</span>
                 </a>

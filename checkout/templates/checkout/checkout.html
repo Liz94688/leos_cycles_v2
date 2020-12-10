@@ -18,21 +18,21 @@
 
 {% block content %}
 
+{% include 'services/includes/delivery_banner.html' %}
 <div class="container">
-    {% include 'services/includes/delivery_banner.html' %}
     <div class="row d-flex justify-content-center">
-        <div class="col-10 col-md-8 col-lg-4 text-center text-grey">
-            <h2 class="header-styling">Checkout</h2>
+        <div class="col-10 col-md-8 col-lg-4 text-center">
+            <h2 class="text-grey">Checkout</h2>
             <hr class="w-25 mt-3">
         </div>
     </div>
 
     <div class="row justify-content-center">
         <div class="col-10 text-center text-grey">
-            <h3 class="sub-heading-styling">Order Summary</h3>
+            <h3 class="mx-2 my-4">Order Summary</h3>
         </div>
 
-        <div class="col-10 col-lg-6 order-lg-last">
+        <div class="col-10 col-lg-6">
             <p class="text-grey">Order Summary ({{ product_count }} items in basket)</p>
             <div class="row">
                 <div class="col-7 offset-2">
@@ -48,7 +48,7 @@
                         <a href="{% url 'service_detail' item.service.id %}">
                             <p class="my-0"><strong>{{ item.service.level_type }} Service</strong></p>
                         </a>
-                        <p class="my-3 small text-grey">Qty: {{ item.quantity }}</p>
+                        <p class="my-3 small offset-1 text-grey">Quantity: {{ item.quantity }}</p>
                     </div>
                     <div class="col-4 text-right">
                         <p class="my-0 small text-grey">£{{ item.service.price }}</p>
@@ -75,8 +75,8 @@
             </div>
         </div>
 
-        <div class="col-10 col-lg-6 mt-3 text-grey">
-            <p>Please fill out the form below:</p>
+        <div class="col-10 col-lg-6 text-grey contact-details-form">
+            <p class="px-2 py-2">Please fill out the form below so our engineers know where the planned service on your bike will be taking place:</p>
             <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                 {% csrf_token %}
 
@@ -106,16 +106,19 @@
                         {% endif %}
                     </div>
                 </fieldset>
+                <fieldset class="rounded px-3 mb-5">
+                    <legend class="fieldset-label small text-grey px-2 w-auto">Service Date</legend>
+                    <p class="px-2 py-2">Please input an available date for your chosen service that suits you. 
+                        Our engineers will be in touch to arrange a time:</p>
+                </fieldset>
 
-
-                    <!-- <p>Choose a date and time for our engineer to visit:</p>
-                    <form>
+                    <!-- <form>
                         <label for="date">Please type a date:</label><br>
                         <input type="text" id="date" name="date"><br>
                     </form> -->
                 
                 <fieldset class="px-3">
-                    <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
+                    <legend class="fieldset-label small px-2 w-auto">Payment</legend>
                     <!-- A Stripe card element will go here -->
                     <div class="mb-3" id="card-element"></div>
                     <!-- Used to display form errors -->
@@ -141,7 +144,7 @@
                         <span class="icon">
                             <i class="fas fa-exclamation-circle"></i>
                         </span>
-                        <span>The figure of <strong>${{ grand_total|floatformat:2 }}</strong> will be taken from your card.</span>
+                        <span>The figure of <strong>£{{ grand_total|floatformat:2 }}</strong> will be taken from your card.</span>
                     </p>
                 </div>
             </form>            

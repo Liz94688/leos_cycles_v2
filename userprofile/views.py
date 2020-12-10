@@ -7,6 +7,7 @@ from .forms import UserProfileForm
 
 from checkout.models import Order
 from reviews.models import Review
+from bike.models import Bike
 
 
 @login_required
@@ -17,6 +18,8 @@ def userprofile(request):
 
     reviewed_services = list(Review.objects.filter(
         author=request.user))
+
+    bikes = Bike.objects.filter(owner=request.user)
 
     if request.method == 'POST':
         form = UserProfileForm(request.POST, instance=userprofile)
@@ -37,6 +40,7 @@ def userprofile(request):
         'form': form,
         'orders': orders,
         'reviewed_services': reviewed_services,
+        'bikes': bikes,
     }
 
     return render(request, template, context)

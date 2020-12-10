@@ -12,22 +12,26 @@
 
 {% block content %}
 
+{% include 'services/includes/delivery_banner.html' %}
 <div class="container">
-    {% include 'services/includes/delivery_banner.html' %}
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-10 text-center">
+    <div class="row d-flex justify-content-center">
+        <div class="col-10 col-lg-8 text-center">
             <div class="container service-cards text-grey">
                 <div class="card mt-3 px-2">
-                    <h2 class="header-styling">{{ service.level_type }}</h2>
+                    <h2 class="mt-3">{{ service.level_type }}</h2>
+                    <hr>
                     <p>{{ service.description }}</p>
-                    <p>£{{ service.price }}</p>
+                    <p class="my-2 mx-2">£{{ service.price }}</p>
 
                     <form action="{% url 'add_to_basket' service.id %}" method="POST">
                         {% csrf_token %}
                         <div class="form-row">
                             <div class="col-12">
                                 <br>
-                                <p><strong>Quantity:</strong></p>
+                                <br>
+                                <hr class="w-25 mt-3">
+                                <p class="my-4 mx-4">Have more than one bike that needs looking at? No problem!</p>
+                                <p class="my-4 mx-4"><small>You can increase the service quantity here:</small></p>
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -73,17 +77,16 @@
         </div>   
     </div>
     <br>
-    <hr>
-    <br>
+    <hr class="w-25 mt-3">
     {% if reviews %}
-    <div class="row justify-content-center text-grey">
-        <div class="col-12 col-md-12 text-center">
+    <div class="row d-flex justify-content-center text-grey">
+        <div class="col-10 col-md-8 text-center">
             <h3 class="header-styling">Reviews</h3>
             <div class="container service-cards mt-3">
                 {% for review in reviews %}
                 <div class="card mx-2 my-2">
-                    <h5 class="sub-heading-styling"> {{ review.level_type }}</h5>
-                    <blockquote class="p-4">
+                    <h5 class="mt-3">{{review.reviewed_level_type}}</h5>
+                    <blockquote class="p-3">
                         <i class="fa fa-quote-left fa-xs" aria-hidden="true"></i> {{ review.message }} <i class="fa fa-quote-right fa-xs" aria-hidden="true"></i>
                     </blockquote>
                     <p class="text-right pr-3"><small>{{ review.author }} - {{ review.date_of_contact|date:"d M, Y" }}</small></p>    

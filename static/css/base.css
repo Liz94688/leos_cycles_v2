@@ -125,6 +125,12 @@ a {
     margin-bottom: 1.5rem;
 }
 
+/* Delivery Banner */
+.delivery-banner {
+    background: #787467;
+    padding: 5px;
+}
+
 /* Buttons */
 .btn {
     transition: all .15s ease-in-out;
@@ -166,7 +172,7 @@ a {
     text-align: center;
 }
 
-/* Allauth form formatting */
+/* Allauth Form Formatting */
 .allauth-form-inner-content p {
     margin-top: 1.5rem; /* mt-4 */
     color: #787467;
@@ -214,7 +220,7 @@ a {
 	color: #66645A; /* text-info */
 }
 
-/* Form Styling - forms and cards */
+/* Form Styling - for all forms */
 .content-surround {
   padding: 25px;
   padding-top: 50px;
@@ -254,17 +260,76 @@ label.requiredField {
     color: #787467;
 }
 
-/* Services App */
-.delivery-banner {
-    background: #787467;
-    padding: 5px;
+/* Contact Page */
+@media(min-width:992px) {
+    .contact-info-lg {
+        display: none;
+    }
 }
 
-/* Checkout Success */
-.checkout-surround {
-    padding: 15px;
-    border-radius: 0px;
-    border: 1px solid rgba(0,0,0,.500)
+/* Add a Review Page */
+#div_id_reviewed_level_type
+label.requiredField {
+    color: #000;
+    width: 100%;
+    text-align: left;
+}
+
+#div_id_message
+label.requiredField {
+    color: #000;
+    width: 100%;
+    text-align: left;
+}
+
+/* Add a Bike Page */
+#div_id_bike_type
+label.requiredField {
+    color: #000;
+    width: 100%;
+    text-align: left;
+}
+
+#div_id_frame_type
+label.requiredField {
+    color: #000;
+    width: 100%;
+    text-align: left;
+}
+
+#div_id_handlebar_type
+label.requiredField {
+    color: #000;
+    width: 100%;
+    text-align: left;
+}
+
+#div_id_wheel_size
+label.requiredField {
+    color: #000;
+    width: 100%;
+    text-align: left;
+}
+
+#div_id_owner_description
+label.requiredField {
+    color: #000;
+    width: 100%;
+    text-align: left;
+}
+
+#div_id_age
+label.requiredField {
+    color: #000;
+    width: 100%;
+    text-align: left;
+}
+
+#div_id_current
+label.requiredField {
+    color: #000;
+    width: 100%;
+    text-align: left;
 }
 
 /* Media Queries */

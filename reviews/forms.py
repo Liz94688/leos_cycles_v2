@@ -20,7 +20,7 @@ class ReviewForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         placeholders = {
             'reviewed_level_type': 'Service Level',
-            'message': 'Leave your review here:',
+            'message': 'Leave Your Review Here:',
         }
 
         self.fields['reviewed_level_type'].widget.attrs['autofocus'] = True
