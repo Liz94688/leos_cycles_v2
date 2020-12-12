@@ -116,6 +116,7 @@
             <div class="col-12">
                 {% if bikes %}
                     <h3 class="mt-4 mb-3">Recorded Bike</h3>
+                    <br>
                     {% for bike in bikes %}
                         <div>
                             <h5>Created on: <small>{{ bike.bike_creation_date }}</small></h5>
@@ -147,6 +148,7 @@
                     <hr class="w-25 mt-3">
                     <div class="col-12 px-0">
                         <h3 class="text-grey mt-4 mb-3">Recorded Bike</h3>
+                        <br>
                         <div class="mb-3">
                             <p>Haven't recorded a bike yet?</p>
                             <a href="{% url 'add_bike' %}" class="btn btn-all">
