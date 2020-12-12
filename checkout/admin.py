@@ -33,6 +33,7 @@ class OrderAdmin(admin.ModelAdmin):
         'street_address1',
         'street_address2',
         'county',
+        'preferred_service_date',
         'delivery_cost',
         'order_total',
         'grand_total',
@@ -47,6 +48,7 @@ class OrderAdmin(admin.ModelAdmin):
         'order_total',
         'delivery_cost',
         'grand_total',
+        'preferred_service_date',
     )
 
     ordering = ('-date',)

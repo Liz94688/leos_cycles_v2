@@ -110,6 +110,7 @@
                     <legend class="fieldset-label small text-grey px-2 w-auto">Service Date</legend>
                     <p class="px-2 py-2">Please input an available date for your chosen service that suits you. 
                         Our engineers will be in touch to arrange a time:</p>
+                    {{ order_form.preferred_service_date | as_crispy_field }}
                 </fieldset>
 
                     <!-- <form>

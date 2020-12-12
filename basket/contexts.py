@@ -4,13 +4,6 @@ from django.shortcuts import get_object_or_404
 
 from services.models import Services
 
-"""
-
-I leart about how context processors work from the CI tutorials
-Example from the tutorials source code was used and edited to suit.
-
-"""
-
 
 def basket_contents(request):
 
