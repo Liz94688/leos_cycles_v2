@@ -29,7 +29,7 @@ class CreateBikeForm(forms.ModelForm):
             'handlebar_type': 'Handlebar Type',
             'wheel_size': 'Wheel Size',
             'owner_description': 'Any specific details about the bike',
-            'age': 'Age',
+            'age': 'Age - Years',
             'current': 'Current',
         }
 

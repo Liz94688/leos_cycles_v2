@@ -118,14 +118,19 @@
                     <h3 class="mt-4 mb-3">Recorded Bike</h3>
                     {% for bike in bikes %}
                         <div>
-                            <p><strong>Created on:</strong> {{ bike.bike_creation_date }}</p>
-                            <p><strong>Current Bike:</strong> {{ bike.current }}</p>
-                            <p><strong>Bike Frame:</strong> {{ bike.frame_type }}</p>
-                            <p><strong>Handlebar Type:</strong> {{ bike.handlebar_type }}</p>
-                            <p><strong>Wheel Size:</strong> {{ each_bike.wheel_size }}</p>
-                            <p><strong>Owner Description:</strong> {{ bike.owner_description }}</p>
-                            <p><strong>Age:</strong> {{ bike.age }} year old</p>
+                            <h5>Created on: <small>{{ bike.bike_creation_date }}</small></h5>
+                            <h5>Current Bike: <small>{{ bike.current }}</small></h5>
+                            <h5>Bike Frame: <small>{{ bike.frame_type }}</small></h5>
+                            <h5>Handlebar Type: <small>{{ bike.handlebar_type }}</small></h5>
+                            <h5>Wheel Size: <small>{{ bike.wheel_size }}</small></h5>
+                            <h5>Owner Description: <small>{{ bike.owner_description }}</small></h5>
+                            {% if bike.age == 1 %}
+                                <h5>Age: <small>{{ bike.age }} year old</small></h5>
+                            {% else %}
+                                <h5>Age: <small>{{ bike.age }} years old</small></h5>
+                            {% endif %}
                         </div>
+                        <br>
                         <hr class="w-25 mt-3">
                         <div class="col-12 px-0">
                             <div class="mb-3">
@@ -137,11 +142,16 @@
                         </div>
                     {% endfor %}
                 {% else %}
-                    <h3 class="text-grey mt-4 mb-3">Recorded Bike</h3>
-                    <div class="button mb-3">Haven't recorded a bike yet?
-                        <a class="text-grey" href="{% url 'add_bike' %}"> 
-                            Add your bike now!
-                        </a>
+                    <br>
+                    <hr class="w-25 mt-3">
+                    <div class="col-12 px-0">
+                        <h3 class="text-grey mt-4 mb-3">Recorded Bike</h3>
+                        <div class="mb-3">
+                            <p>Haven't recorded a bike yet?</p>
+                            <a href="{% url 'add_bike' %}" class="btn btn-all">
+                                <span>Add your bike now!</span> 
+                            </a>
+                        </div>
                     </div>
                 {% endif %}
             </div>
