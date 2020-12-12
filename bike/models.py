@@ -57,15 +57,23 @@ class FrameType(models.Model):
 
 class Bike(models.Model):
 
-    WHEEL_SIZE = [
-        (i, i) for i in range(0, 30)
-    ]
+    FRAME_SIZE = (
+            ('XXS', 'XX Small'),
+            ('XS', 'X Small'),
+            ('S', 'Small'),
+            ('M', 'Medium'),
+            ('L', 'Large'),
+            ('XL', 'X Large'),
+            ('XXL', 'XX Large'),
+            ('XXXL', 'XXX Large'),
+
+        )
 
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     bike_type = models.ForeignKey(BikeType, on_delete=models.CASCADE)
     frame_type = models.ForeignKey(FrameType, on_delete=models.CASCADE)
     handlebar_type = models.ForeignKey(HandlebarType, on_delete=models.CASCADE)
-    wheel_size = models.IntegerField(blank=False, choices=WHEEL_SIZE)
+    frame_size = models.CharField(max_length=15, default='Small', choices=FRAME_SIZE)
     owner_description = models.TextField()
     age = models.IntegerField(default=0)
     current = models.BooleanField(default=True, null=False, blank=False)

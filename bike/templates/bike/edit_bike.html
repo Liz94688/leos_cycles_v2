@@ -29,7 +29,59 @@
                 {{ form.bike_type | as_crispy_field }}
                 {{ form.frame_type | as_crispy_field }}
                 {{ form.handlebar_type | as_crispy_field }}
-                {{ form.wheel_size | as_crispy_field }}
+                {{ form.frame_size | as_crispy_field }}
+                <!-- Trigger the modal with a button -->
+                <button type="button" class="btn btn-all form-btn" 
+                        data-toggle="modal" data-target="#myModal">Bike Frame Size Guide</button>
+                <!-- Modal -->
+                <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                        <div class="modal-header justify-content-center">
+                            <!-- <button type="button" class="close btn btn-all form-btn" data-dismiss="modal">&times;</button> -->
+                            <h4 class="modal-title text-grey">Bike Frame Size Guide</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p class="text-grey">Bike Frame Size Guide</p>
+                            <div class="table-responsive rounded">
+                                <table class="table table-sm table-borderless">
+                                    <thead class="text-grey">
+                                        <tr>
+                                            <th scope="col">Road Bike Frame Size (CM)</th>
+                                            <th scope="col">Mountain Bike Frame Size (CM)</th>
+                                        </tr>
+                                    </thead>
+                                    <tr class="text-grey">
+                                        <td class="py-3">
+                                            <p class="my-0">48cm(XX SMALL)</p>
+                                            <p class="my-0">51cm(SMALL)</p>
+                                            <p class="my-0">54cm(MEDIUM)</p>
+                                            <p class="my-0">56cm(LARGE)</p>
+                                            <p class="my-0">57cm(X LARGE)</p>
+                                            <p class="my-0">60cm(XX LARGE)</p>
+                                            <p class="my-0">63cm(XXX LARGE)</p>
+                                        </td>
+                                        <td class="py-3">
+                                            <p class="my-0">15"(X SMALL)</p>
+                                            <p class="my-0">16"(SMALL)</p>
+                                            <p class="my-0">17"(MEDIUM)</p>
+                                            <p class="my-0">18"(MEDIUM)</p>
+                                            <p class="my-0">19"(LARGE)</p>
+                                            <p class="my-0">20"(LARGE)</p>
+                                            <p class="my-0">21"(X LARGE)</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-all form-btn" data-dismiss="modal">Close</button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
                 {{ form.owner_description | as_crispy_field }}
                 {{ form.age | as_crispy_field }}
                 <p class="text-center text-black">
