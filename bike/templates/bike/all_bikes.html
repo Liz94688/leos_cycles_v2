@@ -30,6 +30,10 @@
                         <p class="font-weight-bold">{{ bike.bike_type }} Bike - Aged {{ bike.age }} years old</p>   
                         <p class="font-weight-bold">{{ bike.frame_type }} Frame - with {{ bike.handlebar_type }} handlebars</p>
                         <small>
+                            <a href="{% url 'userprofile' %}" 
+                                class="btn btn-all btn-sm">
+                                Return to User Profile
+                            </a>
                             <a href="{% url 'bike_details' bike.id %}" 
                                 class="btn btn-all btn-sm">
                                 View Details
@@ -46,6 +50,10 @@
                             <a href="{% url 'bike_details' bike.id %}" 
                                 class="btn btn-all btn-sm">
                                 View Details
+                            </a>
+                            <a href="{% url 'userprofile' %}" 
+                                class="btn btn-all btn-sm">
+                                Return to User Profile
                             </a>
                         </small>   
                     </div>

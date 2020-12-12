@@ -2,38 +2,8 @@ from django.shortcuts import render, redirect, reverse, \
     get_object_or_404, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.utils import timezone
 
-from .models import Event
-from .forms import ScheduleEventForm
 from services.models import Services
-
-
-@login_required
-def add_event(request):
-    """ A view allowing the user to schedule an event """
-
-    if request.method == 'POST':
-        add_event = ScheduleEventForm(request.POST)
-
-        if add_event.is_valid():
-            event = add_event.save(commit=False)
-            event.created_by = request.user
-            event.date_of_contact = timezone.now()
-            event.save()
-            messages.success(request, 'Service scheduled successfully!')
-            return redirect(reverse('view_basket'))
-        else:
-            form = ScheduleEventForm()
-    # if a GET (or any other method) we'll create a blank form
-    else:
-        form = ScheduleEventForm()
-
-    context = {
-        'form': form
-    }
-
-    return render(request, 'basket/add_event.html', context)
 
 
 @login_required

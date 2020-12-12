@@ -162,6 +162,17 @@ a {
     text-transform: uppercase;
 }
 
+.btn-admin {
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+    padding: 5px;
+    border: 1px solid #787467;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
 /* Quantity Select Buttons */
 .update-quantity,
 .remove-item {
@@ -267,6 +278,22 @@ label.requiredField {
     }
 }
 
+/* Basket */
+/* @media(max-width:991px) {
+    .table-basket
+    td.py-3 p {
+        font-size: 0.8rem;
+    }
+
+
+@media(max-width:991px) {
+    .table-basket
+    .input-group {
+        font-size: 0.5rem;
+        flex-wrap: nowrap;
+    }
+} */
+
 /* Add a Review Page */
 #div_id_reviewed_level_type
 label.requiredField {
@@ -333,13 +360,13 @@ label.requiredField {
 }
 
 /* Media Queries */
-@media(min-width:992px) {
+@media (min-width:992px) {
     .header-container {
         padding-top: 120px;
     }
 }
 
-@media(max-width:991px) {
+@media (max-width:991px) {
     .header-container {
         padding-top: 80px;
     }

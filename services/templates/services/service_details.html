@@ -67,9 +67,9 @@
                         </div>
                     </form> 
                     {% if request.user.is_superuser %}
-                        <small class="mb-2">
-                            <a href="{% url 'edit_service' service.id %}">Edit</a> | 
-                            <a class="text-danger" href="{% url 'delete_service' service.id %}">Delete</a>
+                        <small class="py-3">
+                            <a href="{% url 'edit_service' service.id %}" class="btn btn-admin" role="button">Edit</a> | 
+                            <a href="{% url 'delete_service' service.id %}" class="text-danger btn btn-admin" role="button">Delete</a>
                         </small>
                     {% endif %}
                 </div>

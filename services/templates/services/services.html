@@ -28,9 +28,9 @@
                         {% endif %}
                     </div>
                     {% if request.user.is_superuser %}
-                        <small class="ml-3">
-                            <a href="{% url 'edit_service' service.id %}">Edit</a> | 
-                            <a class="text-danger" href="{% url 'delete_service' service.id %}">Delete</a>
+                        <small class="py-3">
+                            <a href="{% url 'edit_service' service.id %}" class="btn btn-admin" role="button">Edit</a> | 
+                            <a href="{% url 'delete_service' service.id %}" class="text-danger btn btn-admin" role="button">Delete</a>
                         </small>
                     {% endif %}
                 </div>
@@ -53,7 +53,7 @@
                 <div class="col-10 col-lg-8 text-center text-grey">
                     <div class="text-center mb-2" >
                         <p clas="mt-3">We also offer a bespoke service to customers, based on your particular preferences.</p>        
-                        <p>To discuss this further, please <a href="{% url 'contact' %}" class="btn btn-all btn-sm text-grey">
+                        <p>To discuss this further, please <a href="{% url 'contact' %}" class="btn btn-all text-grey">
                             contact us</a>
                         </p>
                     </div> 
