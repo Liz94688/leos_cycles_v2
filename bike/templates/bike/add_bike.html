@@ -31,6 +31,8 @@
                     {{ add_bike.frame_type | as_crispy_field }}
                     {{ add_bike.handlebar_type | as_crispy_field }}
                     {{ add_bike.frame_size | as_crispy_field }}
+                    <p class="mb-0 text-black">Not sure what size frame you have?
+                        Take a look at our size guide:</p>
                     <!-- Trigger the modal with a button -->
                     <button type="button" class="btn btn-all form-btn" 
                             data-toggle="modal" data-target="#myModal">Bike Frame Size Guide</button>
@@ -84,7 +86,7 @@
                         </div>
                     </div>
                     {{ add_bike.owner_description | as_crispy_field }}
-                    <p class="text-black">
+                    <p class="mb-0 text-black">
                         How many years have you owned your bike for?
                         {{ add_bike.age | as_crispy_field }}
                     </p>

@@ -58,14 +58,14 @@ class FrameType(models.Model):
 class Bike(models.Model):
 
     FRAME_SIZE = (
-            ('XXS', 'XX Small'),
-            ('XS', 'X Small'),
-            ('S', 'Small'),
-            ('M', 'Medium'),
-            ('L', 'Large'),
-            ('XL', 'X Large'),
-            ('XXL', 'XX Large'),
-            ('XXXL', 'XXX Large'),
+            ('XX Small', 'XX Small'),
+            ('X Small', 'X Small'),
+            ('Small', 'Small'),
+            ('Medium', 'Medium'),
+            ('Large', 'Large'),
+            ('X Large', 'X Large'),
+            ('XX Large', 'XX Large'),
+            ('XXX Large', 'XXX Large'),
 
         )
 

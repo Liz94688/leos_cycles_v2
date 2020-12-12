@@ -260,7 +260,7 @@ label.requiredField {
 
 #id_owner_description,
 #id_age,
-#id_wheel_size,
+#id_frame_size,
 #id_handlebar_type,
 #id_frame_type,
 #id_bike_type {
@@ -331,7 +331,7 @@ label.requiredField {
     text-align: left;
 }
 
-#div_id_wheel_size
+#div_id_frame_size
 label.requiredField {
     color: #000;
     width: 100%;
