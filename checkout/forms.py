@@ -40,6 +40,7 @@ class OrderForm(forms.ModelForm):
         }
 
         self.fields['full_name'].widget.attrs['autofocus'] = True
+        # self.fields['preferred_service_date'].widget.attrs['input_format'] = '%YYYY/%mm/%dd'
         for field in self.fields:
             if field != 'country':
                 if self.fields[field].required:
