@@ -53,6 +53,7 @@ def checkout(request):
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
+            print("form valid")
             order = order_form.save(commit=False)
             pid = request.POST.get('client_secret').split('_secret')[0]
             order.stripe_pid = pid
@@ -71,9 +72,12 @@ def checkout(request):
             request.session['save_info'] = 'save-info' in request.POST
             return redirect(reverse('checkout_success', args=[order.order_number]))
         else:
+            print("Fail")
+            print(order_form.errors)
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
     else:
+        print("Get")
         basket = request.session.get('basket', {})
         if not basket:
             messages.error(request, "There's nothing in your basket")

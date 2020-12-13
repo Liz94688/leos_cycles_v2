@@ -5,9 +5,9 @@ This is confirmation of the order you just placed at Leo's Cycles. Your order in
 Order Number: {{ order.order_number }}
 Order Date: {{ order.date }}
 
-Order Total: ${{ order.order_total }}
-Service: ${{ order.delivery_cost }}
-Grand Total: ${{ order.grand_total }}
+Order Total: £{{ order.order_total }}
+Service: £{{ order.delivery_cost }}
+Grand Total: £{{ order.grand_total }}
 
 One of our highly skilled engineers will be sent to your chosen address: {{ order.street_address1 }}, {{ order.town_or_city }}, {{ order.country }}.
 

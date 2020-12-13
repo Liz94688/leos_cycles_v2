@@ -179,7 +179,7 @@ a {
     cursor: pointer;
 }
 
-#id_qty_1 {
+.form-control-all {
     text-align: center;
 }
 
