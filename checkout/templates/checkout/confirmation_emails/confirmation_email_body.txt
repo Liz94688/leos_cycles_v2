@@ -9,7 +9,7 @@ Order Total: £{{ order.order_total }}
 Service: £{{ order.delivery_cost }}
 Grand Total: £{{ order.grand_total }}
 
-One of our highly skilled engineers will be sent to your chosen address: {{ order.street_address1 }}, {{ order.town_or_city }}, {{ order.country }}.
+One of our highly skilled engineers will be sent to your chosen address: {{ order.street_address1 }}, {{ order.town_or_city }}, {{ order.country }} on {{ order.preferred_service_date }}.
 
 We've got your phone number on file as {{ order.phone_number }}.
 

@@ -108,16 +108,13 @@
                 </fieldset>
                 <fieldset class="rounded px-3 mb-5">
                     <legend class="fieldset-label small text-grey px-2 w-auto">Service Date</legend>
-                    <p class="px-2 py-2">Please input an available date for your chosen service that suits you. 
-                        Our engineers will be in touch to arrange a time:</p>
+                    <p class="px-2 py-2">Please input a date for your chosen service and our 
+                        engineers will be in touch to arrange a time.</p>
+                    <p class="px-2 py-2 text-danger">
+                        Please make sure you input the date in the format YYYY-mm-dd.
+                    </p>
                     {{ order_form.preferred_service_date | as_crispy_field }}
-                </fieldset>
-
-                    <!-- <form>
-                        <label for="date">Please type a date:</label><br>
-                        <input type="text" id="date" name="date"><br>
-                    </form> -->
-                
+                </fieldset>                
                 <fieldset class="px-3">
                     <legend class="fieldset-label small px-2 w-auto">Payment</legend>
                     <!-- A Stripe card element will go here -->
