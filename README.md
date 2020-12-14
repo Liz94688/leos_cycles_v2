@@ -52,7 +52,22 @@ The navigation bar provides one-click links to the home, about, contact, login a
 Find a link to userstories [here](https://github.com/Liz94688/leos_cycles_v2/blob/master/documents/user_stories.pdf).
 
 #### Wireframes
-I drew my wireframes by hand, copies of which can be found [here](https://github.com/Liz94688/leos_cycles_v2/blob/master/documents/wireframes/about_page.jpg?raw=True”). These show how I plan to make my website/app responsive.
+I drew my wireframes by hand, these show how I plan to make my website/app responsive. Copies of which can be found here:
+
+[About Page](https://github.com/Liz94688/leos_cycles_v2/blob/master/documents/wireframes/about_page.jpg?raw=True”).
+[Add Bike Page](https://github.com/Liz94688/leos_cycles_v2/blob/master/documents/wireframes/add_bike_page.jpg?raw=True”). 
+[All Bikes Page](https://github.com/Liz94688/leos_cycles_v2/blob/master/documents/wireframes/all_bikes_page.jpg?raw=True”). 
+[Basket Page](https://github.com/Liz94688/leos_cycles_v2/blob/master/documents/wireframes/basket_page.jpg?raw=True”). 
+[Bike Details Page](https://github.com/Liz94688/leos_cycles_v2/blob/master/documents/wireframes/bike_details_page.jpg?raw=True”). 
+[Checkout Page](https://github.com/Liz94688/leos_cycles_v2/blob/master/documents/wireframes/checkout_page.jpg?raw=True”). 
+[Checkout Success Page](https://github.com/Liz94688/leos_cycles_v2/blob/master/documents/wireframes/checkout_success_page.jpg?raw=True”). 
+[Contact Page](https://github.com/Liz94688/leos_cycles_v2/blob/master/documents/wireframes/contact_page.jpg?raw=True”). 
+[Edit Bike Page](https://github.com/Liz94688/leos_cycles_v2/blob/master/documents/wireframes/edit_bike_page.jpg?raw=True”). 
+[Home Page](https://github.com/Liz94688/leos_cycles_v2/blob/master/documents/wireframes/home_page.jpg?raw=True”). 
+[Review Page](https://github.com/Liz94688/leos_cycles_v2/blob/master/documents/wireframes/review_page.jpg?raw=True”). 
+[Service Details Page](https://github.com/Liz94688/leos_cycles_v2/blob/master/documents/wireframes/service_details_page.jpg?raw=True”). 
+[Services Page](https://github.com/Liz94688/leos_cycles_v2/blob/master/documents/wireframes/services_page.jpg?raw=True”). 
+[User Profile Page](https://github.com/Liz94688/leos_cycles_v2/blob/master/documents/wireframes/user_profile_page.jpg?raw=True”). 
 
 #### Database Schema
 Before building my project, I created an Entity Relationship Diagram (ERD) to outline the database schema for the various tables that I would use. The link for this file can be found [here](https://github.com/Liz94688/leos_cycles_v2/blob/master/documents/schema.jpg?raw=True”).
