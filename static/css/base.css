@@ -270,6 +270,11 @@ label.requiredField {
     color: #787467;
 }
 
+/* About Page */
+.about-instructions {
+    list-style-type: none;
+}
+
 /* Add a Review Page */
 #div_id_reviewed_level_type
 label.requiredField {
