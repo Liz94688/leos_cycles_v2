@@ -52,10 +52,10 @@ The navigation bar provides one-click links to the home, about, contact, login a
 Find a link to userstories [here](https://github.com/Liz94688/leos_cycles_v2/blob/master/documents/user_stories.pdf).
 
 #### Wireframes
-I drew my wireframes by hand, copies of which can be found [here](https://github.com/Liz94688/leos_cycles_v2/blob/master/documents/wireframes”). These show how I plan to make my website/app responsive.
+I drew my wireframes by hand, copies of which can be found [here](https://github.com/Liz94688/leos_cycles_v2/blob/master/documents/wireframes/”). These show how I plan to make my website/app responsive.
 
 #### Database Schema
-Before building my project, I created an Entity Relationship Diagram (ERD) to outline the database schema for the various tables that I would use. The link for this file can be found [here](https://github.com/Liz94688/leos_cycles_v2/blob/master/documents/schema.jpg”).
+Before building my project, I created an Entity Relationship Diagram (ERD) to outline the database schema for the various tables that I would use. The link for this file can be found [here](https://github.com/Liz94688/leos_cycles_v2/blob/master/documents/”).
 
 
 ## Features
