@@ -49,13 +49,13 @@ Leo’s Cycles is designed to give the user a clear and modern experience when s
 The navigation bar provides one-click links to the home, about, contact, login and registration pages, as well as a one-click link to the service page. Only registered and logged in users can see the specific details for each of the services available, as well as any reviews left by other members and the user profile link.
 
 #### User Stories
-Find a link to userstories[here](<a href=“https://github/Liz94688/leos_cycles_v2/tree/master/documents/user_stories.pdf”>).
+Find a link to userstories [here](<a href=“/Liz94688/leos_cycles_v2/tree/master/documents/user_stories.pdf”>).
 
 #### Wireframes
-I drew my wireframes by hand, copies of which can be found [here](<a href=“/Liz94688/leos_cycles_v2/blob/master/documents/wireframes”>). These show how I plan to make my website/app responsive.
+I drew my wireframes by hand, copies of which can be found [here](<a href=“/Liz94688/leos_cycles_v2/tree/master/documents/wireframes”>). These show how I plan to make my website/app responsive.
 
 #### Database Schema
-Before building my project, I created an Entity Relationship Diagram (ERD) to outline the database schema for the various tables that I would use. The link for this file can be found [here](<a href=“/Liz94688/leos_cycles_v2/blob/master/documents/schema.jpg”>).
+Before building my project, I created an Entity Relationship Diagram (ERD) to outline the database schema for the various tables that I would use. The link for this file can be found [here](<a href=“/Liz94688/leos_cycles_v2/tree/master/documents/schema.jpg”>).
 
 
 ## Features
