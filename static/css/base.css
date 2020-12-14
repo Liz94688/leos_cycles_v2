@@ -15,7 +15,7 @@ a {
   color: #787467;
 }
 
-/* Colors */
+/* Text colors */
 .text-black {
     color: #000 !important;
 }
@@ -154,12 +154,22 @@ a {
     text-transform: uppercase;
 }
 
-.add_bike_btn {
-    margin-bottom: 0.25rem;
-    padding: 5px;
-    border: 1px solid #787467;
-    font-size: 0.75rem;
+.form-btn {
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+    padding: 10px;
+    transition: all .15s ease-in-out;
+    border: 1px solid #000;
+    color: #000;
+    font-size: 1rem;
     text-transform: uppercase;
+}
+
+.form-btn:hover{
+    transform: scale(1.1);
+    color: #000;
 }
 
 .btn-admin {
@@ -243,17 +253,6 @@ a {
     background: #787467;
 }
 
-.form-btn {
-    transition: all .15s ease-in-out;
-    border: 1px solid #000;
-    color: #000;
-}
-
-.form-btn:hover{
-    transform: scale(1.1);
-    color: #000;
-}
-
 label.requiredField {
     color: #787467;
 }
@@ -270,29 +269,6 @@ label.requiredField {
 #id_qty_1 {
     color: #787467;
 }
-
-/* Contact Page */
-@media(min-width:992px) {
-    .contact-info-lg {
-        display: none;
-    }
-}
-
-/* Basket */
-/* @media(max-width:991px) {
-    .table-basket
-    td.py-3 p {
-        font-size: 0.8rem;
-    }
-
-
-@media(max-width:991px) {
-    .table-basket
-    .input-group {
-        font-size: 0.5rem;
-        flex-wrap: nowrap;
-    }
-} */
 
 /* Add a Review Page */
 #div_id_reviewed_level_type
@@ -364,10 +340,88 @@ label.requiredField {
     .header-container {
         padding-top: 120px;
     }
+
+    .contact-info-lg {
+        display: none;
+    }
+
+    .main-nav-sticky .text-sm {
+        font-size: 1.3rem;
+
+    }
+
+    .main-nav-sticky i.fa-shopping-bag {
+        font-size: 1.3rem;
+    }
+}
+
+@media(max-width:350px) {
+    .navbar-brand h3 {
+        font-size: 1.10rem;
+    }
+}
+
+@media(max-width:600px) {
+    .navbar-brand h3 {
+        font-size: 1.50rem;
+    }
 }
 
 @media (max-width:991px) {
     .header-container {
         padding-top: 80px;
+    }
+
+    .main-nav-sticky .text-sm {
+        font-size: 0.8rem;
+
+    }
+
+    .main-nav-sticky i.fa-shopping-bag {
+        font-size: 0.8rem;
+    }
+
+    .btn-all {
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+        margin-left: 0.15rem;
+        margin-right: 0.15rem;
+        padding: 8px;
+        border: 1px solid #787467;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+    }
+
+    .form-btn {
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+        margin-left: 0.15rem;
+        margin-right: 0.15rem;
+        padding: 8px;
+        transition: all .15s ease-in-out;
+        border: 1px solid #000;
+        color: #000;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+    }
+
+    .form-btn:hover{
+        transform: scale(1.1);
+        color: #000;
+    }
+
+    .btn-admin {
+        margin-bottom: 0.5rem;
+        margin-top: 0.5rem;
+        margin-left: 0.25rem;
+        margin-right: 0.25rem;
+        padding: 5px;
+        border: 1px solid #787467;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+    }
+
+    .decrement-qty, .increment-qty {
+        padding: .25rem .5rem;
     }
 }

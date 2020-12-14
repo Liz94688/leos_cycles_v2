@@ -1,0 +1,8 @@
+<h6 class="text-grey"><strong>Bag Total: £{{ total|floatformat:2 }}</strong></h6>
+<h6 class="text-grey">Service Charge: £{{ service_charge|floatformat:2 }}</h6>
+<h4 class="mt-4 text-grey"><strong>Grand Total: £{{ grand_total|floatformat:2 }}</strong></h4>
+{% if free_service_delta > 0 %}
+    <p class="mb-1 text-danger">
+        You could get your service for free if you upgraded to the <strong>ADVANCED</strong> level of service today!
+    </p>
+{% endif %}

@@ -27,7 +27,7 @@
                     {% csrf_token %}
                     {{ review_form | crispy }}
                     <div>
-                        <a href="{% url 'userprofile' %}" class="btn btn-all form-btn">
+                        <a href="{% url 'userprofile' %}" class="btn form-btn">
                             <span>Return to User Profile</span>
                         </a>
                         <button class="btn btn-all form-btn" type="submit">Add Review</button>

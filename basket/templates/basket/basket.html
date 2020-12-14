@@ -21,55 +21,56 @@
             <h2 class="text-grey">Basket</h2>
             <hr class="w-25 mt-3">
             {% if basket_items %}
-                <div class="table-responsive rounded">
+                <div class="d-block d-md-none">
+                    <p class="text-grey mb-3">A summary of your basket contents is below.</p>
+                    {% for item in basket_items %}
+                    <div class="row">
+                        <div class="col-12 mb-3">
+                            {% include "basket/service_details.html" %}
+                        </div>
+                        <br>
+                        <div class="col-12">
+                            {% include "basket/quantity.html" %}
+                        </div>
+                        <div class="col-12 order-sm-last mt-4 mb-3">
+                            <p class="my-0 mb-3 text-grey">Sub total: £{{ item.service.price | calc_subtotal:item.quantity }}</p>
+                            <a class="remove-item text-danger" id="remove_{{ item.item_id }}"><small>Remove</small></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <hr>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <div class="row">
+                        <div class="col">
+                            {% include "basket/basket_total.html" %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            {% include "basket/checkout_btn.html" %}
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive rounded d-none d-md-block">
                     <table class="table table-sm table-borderless table-basket">
                         <thead class="text-grey">
                             <tr>
                                 <th scope="col">Service details</th>
-                                <th scope="col">Price</th>
                                 <th scope="col">Qty</th>
                                 <th scope="col">Sub Total</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
-
                         {% for item in basket_items %}
                             <tr class="text-grey">
                                 <td class="py-3">
-                                    <p class="my-0">{{ item.service.level_type }}</p>
+                                    {% include "basket/service_details.html" %}
                                 </td>
                                 <td class="py-3">
-                                    <p class="my-0">£{{ item.service.price }}</p>
-                                </td>
-                                <td class="py-3">
-                                    <form class="form update-form" method="POST" action="{% url 'edit_basket' item.item_id %}">
-                                        {% csrf_token %}
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <button class="decrement-qty btn btn-black btn-sm rounded-0" 
-                                                        data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
-                                                        <span>
-                                                            <i class="fas fa-sm fa-minus"></i>
-                                                        </span>
-                                                    </button>
-                                                </div>
-                                                <input class="form-control form-control-sm form-control-all qty_input"                 type="number" 
-                                                    name="quantity" value="{{ item.quantity }}" min="1" max="99" 
-                                                    data-item_id="{{ item.item_id }}" 
-                                                    id="id_qty_{{ item.item_id }}">
-                                                <div class="input-group-append">
-                                                    <button class="increment-qty btn btn-black btn-sm rounded-0"
-                                                        data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
-                                                        <span>
-                                                            <i class="fas fa-sm fa-plus"></i>
-                                                        </span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                    <a class="update-quantity text-info"><small>Update</small></a>
+                                    {% include "basket/quantity.html" %}
                                 </td>
                                 <td class="py-3">
                                     <p class="my-0">£{{ item.service.price | calc_subtotal:item.quantity }}</p>
@@ -81,27 +82,12 @@
                         {% endfor %}
                         <tr>
                             <td colspan="5" class="pt-5 text-right text-grey">
-                                <h6><strong>Bag Total: £{{ total|floatformat:2 }}</strong></h6>
-                                <h6>Service Charge: £{{ service_charge|floatformat:2 }}</h6>
-                                <h4 class="mt-4"><strong>Grand Total: £{{ grand_total|floatformat:2 }}</strong></h4>
-                                {% if free_service_delta > 0 %}
-                                    <p class="mb-1 text-danger">
-                                        You could get your service for free if you upgraded to the <strong>ADVANCED</strong> level of service today!
-                                    </p>
-                                {% endif %}
+                                {% include "basket/basket_total.html" %}
                             </td>
                         </tr>
                         <tr>
                             <td colspan="5" class="text-right">
-                                <a href="{% url 'service_list' %}" class="btn btn-all">
-                                    <span>Return to Services</span>
-                                </a>
-                                <a href="{% url 'checkout' %}" class="btn btn-all">
-                                    <span>Secure Checkout</span>
-                                    <span class="icon">
-                                        <i class="fas fa-lock"></i>
-                                    </span>
-                                </a>
+                                {% include "basket/checkout_btn.html" %}
                             </td>
                         </tr>
                     </table>

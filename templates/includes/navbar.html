@@ -13,7 +13,7 @@
             <div class="d-flex">
                 <a href="{% url 'view_basket' %}" 
                 class="btn btn-large px-1 py-2 d-block {% if grand_total %}text-white {% else %}text-grey{% endif %}">
-                    <div class="text-center {% if grand_total %}text-white {% else %}text-grey{% endif %}">
+                    <div class="text-center text-sm {% if grand_total %}text-white {% else %}text-grey{% endif %}">
                         <i class="fas fa-shopping-bag"></i>
                         <small>
                         {% if grand_total %}
